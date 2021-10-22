@@ -5,5 +5,5 @@ CREATE TABLE times (
   start_date DATE NOT NULL,
   end_date DATE NOT NULL,
   start_time TIME,
-  end_time TIME,
+  end_time TIME
 );
