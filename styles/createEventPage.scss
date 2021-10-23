@@ -11,7 +11,7 @@ section {
   padding-top: 0.5rem;
   padding-bottom: 1rem;
   border: 2px solid black;
-  width: 90%
+  width: 90vw
 }
 
 form.form-details label {
@@ -25,9 +25,9 @@ form.form-details label {
 }
 
 form.form-details input {
-  height: 20px;
-  flex: 0 0 200px;
-  margin-left: 10px;
+  height: 1.25rem;
+  flex: 0 0 12.5rem;
+  margin-left: 0.625rem;
 }
 
 .event-desc {
@@ -37,7 +37,7 @@ form.form-details input {
 }
 
 .text-box {
-  width: 600px;
+  width: 35rem;
   resize: none;
   margin-bottom: 1rem;
 }
