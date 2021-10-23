@@ -1,0 +1,52 @@
+section {
+  display: flex;
+  justify-content: center;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  border: 2px solid black;
+  width: 90%
+}
+
+form.form-details label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: right;
+  width: 25rem;
+  line-height: 1.5rem;
+  margin: 0.5rem;
+}
+
+form.form-details input {
+  height: 20px;
+  flex: 0 0 200px;
+  margin-left: 10px;
+}
+
+.event-desc {
+  display: flex;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.text-box {
+  width: 600px;
+  resize: none;
+  margin-bottom: 1rem;
+}
+
+::placeholder {
+  line-height: 2rem;
+  text-align: center;
+}
+
+form.form-details button {
+  margin-left: 30rem;
+}
