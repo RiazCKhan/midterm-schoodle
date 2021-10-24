@@ -3,6 +3,7 @@
 $(document).ready(function() {
 
   $("#copy").on("click", copy);
+  $("#calendar-info").on("submit", getCalendarData);
 
 
 
@@ -17,4 +18,12 @@ const copy = function () {
   let text = $form.find("#url-link").val()
 
   navigator.clipboard.writeText(text)
+}
+
+const getCalendarData = function () {
+  event.preventDefault()
+
+console.log(myDatepickerOneOutput)
+
+
 }

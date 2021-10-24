@@ -13,6 +13,7 @@ module.exports = () => {
       name: req.body.owner_name,
       email: req.body.owner_email
     }
+    console.log(req.body)
 
     const eventDetails = {
       title: req.body.event_title,
@@ -30,6 +31,7 @@ module.exports = () => {
       return randomString;
     };
 
+    res.redirect("/vote/uniqueid")
   })
   return router;
 };
