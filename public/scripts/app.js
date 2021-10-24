@@ -1,8 +1,20 @@
 // Client facing scripts here
 
-// NOT IMPLEMENTED - COPY BUTTON FOR UNIQUE-URL
-document.getElementById('clipboardCopy').addEventListener('click', clipboardCopy);
-async function clipboardCopy() {
-  let text = document.querySelector("#input").value;
-  await navigator.clipboard.writeText(text);
+$(document).ready(function() {
+
+  $("#copy").on("click", copy);
+
+
+
+
+})
+
+const copy = function () {
+  event.preventDefault()
+
+  let $button = $("#copy")
+  let $form = $button.closest("form")
+  let text = $form.find("#url-link").val()
+
+  navigator.clipboard.writeText(text)
 }
