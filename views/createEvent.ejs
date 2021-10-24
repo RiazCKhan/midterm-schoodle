@@ -49,7 +49,7 @@
 
   <section>
     <article class="event-details">
-      <form class="form-details">
+      <form class="form-details" action="/events/new" method="POST">
         <div>
           <label for="name">Name
             <input type="text" id="name" name="owner_name">
@@ -77,38 +77,43 @@
     </article>
   </section>
 
-
   <section>
-    <article class="calendar-block">
 
-      <form method="/events" action="POST">
+    <form id="calendar-info">
+      <article class="calendar-block">
+        <span>start</span>
         <div id="first-mtr-datepicker">
           <script type="text/javascript">
-          let configOne = {
-            target: 'first-mtr-datepicker',
-            future: true,
-          };
-          let myDatepickerOne = new MtrDatepicker(configOne);
+            let configOne = {
+              target: 'first-mtr-datepicker',
+              future: true,
+            };
+            let myDatepickerOne = new MtrDatepicker(configOne);
+            let myDatepickerOneOutput = myDatepickerOne.toLocaleString()
+            console.log(myDatepickerOneOutput)
           </script>
-      </div>
-      <button type="submit">Confirm Start</button>
+          <div>
+            <button type="submit">Add</button>
+          </div>
+        </div>
+
+        <form></form>
+        <span>end</span>
+        <div id="second-mtr-datepicker">
+          <script type="text/javascript">
+            let configTwo = {
+              target: 'second-mtr-datepicker',
+              future: true
+            };
+            let myDatepickerTwo = new MtrDatepicker(configTwo);
+            let myDatepickerTwoOutput = myDatepickerTwo.toLocaleString()
+          </script>
+        </div>
+      </article>
     </form>
 
-    <form method="/events" action="POST">
-      <div id="second-mtr-datepicker">
-        <script type="text/javascript">
-          let configTwo = {
-            target: 'second-mtr-datepicker',
-            future: true
-          };
-          let myDatepickerTwo = new MtrDatepicker(configTwo);
-          </script>
-      </div>
-      <button type="submit">Confirm End</button>
-    </form>
-
-    </article>
   </section>
+
 
 
 
