@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "morgan": "^1.9.1",
+    "mtr-datepicker": "^0.3.11",
     "pg": "^8.5.0",
     "pg-native": "^3.0.0",
     "sass": "^1.35.1"
