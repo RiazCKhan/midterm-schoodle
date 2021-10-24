@@ -14,6 +14,9 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- External Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
   <!-- App CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -33,12 +36,14 @@
 
 <body>
 
-  <nav id="nav">
-    <span id="logo">Schoodle</span>
-    <div class="icon">
-      <i class="far fa-calendar-plus"></i>
-    </div>
-  </nav>
+  <section>
+    <nav id="nav">
+      <span id="logo">Schoodle</span>
+      <div class="icon">
+        <i class="far fa-calendar-plus"></i>
+      </div>
+    </nav>
+  </section>
 
   <section>
     <article class="event-details">
@@ -60,7 +65,8 @@
         </div>
         <div>
           <span class="event-desc" for="description">Event Description</span>
-          <textarea class="text-box" type="text" id="description" name="event_description" placeholder="What's the plan?"></textarea>
+          <textarea class="text-box" type="text" id="description" name="event_description"
+            placeholder="What's the plan?"></textarea>
         </div>
         <div>
           <button type="submit">Create Event</button>

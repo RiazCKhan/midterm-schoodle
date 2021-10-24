@@ -1,3 +1,8 @@
+section {
+  display: flex;
+  justify-content: center;
+}
+
 #nav {
   height: 5rem;
   width: 65vw;
@@ -9,20 +14,12 @@
   padding-bottom: 1em;
   padding-left: 1.5em;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   position: fixed;
   top: 0;
   z-index: 9999;
   border: 2px;
   border-style: solid
-}
-
-.icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
 }
 
 #logo {
@@ -33,7 +30,13 @@
   font-family: 'Playfair Display', serif;
 }
 
-section#nav {
+.icon {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  font-size: 2rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
 }
+
+
