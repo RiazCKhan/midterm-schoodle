@@ -77,13 +77,40 @@
     </article>
   </section>
 
-  <section id="first-mtr-datepicker"></section>
-  <script type="text/javascript">
-    let config = {
-      target: 'first-mtr-datepicker'
-    };
-    let myDatepicker = new MtrDatepicker(config);
-  </script>
+
+  <section>
+    <article class="calendar-block">
+
+      <form method="/events" action="POST">
+        <div id="first-mtr-datepicker">
+          <script type="text/javascript">
+          let configOne = {
+            target: 'first-mtr-datepicker',
+            future: true,
+          };
+          let myDatepickerOne = new MtrDatepicker(configOne);
+          </script>
+      </div>
+      <button type="submit">Confirm Start</button>
+    </form>
+
+    <form method="/events" action="POST">
+      <div id="second-mtr-datepicker">
+        <script type="text/javascript">
+          let configTwo = {
+            target: 'second-mtr-datepicker',
+            future: true
+          };
+          let myDatepickerTwo = new MtrDatepicker(configTwo);
+          </script>
+      </div>
+      <button type="submit">Confirm End</button>
+    </form>
+
+    </article>
+  </section>
+
+
 
 </body>
 
