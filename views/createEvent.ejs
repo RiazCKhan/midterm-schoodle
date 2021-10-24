@@ -13,6 +13,10 @@
     integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <!-- External CSS: DatePicker -->
+  <link rel="stylesheet" type="text/css" href="/datepicker/mtr-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="/datepicker/mtr-datepicker.default-theme.min.css">
+
   <!-- External Fonts -->
 
   <!-- App CSS -->
@@ -25,6 +29,9 @@
 
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
+  <!-- External JS: DatePicker -->
+  <script type="text/javascript" src="/datepicker/mtr-datepicker.min.js"></script>
 
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -60,7 +67,8 @@
         </div>
         <div>
           <span class="event-desc" for="description">Event Description</span>
-          <textarea class="text-box" type="text" id="description" name="event_description" placeholder="What's the plan?"></textarea>
+          <textarea class="text-box" type="text" id="description" name="event_description"
+            placeholder="What's the plan?"></textarea>
         </div>
         <div>
           <button type="submit">Create Event</button>
@@ -68,6 +76,14 @@
       </form>
     </article>
   </section>
+
+  <section id="first-mtr-datepicker"></section>
+  <script type="text/javascript">
+    let config = {
+      target: 'first-mtr-datepicker'
+    };
+    let myDatepicker = new MtrDatepicker(config);
+  </script>
 
 </body>
 
