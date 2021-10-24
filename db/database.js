@@ -16,7 +16,7 @@ const addUsers = (user) => {
     console.log(err.stack);
   });
 }
-exports.addUsers.addUsers;
+exports.addUsers = addUsers;
 
 const addEvent = (event) => {
 
