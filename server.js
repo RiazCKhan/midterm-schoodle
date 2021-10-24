@@ -34,10 +34,12 @@ app.use(
 );
 
 app.use(express.static("public"));
+app.use('/datepicker', express.static(__dirname + '/node_modules/mtr-datepicker/dist/'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const homeRoutes = require("./routes/home");
+const homeRoutesTwo = require("./routes/calendar");
 const eventRoutes = require("./routes/event");
 const submissionRoutes = require("./routes/submission");
 const voteRoutes = require("./routes/vote")
@@ -45,6 +47,7 @@ const voteRoutes = require("./routes/vote")
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/", homeRoutes());
+app.use("/calendar", homeRoutesTwo());
 app.use("/events", eventRoutes());
 app.use("/submission", submissionRoutes());
 app.use("/vote", voteRoutes());
