@@ -1,5 +1,5 @@
 const { Pool } = require("pg");
-const dbParams = require("./lib/db.js");
+const dbParams = require("../lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
@@ -16,7 +16,7 @@ const addUsers = (user) => {
     console.log(err.stack);
   });
 }
-exports.addUsers.addUsers;
+exports.addUsers = addUsers;
 
 const addEvent = (event) => {
 
