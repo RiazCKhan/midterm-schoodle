@@ -16,9 +16,19 @@ module.exports = () => {
 
     const eventDetails = {
       title: req.body.event_title,
-      description: req.body.event_description
-      url: //need the unique url
+      description: req.body.event_description,
+      url: generateUniqueURL()
     }
+
+    function generateUniqueURL() {
+      let randomString = ""
+      const possibleChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+      for (let i = 0; i < 10; i++) {
+        randomString += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
+      }
+      return randomString;
+    };
 
   })
   return router;
