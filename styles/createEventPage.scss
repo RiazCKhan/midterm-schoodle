@@ -1,49 +1,75 @@
-section {
+body {
   display: flex;
   justify-content: center;
 }
 
-.event-details {
+.new-event {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 6rem;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
-  border: 2px solid black;
   width: 90vw
 }
 
-form.form-details label {
+.event-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: right;
-  width: 25rem;
-  line-height: 1.5rem;
-  margin: 0.5rem;
 }
 
-form.form-details input {
-  height: 1.25rem;
-  flex: 0 0 12.5rem;
-  margin-left: 0.625rem;
+.user-form {
+  margin-top: 0.2rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
-.calendar-block {
+.new-event label {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.new-event input {
+  width: 25vw;
+}
+
+.start-end {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.options {
+  text-align: center;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  width: 25vw;
+}
+
+.set-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  width: 25vw;
 }
 
 .event-desc {
   display: flex;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 .text-box {
-  width: 35rem;
+  width: 25vw;
   resize: none;
-  margin-bottom: 1rem;
 }
 
 ::placeholder {
@@ -51,6 +77,8 @@ form.form-details input {
   text-align: center;
 }
 
-form.form-details button {
-  margin-left: 25rem;
+.add-date-time, .create-event {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.2rem;
 }
