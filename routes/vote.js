@@ -6,5 +6,10 @@ module.exports = () => {
     res.render("votePoll");
     console.log("success!");
   });
+
+  router.post("/uniqueid", (req, res) => {
+
+
+  })
   return router;
 };
