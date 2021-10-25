@@ -33,8 +33,11 @@ const renderDates = function () {
   let endDateYear = $form.find("#date-form__end-year").val()
   let endDateTime = $form.find("#date-form__end-time").val()
 
+  let pollOption = `<div>
+  ${startDateTime} on ${startDateDay}/${startDateMonth}/${startDateYear} -
+  ${endDateTime} on ${endDateDay}/${endDateMonth}/${endDateYear}</div>`
 
-
+  $(".append-date-time").prepend(pollOption)
 
   // console.log('start', startDateDay, startDateMonth, startDateYear, startDateTime)
   // console.log('end', endDateDay, endDateMonth, endDateYear, endDateTime)
