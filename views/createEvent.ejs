@@ -49,7 +49,7 @@
 
   <section class="new-event">
     <article class="event-container">
-      <form class="user-form" action="/events/new" method="POST">
+      <form id="user-form" action="/events/new" method="POST">
         <div>
           <label for="name">Name</label>
           <input type="text" id="name" name="owner_name">
@@ -73,12 +73,12 @@
         </div>
       </form>
 
-      <div class="date-form">
-        <form>
+      <div>
+        <form id="date-form">
           <div class="start-end">Start Date</div>
           <div>
             <label>Day</label>
-            <select class="options">
+            <select id="date-form__start-day" class="options">
               <option value="">Day</option>
               <option value="01">1</option>
               <option value="02">2</option>
@@ -116,7 +116,7 @@
 
           <div>
             <label>Month</label>
-            <select class="options">
+            <select id="date-form__start-month" class="options">
               <option value="">Month</option>
               <option value="01">January</option>
               <option value="02">February</option>
@@ -134,7 +134,7 @@
           </div>
 
           <div>
-            <select class="options">
+            <select id="date-form__start-year" class="options">
               <option value="">Year</option>
               <option value="2021">2021</option>
               <option value="2022">2022</option>
@@ -151,40 +151,40 @@
 
           <div>
             <label>Time</label>
-            <select class="options">
+            <select id="date-form__start-time" class="options">
               <option value="">Time</option>
-              <option value="00">12:00</option>
-              <option value="01">1:00</option>
-              <option value="02">2:00</option>
-              <option value="03">3:00</option>
-              <option value="04">4:00</option>
-              <option value="05">5:00</option>
-              <option value="06">6:00</option>
-              <option value="07">7:00</option>
-              <option value="08">8:00</option>
-              <option value="09">9:00</option>
-              <option value="10">12:00</option>
-              <option value="11">13:00</option>
-              <option value="12">14:00</option>
-              <option value="13">15:00</option>
-              <option value="14">16:00</option>
-              <option value="15">17:00</option>
-              <option value="16">18:00</option>
-              <option value="17">19:00</option>
-              <option value="18">18:00</option>
-              <option value="19">19:00</option>
-              <option value="20">20:00</option>
-              <option value="21">21:00</option>
-              <option value="22">22:00</option>
-              <option value="23">23:00</option>
-              <option value="24">24:00</option>
+              <option value="00:00">12:00</option>
+              <option value="01:00">1:00</option>
+              <option value="02:00">2:00</option>
+              <option value="03:00">3:00</option>
+              <option value="04:00">4:00</option>
+              <option value="05:00">5:00</option>
+              <option value="06:00">6:00</option>
+              <option value="07:00">7:00</option>
+              <option value="08:00">8:00</option>
+              <option value="09:00">9:00</option>
+              <option value="10:00">12:00</option>
+              <option value="11:00">13:00</option>
+              <option value="12:00">14:00</option>
+              <option value="13:00">15:00</option>
+              <option value="14:00">16:00</option>
+              <option value="15:00">17:00</option>
+              <option value="16:00">18:00</option>
+              <option value="17:00">19:00</option>
+              <option value="18:00">18:00</option>
+              <option value="19:00">19:00</option>
+              <option value="20:00">20:00</option>
+              <option value="21:00">21:00</option>
+              <option value="22:00">22:00</option>
+              <option value="23:00">23:00</option>
+              <option value="24:00">24:00</option>
             </select>
           </div>
 
           <div class="start-end">End Date</div>
           <div>
             <label>Day</label>
-            <select class="options">
+            <select id="date-form__end-day" class="options">
               <option value="">Day</option>
               <option value="01">1</option>
               <option value="02">2</option>
@@ -222,7 +222,7 @@
 
           <div>
             <label>Month</label>
-            <select class="options">
+            <select id="date-form__end-month" class="options">
               <option value="">Month</option>
               <option value="01">January</option>
               <option value="02">February</option>
@@ -240,7 +240,7 @@
           </div>
 
           <div>
-            <select class="options">
+            <select id="date-form__end-year" class="options">
               <option value="">Year</option>
               <option value="2021">2021</option>
               <option value="2022">2022</option>
@@ -257,37 +257,37 @@
 
           <div>
             <label>Time</label>
-            <select class="options">
+            <select id="date-form__end-time" class="options">
               <option value="">Time</option>
-              <option value="00">12:00</option>
-              <option value="01">1:00</option>
-              <option value="02">2:00</option>
-              <option value="03">3:00</option>
-              <option value="04">4:00</option>
-              <option value="05">5:00</option>
-              <option value="06">6:00</option>
-              <option value="07">7:00</option>
-              <option value="08">8:00</option>
-              <option value="09">9:00</option>
-              <option value="10">12:00</option>
-              <option value="11">13:00</option>
-              <option value="12">14:00</option>
-              <option value="13">15:00</option>
-              <option value="14">16:00</option>
-              <option value="15">17:00</option>
-              <option value="16">18:00</option>
-              <option value="17">19:00</option>
-              <option value="18">18:00</option>
-              <option value="19">19:00</option>
-              <option value="20">20:00</option>
-              <option value="21">21:00</option>
-              <option value="22">22:00</option>
-              <option value="23">23:00</option>
-              <option value="24">24:00</option>
+              <option value="00:00">12:00</option>
+              <option value="01:00">1:00</option>
+              <option value="02:00">2:00</option>
+              <option value="03:00">3:00</option>
+              <option value="04:00">4:00</option>
+              <option value="05:00">5:00</option>
+              <option value="06:00">6:00</option>
+              <option value="07:00">7:00</option>
+              <option value="08:00">8:00</option>
+              <option value="09:00">9:00</option>
+              <option value="10:00">12:00</option>
+              <option value="11:00">13:00</option>
+              <option value="12:00">14:00</option>
+              <option value="13:00">15:00</option>
+              <option value="14:00">16:00</option>
+              <option value="15:00">17:00</option>
+              <option value="16:00">18:00</option>
+              <option value="17:00">19:00</option>
+              <option value="18:00">18:00</option>
+              <option value="19:00">19:00</option>
+              <option value="20:00">20:00</option>
+              <option value="21:00">21:00</option>
+              <option value="22:00">22:00</option>
+              <option value="23:00">23:00</option>
+              <option value="24:00">24:00</option>
             </select>
           </div>
           <div class="add-date-time">
-            <button>Add</button>
+            <button id="add-date-time-button">Add</button>
           </div>
         </form>
       </div>
