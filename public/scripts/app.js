@@ -1,12 +1,8 @@
 // Client facing scripts here
 
 $(document).ready(function() {
-
   $("#copy").on("click", copy);
-
   $("#add-date-time-button").on("click", renderDates);
-
-
 
 })
 
@@ -41,5 +37,6 @@ const renderDates = function () {
 
   // console.log('start', startDateDay, startDateMonth, startDateYear, startDateTime)
   // console.log('end', endDateDay, endDateMonth, endDateYear, endDateTime)
+
   $form.trigger("reset");
 }
