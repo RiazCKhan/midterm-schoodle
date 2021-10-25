@@ -9,15 +9,17 @@ module.exports = () => {
   });
 
   router.post("/new", (req, res) => {
+    const uniqueURL = generateUniqueURL();
+
     const owner = {
       name: req.body.owner_name,
       email: req.body.owner_email
     }
 
-    const eventDetails = {
+    const event = {
       title: req.body.event_title,
       description: req.body.event_description,
-      url: generateUniqueURL()
+      url: uniqueURL
     }
 
     function generateUniqueURL() {
@@ -30,6 +32,9 @@ module.exports = () => {
       return randomString;
     };
 
+    database.addUsers(owner);
+    database.addEvent(event);
+    res.redirect(`/vote/${url}`)
   })
   return router;
 };
