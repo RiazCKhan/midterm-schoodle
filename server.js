@@ -34,7 +34,6 @@ app.use(
 );
 
 app.use(express.static("public"));
-app.use('/datepicker', express.static(__dirname + '/node_modules/mtr-datepicker/dist/'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
