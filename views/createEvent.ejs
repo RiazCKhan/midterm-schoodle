@@ -13,10 +13,6 @@
     integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- External CSS: DatePicker -->
-  <link rel="stylesheet" type="text/css" href="/datepicker/mtr-datepicker.min.css">
-  <link rel="stylesheet" type="text/css" href="/datepicker/mtr-datepicker.default-theme.min.css">
-
   <!-- External Fonts -->
 
   <!-- App CSS -->
@@ -29,9 +25,6 @@
 
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-
-  <!-- External JS: DatePicker -->
-  <script type="text/javascript" src="/datepicker/mtr-datepicker.min.js"></script>
 
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -76,6 +69,7 @@
       <div>
         <form id="date-form">
           <div class="start-end">Start Date</div>
+          <span class="error-msg"></span>
           <div>
             <label>Day</label>
             <select id="date-form__start-day" class="options">
