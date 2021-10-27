@@ -63,7 +63,6 @@ const renderDates = function (event) {
 }
 
 const sendTimes = function (event) {
-
   event.preventDefault();
   let allDates = $(".append-date-time");
 
@@ -94,12 +93,12 @@ const sendTimes = function (event) {
     url: "/events/new",
     type: "POST",
     data: data,
-    success: function(res) {
+    success: function (res) {
+      console.log(res.url)
       window.location.href = res.url
     },
-    error: function() {
+    error: function () {
     },
     dataType: 'json'
   });
-
 }
