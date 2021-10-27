@@ -2,7 +2,9 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = () => {
-  router.get("/uniqueid", (req, res) => {
+  router.get("/:uniqueUrl", (req, res) => {
+    let uniqueUrl = req.params.uniqueUrl;
+
     res.render("votePoll");
     console.log("success!");
   });
