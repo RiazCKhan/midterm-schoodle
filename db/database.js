@@ -11,6 +11,7 @@ const addUsers = (user) => {
     RETURNING *;`
     , [user.name, user.email])
   .then((result) => {
+    console.log('successfully added user')
     result.rows[0];
   })
   .catch((err) => {
@@ -21,14 +22,14 @@ exports.addUsers = addUsers;
 
 
 const addEvent = (event) => {
-  console.log('Im event pre query', event)
+  console.log('title', event.title, 'url', event.url)
   return db
-  .query(`INSERT INTO events (title, description, url)
-    VALUES ($1, $2, $3)
-    RETURNING owner_id;`, // From RETURNING *; --> RETURNING owner_id - Manage this error msg - error: insert or update on table "events" violates foreign key constraint "events_owner_id_fkey"
-    [event.title, event.description, event.uniqueURL])
+  .query(`INSERT INTO events (owner_id, title, description, url)
+    VALUES ($1, $2, $3, $4)
+    RETURNING *;`, // From RETURNING *; --> RETURNING owner_id - Manage this error msg - error: insert or update on table "events" violates foreign key constraint "events_owner_id_fkey"
+    [event.owner_id, event.title, event.description, event.url])
   .then((result) => {
-    console.log('Im db', result.rows[0])
+    console.log('successfully added event')
     result.rows[0];
   })
   .catch((err) => {
@@ -105,7 +106,6 @@ const getEventById = function(id) {
     `, [id])
   .then((result) => {
     if (result) {
-      console.log('Iam the database query', result.rows)
       return result.rows;
     } else {
       return null;
