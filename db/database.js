@@ -6,7 +6,7 @@ db.connect();
 const addUsers = (user) => {
   return db
   .query(`INSERT INTO users (name, email)
-    VALUES ($1, $2, $3)
+    VALUES ($1, $2)
     RETURNING *;`
     , [user.name, user.email])
   .then((result) => {
@@ -20,10 +20,10 @@ exports.addUsers = addUsers;
 
 const addEvent = (event) => {
   return db
-  .query(`INSERT INTO events (owner_id, title, description, url)
-    VALUES ($1, $2, $3, $4)
+  .query(`INSERT INTO events (title, description, url)
+    VALUES ($1, $2, $3)
     RETURNING *;`,
-    [event.owner_id, event.title, event.description, event.uniqueURL])
+    [event.title, event.description, event.uniqueURL])
   .then((result) => {
     result.rows[0];
   })
@@ -36,9 +36,9 @@ exports.addEvent = addEvent;
 const addVotes = (votes) => {
   return db
   .query(`INSERT INTO votes (voter_id, time_id, vote)
-  VALUES ($1, $2, $3)
+  VALUES ($3)
   RETURNING *;`,
-  [votes.voter_id, votes.time_id, vote.selection]) //will need to match names of info taken in on votes page
+  [vote.selection]) //will need to match names of info taken in on votes page
   .then((result) => {
     result.rows[0];
   })
