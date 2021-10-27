@@ -84,18 +84,16 @@ const sendTimes = function (event) {
     let startTime = $(this).find(".start-time").text();
     let endTime = $(this).find(".end-time").text();
 
-    data.startDates = startTime;
-    data.endDates = endTime;
+    data.startDates.push(startTime);
+    data.endDates.push(endTime);
   })
-
 
   $.ajax({
     url: "/events/new",
     type: "POST",
     data: data,
     success: function (res) {
-      console.log(res.url)
-      window.location.href = res.url
+    window.location.href = res.url
     },
     error: function () {
     },
