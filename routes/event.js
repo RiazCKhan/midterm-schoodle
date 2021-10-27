@@ -8,19 +8,20 @@ module.exports = () => {
     console.log("success!");
   });
 
-  router.post("/new", (req, res) => {
-    const uniqueURL = generateUniqueURL();
+  router.post("/new", async(req, res) => {
+    const uniqueUrl = generateUniqueURL();
+
+    console.log(req.body);
 
     const owner = {
-      name: req.body.owner_name,
-      email: req.body.owner_email
+      name: req.body.name,
+      email: req.body.email
     }
-    console.log(req.body)
 
     const event = {
-      title: req.body.event_title,
-      description: req.body.event_description,
-      url: uniqueURL
+      title: req.body.title,
+      description: req.body.description,
+      url: uniqueUrl
     }
 
     function generateUniqueURL() {
@@ -32,10 +33,11 @@ module.exports = () => {
       }
       return randomString;
     };
+    console.log(owner, event);
 
-    database.addUsers(owner);
-    database.addEvent(event);
-    res.redirect(`/vote/${url}`)
+    await database.addUsers(owner);
+    await database.addEvent(event);
+    res.json({url: `/vote/${uniqueUrl}`})
   })
   return router;
 };
