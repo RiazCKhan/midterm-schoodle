@@ -9,7 +9,6 @@ module.exports = () => {
   });
 
   router.post("/new", async(req, res) => {
-    console.log('inside post')
     function generateUniqueURL() {
       let randomString = ''
       const possibleChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -17,7 +16,6 @@ module.exports = () => {
       for (let i = 0; i < 10; i++) {
         randomString += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
       }
-      console.log('randomFN output', randomString)
       return randomString;
     };
     const uniqueUrl = generateUniqueURL();
@@ -31,14 +29,19 @@ module.exports = () => {
       title: req.body.title,
       description: req.body.description,
       url: uniqueUrl,
-      owner_id: 3
     }
 
-    console.log(req.body);
-    console.log(owner, event);
+    const times = {
+      startDates: req.body.startDates,
+      endDates: req.body.endDates
+    }
+
+   // console.log('start', req.body.startDates);
+   // console.log('end', req.body.endDates);
 
     await database.addUsers(owner);
     await database.addEvent(event);
+    await database.addTimes(times);
     res.json({url: `/vote/${uniqueUrl}`})
   })
   return router;
