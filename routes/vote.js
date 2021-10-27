@@ -7,8 +7,9 @@ module.exports = () => {
   router.get("/:uniqueUrl", (req, res) => {
     let uniqueUrl = req.params.uniqueUrl;
 
-    database.getEventById(1)
+    database.getEventByUrl(uniqueUrl)
     .then(event => {
+      console.log('vote.js', event)
       res.render("votePoll", {event})
       console.log("success!");
     })
