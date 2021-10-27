@@ -40,12 +40,15 @@
     <i class="far fa-calendar-plus"></i>
   </nav>
 
+  <% if (event) { %>
+    <% for(let details of event) { %>å
+
   <section>
     <article class="share-event">
       <h3>Invite Participants</h3>
       <span>Copy the Url below to share!</span>
       <form>
-        <input id="url-link" />
+        <input value="http://localhost:8080/vote/<%= details.url %>"  id="url-link" />
         <button id="copy">Copy</button>
       </form>
     </article>
@@ -71,9 +74,6 @@
     <form>
       <div class="poll-area">
         <header class="event-info">
-
-          <% if (event) { %>
-            <% for(let details of event) { %>
               <div> <%= details.title %> </div>
               <div> By: <%= details.name%> </div>
               <div> <%= details.description%> </div>
