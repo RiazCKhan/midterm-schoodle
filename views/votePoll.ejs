@@ -2,30 +2,33 @@
 <html lang="en">
 
 <head>
-<!-- Meta Information -->
+  <!-- Meta Information -->
   <title>Polling</title>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- External CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- External Fonts -->
+  <!-- External Fonts -->
 
-<!-- App CSS -->
+  <!-- App CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/votePollPage.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/poll.css" type="text/css" />
 
 
-<!-- External JS -->
-<script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <!-- External JS -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
-<!-- App JS -->
+  <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
 
 </head>
@@ -42,33 +45,95 @@
       <h3>Invite Participants</h3>
       <span>Copy the Url below to share!</span>
       <form>
-        <input id="url-link"/>
+        <input id="url-link" />
         <button id="copy">Copy</button>
       </form>
     </article>
   </section>
 
   <section>
-    <article class="event-info">
-      <div>Title of Event</div>
-      <div>User Name</div>
-      <div>Created @ Time</div>
+    <article>
+      <form id="display-poll-form" action="" method="POST">
+        <div>
+          <input id="voter-name" type="name" name="name" placeholder="Name">
+        </div>
+        <div>
+          <input id="voter-email" type="email" name="email" placeholder="example@mail.com">
+        </div>
+        <button id="grab-event-button" type="submit">Get Poll</button>
+      </form>
     </article>
   </section>
 
-  <section>Calendar</section>
 
   <section>
-    <article>
-      <form action="" method="POST">
-        <div>
-          <input type="name" name="name" placeholder="Name">
+    <div class="wrapper">
+      <form>
+        <header class="event-info">
+          <div>Title of Event</div>
+          <div>User Name</div>
+          <div>Created @ Time</div>
+        </header>
+
+        <div class="poll-area">
+          <input type="checkbox" name="poll" id="opt-1">
+          <input type="checkbox" name="poll" id="opt-2">
+          <input type="checkbox" name="poll" id="opt-3">
+          <input type="checkbox" name="poll" id="opt-4">
+
+          <% if (event) { %>
+            <% for(let time in event) { %>
+
+              <label for="opt-1" class="opt-1">
+                <div class="row">
+                  <div class="column">
+                    <span class="circle"></span>
+                    <span class="text"> <%= %> </span>
+                  </div>
+                </div>
+                <!-- <div class="progress" style='--w:30;'></div> -->
+              </label>
+
+              <label for="opt-2" class="opt-2">
+                <div class="row">
+                  <div class="column">
+                    <span class="circle"></span>
+                    <span class="text">
+                      <%= %>
+                    </span>
+                  </div>
+                </div>
+                <!-- <div class="progress" style='--w:20;'></div> -->
+              </label>
+
+              <label for="opt-3" class="opt-3">
+                <div class="row">
+                  <div class="column">
+                    <span class="circle"></span>
+                    <span class="text"> <%= %> </span>
+                  </div>
+                </div>
+                <!-- <div class="progress" style='--w:40;'></div> -->
+              </label>
+
+              <label for="opt-4" class="opt-4">
+                <div class="row">
+                  <div class="column">
+                    <span class="circle"></span>
+                    <span class="text"> <%= %> </span>
+                  </div>
+                </div>
+                <!-- <div class="progress" style='--w:10;'></div> -->
+              </label>
+              <% } %>
+                <% } %>
         </div>
-        <div>
-          <input type="email" name="email" placeholder="example@mail.com">
-        </div>
-      </form>
+        <button type="submit">Vote!</button>
+    </div>
+    </form>
   </section>
+
+
 
 
 </body>
