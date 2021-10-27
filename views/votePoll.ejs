@@ -67,38 +67,44 @@
 
 
   <section>
-    <div class="wrapper">
-      <form>
+
+    <form>
+      <div class="wrapper">
         <header class="event-info">
-          <div>Title of Event</div>
-          <div>User Name</div>
-          <div>Created @ Time</div>
+
+          <% if (event) { %>
+            <% for(let details of event) { %>
+              <div> <%= details.title %> </div>
+              <div> By: <%= details.name%> </div>
+              <div> <%= details.description%> </div>
         </header>
 
         <div class="poll-area">
           <input type="checkbox" name="poll" id="opt-1">
-          <input type="checkbox" name="poll" id="opt-2">
-          <input type="checkbox" name="poll" id="opt-3">
-          <input type="checkbox" name="poll" id="opt-4">
 
-          <% if (event) { %>
-            <% for(let time in event) { %>
+          <label for="opt-1" class="opt-1">
+            <div class="row">
+              <div class="column">
+                <span class="circle"></span>
 
-              <label for="opt-1" class="opt-1">
-                <div class="row">
-                  <div class="column">
-                    <span class="circle"></span>
-                    <span class="text"> <%= %> </span>
-                  </div>
-                </div>
-                <!-- <div class="progress" style='--w:30;'></div> -->
-              </label>
-              <% } %>
+
+                <span class="text">
+                  <%= details.start_date %> -
+                    <br>
+                    <%= details.end_date %>
+                </span>
                 <% } %>
+                  <% } %>
+
+              </div>
+            </div>
+            <div class="progress" style='--w:30;'></div>
+          </label>
         </div>
         <button type="submit">Vote!</button>
-    </div>
+      </div>
     </form>
+
   </section>
 
 
