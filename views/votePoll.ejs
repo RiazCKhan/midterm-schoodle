@@ -69,7 +69,7 @@
   <section>
 
     <form>
-      <div class="wrapper">
+      <div class="poll-area">
         <header class="event-info">
 
           <% if (event) { %>
@@ -79,14 +79,13 @@
               <div> <%= details.description%> </div>
         </header>
 
-        <div class="poll-area">
+        <div class="poll-container">
           <input type="checkbox" name="poll" id="opt-1">
 
           <label for="opt-1" class="opt-1">
             <div class="row">
               <div class="column">
                 <span class="circle"></span>
-
 
                 <span class="text">
                   <%= details.start_date %> -
@@ -98,7 +97,7 @@
 
               </div>
             </div>
-            <div class="progress" style='--w:30;'></div>
+            <!-- <div class="progress" style='--w:30;'></div> -->
           </label>
         </div>
         <button type="submit">Vote!</button>

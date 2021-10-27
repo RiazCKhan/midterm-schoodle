@@ -9,9 +9,18 @@ module.exports = () => {
   });
 
   router.post("/new", async(req, res) => {
-    const uniqueUrl = generateUniqueURL();
+    console.log('inside post')
+    function generateUniqueURL() {
+      let randomString = ''
+      const possibleChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
-    console.log(req.body);
+      for (let i = 0; i < 10; i++) {
+        randomString += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
+      }
+      console.log('randomFN output', randomString)
+      return randomString;
+    };
+    const uniqueUrl = generateUniqueURL();
 
     const owner = {
       name: req.body.name,
@@ -21,18 +30,11 @@ module.exports = () => {
     const event = {
       title: req.body.title,
       description: req.body.description,
-      url: uniqueUrl
+      url: uniqueUrl,
+      owner_id: 3
     }
 
-    function generateUniqueURL() {
-      let randomString = ""
-      const possibleChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-      for (let i = 0; i < 10; i++) {
-        randomString += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
-      }
-      return randomString;
-    };
+    console.log(req.body);
     console.log(owner, event);
 
     await database.addUsers(owner);
