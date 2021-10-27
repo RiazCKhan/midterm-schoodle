@@ -3,6 +3,7 @@ const dbParams = require("../lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
+
 const addUsers = (user) => {
   return db
   .query(`INSERT INTO users (name, email)
@@ -18,13 +19,16 @@ const addUsers = (user) => {
 }
 exports.addUsers = addUsers;
 
+
 const addEvent = (event) => {
+  console.log('Im event pre query', event)
   return db
   .query(`INSERT INTO events (title, description, url)
     VALUES ($1, $2, $3)
-    RETURNING *;`,
+    RETURNING owner_id;`, // From RETURNING *; --> RETURNING owner_id - Manage this error msg - error: insert or update on table "events" violates foreign key constraint "events_owner_id_fkey"
     [event.title, event.description, event.uniqueURL])
   .then((result) => {
+    console.log('Im db', result.rows[0])
     result.rows[0];
   })
   .catch((err) => {
@@ -32,6 +36,7 @@ const addEvent = (event) => {
   });
 }
 exports.addEvent = addEvent;
+
 
 const addVotes = (votes) => {
   return db
@@ -68,6 +73,7 @@ const getUserWithEmail = function(user) {
 }
 exports.getUserWithEmail = getUserWithEmail;
 
+
 const getVotesFromEmail = function(email) {
   return db
   .query(`SELECT votes.*
@@ -87,3 +93,26 @@ const getVotesFromEmail = function(email) {
   });
 }
 exports.getVotesFromEmail = getVotesFromEmail;
+
+
+const getEventById = function(id) {
+  return db
+  .query(`SELECT *
+    FROM events
+    JOIN times ON events.id = event_id
+    JOIN users ON users.id = owner_id
+    WHERE events.id = $1
+    `, [id])
+  .then((result) => {
+    if (result) {
+      console.log('Iam the database query', result.rows)
+      return result.rows;
+    } else {
+      return null;
+    }
+  })
+  .catch((err) => {
+    console.log(err.stack);
+  });
+}
+exports.getEventById = getEventById
