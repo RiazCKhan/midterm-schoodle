@@ -14,7 +14,7 @@ const copy = function () {
   navigator.clipboard.writeText(text);
 };
 
-const renderDates = function () {
+const renderDates = function (event) {
   event.preventDefault();
 
   const $form = $(this).closest("form");
@@ -62,7 +62,9 @@ const renderDates = function () {
   $form.trigger("reset");
 }
 
-const sendTimes = function (allTimes) {
+const sendTimes = function (event) {
+
+  event.preventDefault();
   let allDates = $(".append-date-time");
 
   let name = $("#user-form #name").val(); // DO NOT DELETE - Note: Find content by referencing 'double id / class'
@@ -85,14 +87,19 @@ const sendTimes = function (allTimes) {
 
     data.startDates = startTime;
     data.endDates = endTime;
-  });
+  })
+
 
   $.ajax({
     url: "/events/new",
     type: "POST",
-    data: data
-    // success: success,
-    // dataType: dataType
+    data: data,
+    success: function(res) {
+      window.location.href = res.url
+    },
+    error: function() {
+    },
+    dataType: 'json'
   });
 
 }
