@@ -11,7 +11,6 @@ const addUsers = (user) => {
     RETURNING *;`
     , [user.name, user.email])
   .then((result) => {
-    console.log('successfully added user')
     result.rows[0];
   })
   .catch((err) => {
@@ -22,14 +21,12 @@ exports.addUsers = addUsers;
 
 
 const addEvent = (event) => {
-  console.log('title', event.title, 'url', event.url)
   return db
-  .query(`INSERT INTO events (owner_id, title, description, url)
-    VALUES ($1, $2, $3, $4)
-    RETURNING *;`, // From RETURNING *; --> RETURNING owner_id - Manage this error msg - error: insert or update on table "events" violates foreign key constraint "events_owner_id_fkey"
-    [event.owner_id, event.title, event.description, event.url])
+  .query(`INSERT INTO events (title, description, url)
+    VALUES ($1, $2, $3)
+    RETURNING *;`,
+    [event.title, event.description, event.url])
   .then((result) => {
-    console.log('successfully added event')
     result.rows[0];
   })
   .catch((err) => {
@@ -44,7 +41,7 @@ const addVotes = (votes) => {
   .query(`INSERT INTO votes (voter_id, time_id, vote)
   VALUES ($3)
   RETURNING *;`,
-  [vote.selection]) //will need to match names of info taken in on votes page
+  [vote.selection]) // Will need to match names of info taken in on votes page
   .then((result) => {
     result.rows[0];
   })
@@ -54,6 +51,23 @@ const addVotes = (votes) => {
 }
 exports.addVotes = addVotes;
 
+
+const addTimes = function (times) {
+  console.log('all times', times)
+  return db
+  .query(`INSERT INTO times (start_date, end_date)
+  VALUES ($1, $2)
+  RETURNING *;`,
+  [times.startDates, times.endDates]) // Will need to match names of info taken in on votes page
+  .then((result) => {
+    console.log('result', result.rows)
+    result.rows;
+  })
+  .catch((err) => {
+    console.log(err.stack);
+  });
+}
+exports.addTimes = addTimes;
 
 const getUserWithEmail = function(user) {
   return db
@@ -96,14 +110,14 @@ const getVotesFromEmail = function(email) {
 exports.getVotesFromEmail = getVotesFromEmail;
 
 
-const getEventById = function(id) {
+const getEventByUrl = function(url) {
   return db
   .query(`SELECT *
     FROM events
-    JOIN times ON events.id = event_id
+    FULL OUTER JOIN times ON events.id = event_id
     JOIN users ON users.id = owner_id
-    WHERE events.id = $1
-    `, [id])
+    WHERE events.url = $1
+    `, [url])
   .then((result) => {
     if (result) {
       return result.rows;
@@ -115,4 +129,6 @@ const getEventById = function(id) {
     console.log(err.stack);
   });
 }
-exports.getEventById = getEventById
+exports.getEventByUrl = getEventByUrl
+
+
