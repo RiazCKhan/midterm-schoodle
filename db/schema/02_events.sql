@@ -4,5 +4,5 @@ CREATE TABLE events (
   owner_id SERIAL REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR(255) NOT NULL,
   description TEXT,
-  url TEXT
+  url VARCHAR(255)
 );
