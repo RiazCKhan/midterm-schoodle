@@ -38,10 +38,11 @@ module.exports = () => {
 
    // console.log('start', req.body.startDates);
    // console.log('end', req.body.endDates);
+   console.log(times);
 
     await database.addUsers(owner);
     await database.addEvent(event);
-    await database.addTimes(times);
+    await database.addTimes(times, event);
     res.json({url: `/vote/${uniqueUrl}`})
   })
   return router;
