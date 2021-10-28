@@ -1,3 +1,8 @@
+section {
+  display: flex;
+  justify-content: center;
+}
+
 .share-event {
   display: flex;
   flex-direction: column;
@@ -8,6 +13,15 @@
   padding-bottom: 1rem;
   border: 2px solid black;
   width: 90%
+}
+
+.event-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 #url-link {
