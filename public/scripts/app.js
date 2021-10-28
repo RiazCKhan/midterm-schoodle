@@ -136,10 +136,32 @@ const validateUser = function (event) {
 
 const addVote = function (event) {
   event.preventDefault()
+  console.log('hit button')
 
-  // console.log('touch')
+let optionOneVoteID = $("#vote-form #opt-1").val()
+let optionTwoVoteID = $("#vote-form #opt-2").val()
+let optionThreeVoteID = $("#vote-form #opt-3").val()
 
+let entireUrl = $("#url-link").val()
+let splitUrl = entireUrl.split("/")
+let url = splitUrl[4]
 
+let data = {
+  optionOneVoteID,
+  optionTwoVoteID,
+  optionThreeVoteID,
+  url
+};
 
-
+$.ajax({
+  url: `/vote/${url}`,
+  type: "POST",
+  data: data,
+  success: function (res) {
+    window.location.href = res.url
+  },
+  error: function () {
+  },
+  dataType: 'json'
+});
 }
