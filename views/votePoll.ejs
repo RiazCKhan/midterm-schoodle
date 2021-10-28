@@ -91,14 +91,16 @@
 
           <% let startDates = [] %>
           <% let endDates = [] %>
+          <% let allTimeId = [] %>
 
           <% event.forEach(data => { %>
+            <% allTimeId.push((Object.values(data)[8])) %>
             <% startDates.push((Object.values(data)[9])) %>
             <% endDates.push((Object.values(data)[10])) %>
             <% }); %>
 
             <div>
-              <input type="radio" name="vote-poll" id="opt-1">
+              <input type="radio" id="opt-1" name="vote-poll" value="<%= allTimeId[0] %>">
               <label for="opt-1">
                 <%= startDates[0] %> -
                 <br>
@@ -106,7 +108,7 @@
             </div>
 
             <div>
-              <input type="radio" name="vote-poll" id="opt-2">
+              <input type="radio" id="opt-2" name="vote-poll" value="<%= allTimeId[1] %>">
               <label for="opt-2">
                 <%= startDates[1] %> -
                 <br>
@@ -114,7 +116,7 @@
             </div>
 
             <div>
-              <input type="radio" name="vote-poll" id="opt-3">
+              <input type="radio" id="opt-3" name="vote-poll" value="<%= allTimeId[2] %>">
               <label for="opt-3">
                 <%= startDates[2] %> -
                 <br>
