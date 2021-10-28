@@ -35,24 +35,33 @@
 
 <body>
 
+
   <nav id="nav">
     <span id="logo">Schoodle</span>
     <i class="far fa-calendar-plus"></i>
   </nav>
 
+
   <% if (event) { %>
-    <% for(let details of event) { %>å
+
+    <% const detailsArr = Object.values(event[0]) %>
+    <% let title = detailsArr[3] %>
+    <% let name = detailsArr[8] %>
+    <% let desc = detailsArr[3] %>
+    <% let url = detailsArr[4] %>
+
 
   <section>
     <article class="share-event">
       <h3>Invite Participants</h3>
       <span>Copy the Url below to share!</span>
       <form>
-        <input value="http://localhost:8080/vote/<%= details.url %>"  id="url-link" />
+        <input value="http://localhost:8080/vote/<%= url %>"  id="url-link" />
         <button id="copy">Copy</button>
       </form>
     </article>
   </section>
+
 
   <section>
     <article>
@@ -70,17 +79,29 @@
 
 
   <section>
-
     <form>
+
       <div class="poll-area">
         <header class="event-info">
-              <div> <%= details.title %> </div>
-              <div> By: <%= details.name%> </div>
-              <div> <%= details.description%> </div>
+              <div> <%= title %> </div>
+              <div> By: <%= name %> </div>
+              <div> <%= desc %> </div>
         </header>
+        <% }; %>
 
         <div class="poll-container">
           <input type="checkbox" name="poll" id="opt-1">
+          <input type="checkbox" name="poll" id="opt-2">
+          <input type="checkbox" name="poll" id="opt-3">
+          <input type="checkbox" name="poll" id="opt-4">
+
+          <% let startDates = [] %>
+          <% let endDates = [] %>
+
+          <% event.forEach(data => { %>
+            <% startDates.push((Object.values(data)[6])) %>
+            <% endDates.push((Object.values(data)[7])) %>
+            <% }); %>
 
           <label for="opt-1" class="opt-1">
             <div class="row">
@@ -88,27 +109,67 @@
                 <span class="circle"></span>
 
                 <span class="text">
-                  <%= details.start_date %> -
+                  <%= startDates[0] %> -
                     <br>
-                    <%= details.end_date %>
+                    <%= endDates[0] %>
                 </span>
-                <% } %>
-                  <% } %>
 
               </div>
             </div>
-            <!-- <div class="progress" style='--w:30;'></div> -->
           </label>
+
+          <label for="opt-2" class="opt-2">
+            <div class="row">
+              <div class="column">
+                <span class="circle"></span>
+
+                <span class="text">
+                  <%= startDates[1] %> -
+                    <br>
+                    <%= endDates[1] %>
+                </span>
+
+              </div>
+            </div>
+          </label>
+
+          <label for="opt-3" class="opt-3">
+            <div class="row">
+              <div class="column">
+                <span class="circle"></span>
+
+                <span class="text">
+                  <%= startDates[2] %> -
+                    <br>
+                    <%= endDates[2] %>
+                </span>
+
+              </div>
+            </div>
+          </label>
+
+          <label for="opt-4" class="opt-4">
+            <div class="row">
+              <div class="column">
+                <span class="circle"></span>
+
+                <span class="text">
+                  <%= startDates[3] %> -
+                    <br>
+                    <%= endDates[3] %>
+                </span>
+
+              </div>
+            </div>
+          </label>
+
         </div>
         <button type="submit">Vote!</button>
       </div>
-    </form>
 
+    </form>
   </section>
 
 
-
-
 </body>
-
 </html>
