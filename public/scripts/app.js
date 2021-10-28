@@ -4,6 +4,10 @@ $(document).ready(function () {
   $("#copy").on("click", copy);
   $("#add-date-time-button").on("click", renderDates);
   $("#user-form").on("submit", sendTimes);
+
+
+  $("#user-email-poll-form").on("submit", validateUser);
+  $("#vote-form").on("submit", addVote);
 });
 
 const copy = function () {
@@ -93,10 +97,49 @@ const sendTimes = function (event) {
     type: "POST",
     data: data,
     success: function (res) {
-    window.location.href = res.url
+      window.location.href = res.url
     },
     error: function () {
     },
     dataType: 'json'
   });
+}
+
+const validateUser = function (event) {
+  event.preventDefault()
+
+  let voterName = $("#user-email-poll-form #voter-name").val()
+  let voterEmail = $("#user-email-poll-form #voter-email").val()
+
+  let entireUrl = $("#url-link").val()
+  let splitUrl = entireUrl.split("/")
+  let url = splitUrl[4]
+
+  let data = {
+    voterName,
+    voterEmail,
+    url
+  }
+
+  $.ajax({
+    url: `/vote/${url}`,
+    type: "POST",
+    data: data,
+    success: function (res) {
+      window.location.href = res.url
+    },
+    error: function () {
+    },
+    dataType: 'json'
+  });
+}
+
+const addVote = function (event) {
+  event.preventDefault()
+
+  // console.log('touch')
+
+
+
+
 }
