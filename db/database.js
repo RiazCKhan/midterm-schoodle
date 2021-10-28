@@ -112,14 +112,15 @@ exports.getVotesFromEmail = getVotesFromEmail;
 
 const getEventByUrl = function(url) {
   return db
-  .query(`SELECT *
+  .query(`SELECT events.url, times.id, times.start_date, times.end_date
     FROM events
-    FULL OUTER JOIN times ON events.id = event_id
+    LEFT OUTER JOIN times ON events.id = event_id
     JOIN users ON users.id = owner_id
     WHERE events.url = $1
     `, [url])
   .then((result) => {
     if (result) {
+      console.log('result.rows in database.js', result.rows)
       return result.rows;
     } else {
       return null;
