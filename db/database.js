@@ -52,20 +52,35 @@ const addVotes = (votes) => {
 exports.addVotes = addVotes;
 
 
-const addTimes = function (times) {
-  console.log('all times', times)
-  return db
-  .query(`INSERT INTO times (start_date, end_date)
-  VALUES ($1, $2)
-  RETURNING *;`,
-  [times.startDates, times.endDates]) // Will need to match names of info taken in on votes page
-  .then((result) => {
-    console.log('result', result.rows)
-    result.rows;
+const addTimes = function (times, event) {
+  let currentEvent = getEventByUrl(event.url);
+  let eventId = 0;
+
+  currentEvent.then(function(result) {
+    let parsed = JSON.parse(JSON.stringify(result));
+    eventId = parsed[0].id;
+    console.log('id is ', eventId);
+
+    //console.log('current event', currentEvent);
+    for (let i = 0; i < times.startDates.length; i++) {
+      console.log('length of array:', times.startDates.length);
+
+      db
+      .query(`INSERT INTO times (event_id, start_date, end_date)
+      VALUES ($1, $2, $3)
+      RETURNING *;`,
+      [eventId, times.startDates[i], times.endDates[i]]) // Will need to match names of info taken in on votes page
+      .then((res) => {
+        console.log('result', res.rows)
+        result.rows;
+      })
+      .catch((err) => {
+        console.log(err.stack);
+      });
+
+    }
   })
-  .catch((err) => {
-    console.log(err.stack);
-  });
+
 }
 exports.addTimes = addTimes;
 
