@@ -22,8 +22,6 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/votePollPage.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/poll.css" type="text/css" />
-
 
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -45,10 +43,10 @@
   <% if (event) { %>
 
     <% const detailsArr = Object.values(event[0]) %>
-    <% let title = detailsArr[2] %>
-    <% let desc = detailsArr[3] %>
-    <% let name = detailsArr[8] %>
-    <% let url = detailsArr[4] %>
+    <% let title = detailsArr[5] %>
+    <% let desc = detailsArr[6] %>
+    <% let name = detailsArr[2] %>
+    <% let url = detailsArr[7] %>
 
 
   <section>
@@ -65,7 +63,7 @@
 
   <section>
     <article>
-      <form id="display-poll-form" action="" method="POST">
+      <form id="user-email-poll-form">
         <div>
           <input id="voter-name" type="name" name="name" placeholder="Name">
         </div>
@@ -79,7 +77,7 @@
 
 
   <section>
-    <form>
+    <form id="vote-form">
 
       <div class="poll-area">
         <header class="event-info">
@@ -90,78 +88,46 @@
         <% }; %>
 
         <div class="poll-container">
-          <input type="checkbox" name="poll" id="opt-1">
-          <input type="checkbox" name="poll" id="opt-2">
-          <input type="checkbox" name="poll" id="opt-3">
-          <input type="checkbox" name="poll" id="opt-4">
 
           <% let startDates = [] %>
           <% let endDates = [] %>
 
           <% event.forEach(data => { %>
-            <% startDates.push((Object.values(data)[6])) %>
-            <% endDates.push((Object.values(data)[7])) %>
+            <% startDates.push((Object.values(data)[9])) %>
+            <% endDates.push((Object.values(data)[10])) %>
             <% }); %>
 
-          <label for="opt-1" class="opt-1">
-            <div class="row">
-              <div class="column">
-                <span class="circle"></span>
-
-                <span class="text">
-                  <%= startDates[0] %> -
-                    <br>
-                    <%= endDates[0] %>
-                </span>
-
-              </div>
+            <div>
+              <input type="radio" name="vote-poll" id="opt-1">
+              <label for="opt-1">
+                <%= startDates[0] %> -
+                <br>
+                <%= endDates[0] %></label>
             </div>
-          </label>
 
-          <label for="opt-2" class="opt-2">
-            <div class="row">
-              <div class="column">
-                <span class="circle"></span>
-
-                <span class="text">
-                  <%= startDates[1] %> -
-                    <br>
-                    <%= endDates[1] %>
-                </span>
-
-              </div>
+            <div>
+              <input type="radio" name="vote-poll" id="opt-2">
+              <label for="opt-2">
+                <%= startDates[1] %> -
+                <br>
+                <%= endDates[1] %></label>
             </div>
-          </label>
 
-          <label for="opt-3" class="opt-3">
-            <div class="row">
-              <div class="column">
-                <span class="circle"></span>
-
-                <span class="text">
-                  <%= startDates[2] %> -
-                    <br>
-                    <%= endDates[2] %>
-                </span>
-
-              </div>
+            <div>
+              <input type="radio" name="vote-poll" id="opt-3">
+              <label for="opt-3">
+                <%= startDates[2] %> -
+                <br>
+                <%= endDates[2] %></label>
             </div>
-          </label>
 
-          <!-- <label for="opt-4" class="opt-4">
-            <div class="row">
-              <div class="column">
-                <span class="circle"></span>
-
-                <span class="text">
-                  <%= startDates[3] %> -
-                    <br>
-                    <%= endDates[3] %>
-                </span>
-
-              </div>
-            </div>
-          </label> -->
+            <!-- <div>
+              <input type="radio" name="vote-poll" id="opt-4">
+              <label for="opt-1">
+                <%= startDates[0] %> -
+                <br>
+                <%= endDates[0] %></label>
+            </div> -->
 
         </div>
         <button type="submit">Vote!</button>
