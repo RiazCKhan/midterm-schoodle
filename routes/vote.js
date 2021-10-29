@@ -1,34 +1,32 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 const database = require("../db/database");
-
 
 module.exports = () => {
   router.get("/:uniqueUrl", (req, res) => {
     let uniqueUrl = req.params.uniqueUrl;
+    const email = req.session.email;
+    const name = req.session.name;
+    console.log("cookies 123", email, name);
 
-
-
-    database.getEventByUrl(uniqueUrl)
-      .then(event => {
-        console.log('vote.js', event)
-        res.render("votePoll", { event })
-        console.log("success!");
-      })
+    database.getEventByUrl(uniqueUrl).then((event) => {
+      console.log("vote.js", event);
+      res.render("votePoll", { event, name, email });
+      console.log("success!");
+    });
   });
 
   router.post("/:uniqueUrl", async (req, res) => {
-
     // cookie session - check
     // if exist give access
     // otherwise alternative render
 
     const voterInfo = {
       name: req.body.voterName,
-      email: req.body.voterEmail
-    }
+      email: req.body.voterEmail,
+    };
 
-    console.log('VOTEJS voter', voterInfo)
+    console.log("VOTEJS voter", voterInfo);
 
     let timeId = [];
     let selection = [];
@@ -43,18 +41,18 @@ module.exports = () => {
 
     const votes = {
       timeId,
-      selection
-    }
+      selection,
+    };
 
-    console.log('timeId: ', timeId);
-    console.log('selection: ', selection);
+    console.log("timeId: ", timeId);
+    console.log("selection: ", selection);
 
     // insert users table :: returning
     // insert into votes table
 
-    let uniqueUrl = req.body.url
-    res.json({ url: `/vote/${uniqueUrl}` })
-    await database.addVotes(votes, voterInfo)
-  })
+    let uniqueUrl = req.body.url;
+    res.json({ url: `/vote/${uniqueUrl}` });
+    await database.addVotes(votes, voterInfo);
+  });
   return router;
 };
