@@ -20,9 +20,6 @@ module.exports = () => {
   });
 
   router.post("/:uniqueUrl", (req, res) => {
-    // grab name and email req.body
-
-    // without ajax will be roload
 
     const voter = { // Information available, click 'Get Poll Button'
       voterName: req.body.voterName,
@@ -35,29 +32,27 @@ module.exports = () => {
       optionThree: req.body.optionThreeVote
     }
 
-    let timeId = [];
-    let selection = [];
+    console.log('VOTEJS voter', voter)
+    console.log('VOTEJS votes', votes)
 
+    // let timeId = [];
+    // let selection = [];
 
-    timeId.push(req.body.optionOneVote.split(",")[0]);
-    timeId.push(req.body.optionTwoVote.split(",")[0]);
-    timeId.push(req.body.optionThreeVote.split(",")[0]);
+    // timeId.push(req.body.optionOneVote.split(",")[0]);
+    // timeId.push(req.body.optionTwoVote.split(",")[0]);
+    // timeId.push(req.body.optionThreeVote.split(",")[0]);
 
-    selection.push(req.body.optionOneVote.split(",")[1]);
-    selection.push(req.body.optionOneVote.split(",")[1]);
-    selection.push(req.body.optionOneVote.split(",")[1]);
+    // selection.push(req.body.optionOneVote.split(",")[1]);
+    // selection.push(req.body.optionOneVote.split(",")[1]);
+    // selection.push(req.body.optionOneVote.split(",")[1]);
 
-    console.log('timeId: ', timeId);
-    console.log('selection: ', selection);
+    // console.log('timeId: ', timeId);
+    // console.log('selection: ', selection);
 
+    // insert users table :: returning
+    // insert into votes table
 
     let uniqueUrl = req.body.url
-    // insert users table :: returning
-
-
-
-
-    // insert into votes table
     res.json({ url: `/vote/${uniqueUrl}` })
   })
   return router;
