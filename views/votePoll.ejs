@@ -80,11 +80,11 @@
                                     <% }); %>
 
                                       <div>
-                                        <input type="text" id="voter-name" name="name" placeholder="Name">
+                                        <input type="text" id="voter-name" value="<%= name %>" name="name" placeholder="Name">
                                       </div>
 
                                       <div>
-                                        <input type="text" id="voter-email" name="email" placeholder="example@mail.com">
+                                        <input type="text" id="voter-email" value="<%= email %>" name="email" placeholder="example@mail.com">
                                       </div>
 
                                       <div>
@@ -92,7 +92,7 @@
                                           value="<%= allTimeId[0] %>, true">Yes</input>
                                         <input type="radio" id="opt-1b" name="vote-poll-1"
                                           value="<%= allTimeId[0] %>, false">No</input>
-                                        <label for="opt-1">
+                                        <label for="opt-1" ">
                                           <%= startDates[0] %> -
                                             <br>
                                             <%= endDates[0] %>
