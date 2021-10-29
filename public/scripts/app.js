@@ -4,6 +4,10 @@ $(document).ready(function () {
   $("#copy").on("click", copy);
   $("#add-date-time-button").on("click", renderDates);
   $("#user-form").on("submit", sendTimes);
+
+
+  $("#user-email-poll-form").on("submit", validateUser);
+  $("#vote-form").on("submit", sendVote);
 });
 
 const copy = function () {
@@ -93,10 +97,72 @@ const sendTimes = function (event) {
     type: "POST",
     data: data,
     success: function (res) {
-    window.location.href = res.url
+      window.location.href = res.url
     },
     error: function () {
     },
     dataType: 'json'
   });
+}
+
+const validateUser = function (event) {
+  event.preventDefault()
+
+  let voterName = $("#user-email-poll-form #voter-name").val()
+  let voterEmail = $("#user-email-poll-form #voter-email").val()
+
+  let entireUrl = $("#url-link").val()
+  let splitUrl = entireUrl.split("/")
+  let url = splitUrl[4]
+
+  let data = {
+    voterName,
+    voterEmail,
+    url
+  }
+
+  $.ajax({
+    url: `/vote/${url}`,
+    type: "POST",
+    data: data,
+    success: function (res) {
+      window.location.href = res.url
+    },
+    error: function () {
+    },
+    dataType: 'json'
+  });
+}
+
+const sendVote = function (event) {
+  event.preventDefault()
+  console.log('hit button')
+
+
+  let optionOneVote = $('input[name=vote-poll-1]:checked', '#vote-form').val()
+  let optionTwoVote = $('input[name=vote-poll-2]:checked', '#vote-form').val()
+  let optionThreeVote = $('input[name=vote-poll-3]:checked', '#vote-form').val()
+
+let entireUrl = $("#url-link").val()
+let splitUrl = entireUrl.split("/")
+let url = splitUrl[4]
+
+let data = {
+  optionOneVote,
+  optionTwoVote,
+  optionThreeVote,
+  url
+};
+
+$.ajax({
+  url: `/vote/${url}`,
+  type: "POST",
+  data: data,
+  success: function (res) {
+    window.location.href = res.url
+  },
+  error: function () {
+  },
+  dataType: 'json'
+});
 }

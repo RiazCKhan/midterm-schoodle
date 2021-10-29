@@ -38,7 +38,7 @@ module.exports = () => {
 
    // console.log('start', req.body.startDates);
    // console.log('end', req.body.endDates);
-   console.log(times);
+   // console.log(times);
 
     await database.addUsers(owner);
     await database.addEvent(event);
