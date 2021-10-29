@@ -16,11 +16,14 @@ module.exports = () => {
   });
 
 
-  router.post("/uniqueid", (req, res) => {
+  router.post("/:uniqueid", async(req, res) => {
+    const votes = {
+      votes: req.body.vote
+    }
 
 
 
-
+    await database.addVotes(votes);
   })
   return router;
 };
