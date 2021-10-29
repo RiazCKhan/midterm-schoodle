@@ -7,10 +7,6 @@ module.exports = () => {
   router.get("/:uniqueUrl", (req, res) => {
     let uniqueUrl = req.params.uniqueUrl;
 
-    // cookie session - check
-    // if exist give access
-    // otherwise alternative render
-
     database.getEventByUrl(uniqueUrl)
       .then(event => {
         // console.log('vote.js', event)
@@ -20,6 +16,10 @@ module.exports = () => {
   });
 
   router.post("/:uniqueUrl", (req, res) => {
+
+    // cookie session - check
+    // if exist give access
+    // otherwise alternative render
 
     const voter = { // Information available, click 'Get Poll Button'
       voterName: req.body.voterName,
