@@ -10,6 +10,7 @@ module.exports = () => {
     console.log("cookies 123", email, name);
 
     database.getEventByUrl(uniqueUrl).then((event) => {
+      // Take JS from votePoll.ejs AND set EJS variables HERE - THEN pass all across like event, name, email
       console.log("vote.js", event);
       res.render("votePoll", { event, name, email });
       console.log("success!");
@@ -17,10 +18,6 @@ module.exports = () => {
   });
 
   router.post("/:uniqueUrl", async (req, res) => {
-    // cookie session - check
-    // if exist give access
-    // otherwise alternative render
-
     const voterInfo = {
       name: req.body.voterName,
       email: req.body.voterEmail,
@@ -49,9 +46,6 @@ module.exports = () => {
 
     console.log("timeId: ", timeId);
     console.log("selection: ", selection);
-
-    // insert users table :: returning
-    // insert into votes table
 
     let uniqueUrl = req.body.url;
     await database.addVotes(votes, voterInfo);
