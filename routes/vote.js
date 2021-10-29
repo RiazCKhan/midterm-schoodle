@@ -35,6 +35,21 @@ module.exports = () => {
       optionThree: req.body.optionThreeVote
     }
 
+    let timeId = [];
+    let selection = [];
+
+
+    timeId.push(req.body.optionOneVote.split(",")[0]);
+    timeId.push(req.body.optionTwoVote.split(",")[0]);
+    timeId.push(req.body.optionThreeVote.split(",")[0]);
+
+    selection.push(req.body.optionOneVote.split(",")[1]);
+    selection.push(req.body.optionOneVote.split(",")[1]);
+    selection.push(req.body.optionOneVote.split(",")[1]);
+
+    console.log('timeId: ', timeId);
+    console.log('selection: ', selection);
+
 
     let uniqueUrl = req.body.url
     // insert users table :: returning
