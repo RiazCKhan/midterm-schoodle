@@ -59,9 +59,7 @@
 
               <section class="poll-area">
                 <article class="poll-container">
-
                   <form id="vote-form">
-
                     <header class="event-info">
                       <div><%= title %></div>
                       <div> By: <%= name %></div>
@@ -126,11 +124,38 @@
                                       <div>
                                         <button type="submit">Vote!</button>
                                       </div>
-
                   </form>
-
                 </article>
               </section>
+
+<section>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Yes - Lets GO!</th>
+      <th>Nope - Not Down</th>
+    </tr>
+
+    <tr>
+      <td><%= startDates[0] %> - <%= endDates[0] %></td>
+      <td> Render Vote Count</td>
+      <td> Render Vote Count </td>
+    </tr>
+
+    <tr>
+      <td> <%= startDates[1] %> - <%= endDates[1] %> </td>
+      <td> Render Vote Count </td>
+      <td> Render Vote Count </td>
+    </tr>
+
+    <tr>
+      <td> <%= startDates[2] %> - <%= endDates[2] %> </td>
+      <td> Render Vote Count </td>
+      <td> Render Vote Count </td>
+    </tr>
+
+  </table>
+</section>
 
 </body>
 
