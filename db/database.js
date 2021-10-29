@@ -144,6 +144,19 @@ const getEventByUrl = function(url) {
     console.log(err.stack);
   });
 }
-exports.getEventByUrl = getEventByUrl
+exports.getEventByUrl = getEventByUrl;
 
-
+const updateVotes = function(votes) {
+  return db
+  .query(`UPDATE votes
+  SET vote = $1
+  WHERE voter_id = $2
+  AND time_id = $3`, [votes.vote, votes.voter_id, votes.time_id])
+  .then((result) => {
+    result.rows
+  })
+  .catch(() => {
+    console.log(err.stack);
+  });
+}
+exports.updateVotes = updateVotes;
