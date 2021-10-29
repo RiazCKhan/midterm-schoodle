@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 
   $("#user-email-poll-form").on("submit", validateUser);
-  $("#vote-form").on("submit", addVote);
+  $("#vote-form").on("submit", sendVote);
 });
 
 const copy = function () {
@@ -134,22 +134,23 @@ const validateUser = function (event) {
   });
 }
 
-const addVote = function (event) {
+const sendVote = function (event) {
   event.preventDefault()
   console.log('hit button')
 
-let optionOneVoteID = $("#vote-form #opt-1").val()
-let optionTwoVoteID = $("#vote-form #opt-2").val()
-let optionThreeVoteID = $("#vote-form #opt-3").val()
+
+  let optionOneVote = $('input[name=vote-poll-1]:checked', '#vote-form').val()
+  let optionTwoVote = $('input[name=vote-poll-2]:checked', '#vote-form').val()
+  let optionThreeVote = $('input[name=vote-poll-3]:checked', '#vote-form').val()
 
 let entireUrl = $("#url-link").val()
 let splitUrl = entireUrl.split("/")
 let url = splitUrl[4]
 
 let data = {
-  optionOneVoteID,
-  optionTwoVoteID,
-  optionThreeVoteID,
+  optionOneVote,
+  optionTwoVote,
+  optionThreeVote,
   url
 };
 
