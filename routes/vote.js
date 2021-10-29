@@ -26,6 +26,9 @@ module.exports = () => {
       email: req.body.voterEmail,
     };
 
+    req.session.email = voterInfo.email;
+    req.session.name = voterInfo.name;
+
     console.log("VOTEJS voter", voterInfo);
 
     let timeId = [];
@@ -51,8 +54,8 @@ module.exports = () => {
     // insert into votes table
 
     let uniqueUrl = req.body.url;
-    res.json({ url: `/vote/${uniqueUrl}` });
     await database.addVotes(votes, voterInfo);
+    res.json({ url: `/vote/${uniqueUrl}` });
   });
   return router;
 };
