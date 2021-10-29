@@ -5,9 +5,7 @@ $(document).ready(function () {
   $("#add-date-time-button").on("click", renderDates);
   $("#user-form").on("submit", sendTimes);
 
-
-  $("#user-email-poll-form").on("submit", validateUser);
-  $("#vote-form").on("submit", sendVote);
+  $("#vote-form").on("submit", getUserAndSendVote);
 });
 
 const copy = function () {
@@ -105,40 +103,12 @@ const sendTimes = function (event) {
   });
 }
 
-const validateUser = function (event) {
-  event.preventDefault()
-
-  let voterName = $("#user-email-poll-form #voter-name").val()
-  let voterEmail = $("#user-email-poll-form #voter-email").val()
-
-  let entireUrl = $("#url-link").val()
-  let splitUrl = entireUrl.split("/")
-  let url = splitUrl[4]
-
-  let data = {
-    voterName,
-    voterEmail,
-    url
-  }
-
-  $.ajax({
-    url: `/vote/${url}`,
-    type: "POST",
-    data: data,
-    success: function (res) {
-      window.location.href = res.url
-    },
-    error: function () {
-    },
-    dataType: 'json'
-  });
-}
-
-const sendVote = function (event) {
-  event.preventDefault()
+const getUserAndSendVote = function (event) {
   console.log('hit button')
+  event.preventDefault()
 
-
+  let voterName = $("#vote-form #voter-name").val()
+  let voterEmail = $("#vote-form #voter-email").val()
   let optionOneVote = $('input[name=vote-poll-1]:checked', '#vote-form').val()
   let optionTwoVote = $('input[name=vote-poll-2]:checked', '#vote-form').val()
   let optionThreeVote = $('input[name=vote-poll-3]:checked', '#vote-form').val()
@@ -148,21 +118,25 @@ let splitUrl = entireUrl.split("/")
 let url = splitUrl[4]
 
 let data = {
+  voterName,
+  voterEmail,
   optionOneVote,
   optionTwoVote,
   optionThreeVote,
   url
 };
 
-$.ajax({
-  url: `/vote/${url}`,
-  type: "POST",
-  data: data,
-  success: function (res) {
-    window.location.href = res.url
-  },
-  error: function () {
-  },
-  dataType: 'json'
-});
+console.log(data)
+
+// $.ajax({
+//   url: `/vote/${url}`,
+//   type: "POST",
+//   data: data,
+//   success: function (res) {
+//   window.location.href = res.url
+//   },
+//   error: function () {
+//   },
+//   dataType: 'json'
+// });
 }
