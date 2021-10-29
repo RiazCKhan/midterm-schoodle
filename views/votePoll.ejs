@@ -33,114 +33,105 @@
 
 <body>
 
-
   <nav id="nav">
     <span id="logo">Schoodle</span>
     <i class="far fa-calendar-plus"></i>
   </nav>
 
-
   <% if (event) { %>
 
-    <% const detailsArr = Object.values(event[0]) %>
-    <% let title = detailsArr[5] %>
-    <% let desc = detailsArr[6] %>
-    <% let name = detailsArr[2] %>
-    <% let url = detailsArr[7] %>
+    <% const detailsArr=Object.values(event[0]) %>
+      <% let title=detailsArr[5] %>
+        <% let desc=detailsArr[6] %>
+          <% let name=detailsArr[2] %>
+            <% let url=detailsArr[7] %>
 
+              <section>
+                <article class="share-event">
+                  <h3>Invite Participants</h3>
+                  <span>Copy the Url below to share!</span>
+                  <form>
+                    <input value="http://localhost:8080/vote/<%= url %>" id="url-link" />
+                    <button id="copy">Copy</button>
+                  </form>
+                </article>
+              </section>
 
-  <section>
-    <article class="share-event">
-      <h3>Invite Participants</h3>
-      <span>Copy the Url below to share!</span>
-      <form>
-        <input value="http://localhost:8080/vote/<%= url %>"  id="url-link" />
-        <button id="copy">Copy</button>
-      </form>
-    </article>
-  </section>
+              <section class="poll-area">
+                <article class="poll-container">
 
+                  <form id="vote-form">
 
-  <section>
-    <article>
-      <form id="user-email-poll-form">
-        <div>
-          <input id="voter-name" type="name" name="name" placeholder="Name">
-        </div>
-        <div>
-          <input id="voter-email" type="email" name="email" placeholder="example@mail.com">
-        </div>
-        <button id="grab-event-button" type="submit">Get Poll</button>
-      </form>
-    </article>
-  </section>
+                    <header class="event-info">
+                      <div><%= title %></div>
+                      <div> By: <%= name %></div>
+                      <div><%= desc %></div>
+                    </header>
+                    <% }; %>
 
+                      <% let startDates=[] %>
+                        <% let endDates=[] %>
+                          <% let allTimeId=[] %>
 
-  <section>
-    <form id="vote-form">
+                            <% event.forEach(data=> { %>
+                              <% allTimeId.push((Object.values(data)[8])) %>
+                                <% startDates.push((Object.values(data)[9])) %>
+                                  <% endDates.push((Object.values(data)[10])) %>
+                                    <% }); %>
 
-      <div class="poll-area">
-        <header class="event-info">
-              <div> <%= title %> </div>
-              <div> By: <%= name %> </div>
-              <div> <%= desc %> </div>
-        </header>
-        <% }; %>
+                                      <div>
+                                        <input type="text" id="voter-name" name="name" placeholder="Name">
+                                      </div>
 
-        <div class="poll-container">
+                                      <div>
+                                        <input type="text" id="voter-email" name="email" placeholder="example@mail.com">
+                                      </div>
 
-          <% let startDates = [] %>
-          <% let endDates = [] %>
-          <% let allTimeId = [] %>
+                                      <div>
+                                        <input type="radio" id="opt-1a" name="vote-poll-1"
+                                          value="<%= allTimeId[0] %>, true">Yes</input>
+                                        <input type="radio" id="opt-1b" name="vote-poll-1"
+                                          value="<%= allTimeId[0] %>, false">No</input>
+                                        <label for="opt-1">
+                                          <%= startDates[0] %> -
+                                            <br>
+                                            <%= endDates[0] %>
+                                        </label>
+                                      </div>
 
-          <% event.forEach(data => { %>
-            <% allTimeId.push((Object.values(data)[8])) %>
-            <% startDates.push((Object.values(data)[9])) %>
-            <% endDates.push((Object.values(data)[10])) %>
-            <% }); %>
+                                      <div>
+                                        <input type="radio" id="opt-2a" name="vote-poll-2"
+                                          value="<%= allTimeId[1] %>, true">Yes</input>
+                                        <input type="radio" id="opt-2b" name="vote-poll-2"
+                                          value="<%= allTimeId[1] %>, false">No</input>
+                                        <label for="opt-2">
+                                          <%= startDates[1] %> -
+                                            <br>
+                                            <%= endDates[1] %>
+                                        </label>
+                                      </div>
 
-            <div>
-              <input type="radio" id="opt-1a" name="vote-poll-1" value="<%= allTimeId[0] %>, true">Yes</input>
-              <input type="radio" id="opt-1b" name="vote-poll-1" value="<%= allTimeId[0] %>, false">No</input>
-              <label for="opt-1">
-                <%= startDates[0] %> -
-                <br>
-                <%= endDates[0] %></label>
-            </div>
+                                      <div>
+                                        <input type="radio" id="opt-3a" name="vote-poll-3"
+                                          value="<%= allTimeId[2] %>, true">Yes</input>
+                                        <input type="radio" id="opt-3b" name="vote-poll-3"
+                                          value="<%= allTimeId[2] %>, false">No</input>
+                                        <label for="opt-3">
+                                          <%= startDates[2] %> -
+                                            <br>
+                                            <%= endDates[2] %>
+                                        </label>
+                                      </div>
 
-            <div>
-              <input type="radio" id="opt-2a" name="vote-poll-2" value="<%= allTimeId[1] %>, true">Yes</input>
-              <input type="radio" id="opt-2b" name="vote-poll-2" value="<%= allTimeId[1] %>, false">No</input>
-              <label for="opt-2">
-                <%= startDates[1] %> -
-                <br>
-                <%= endDates[1] %></label>
-            </div>
+                                      <div>
+                                        <button type="submit">Vote!</button>
+                                      </div>
 
-            <div>
-              <input type="radio" id="opt-3a" name="vote-poll-3" value="<%= allTimeId[2] %>, true">Yes</input>
-              <input type="radio" id="opt-3b" name="vote-poll-3" value="<%= allTimeId[2] %>, false">No</input>
-              <label for="opt-3">
-                <%= startDates[2] %> -
-                <br>
-                <%= endDates[2] %></label>
-            </div>
+                  </form>
 
-            <!-- <div>
-              <input type="radio" name="vote-poll" id="opt-4">
-              <label for="opt-1">
-                <%= startDates[0] %> -
-                <br>
-                <%= endDates[0] %></label>
-            </div> -->
-
-        </div>
-        <button type="submit">Vote!</button>
-      </div>
-
-    </form>
-  </section>
-
+                </article>
+              </section>
 
 </body>
+
 </html>
