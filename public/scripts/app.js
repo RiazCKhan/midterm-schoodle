@@ -104,7 +104,6 @@ const sendTimes = function (event) {
 }
 
 const getUserAndSendVote = function (event) {
-  console.log('hit button')
   event.preventDefault()
 
   let voterName = $("#vote-form #voter-name").val()
@@ -126,17 +125,15 @@ let data = {
   url
 };
 
-console.log(data)
-
-// $.ajax({
-//   url: `/vote/${url}`,
-//   type: "POST",
-//   data: data,
-//   success: function (res) {
-//   window.location.href = res.url
-//   },
-//   error: function () {
-//   },
-//   dataType: 'json'
-// });
+$.ajax({
+  url: `/vote/${url}`,
+  type: "POST",
+  data: data,
+  success: function (res) {
+  window.location.href = res.url
+  },
+  error: function () {
+  },
+  dataType: 'json'
+});
 }
