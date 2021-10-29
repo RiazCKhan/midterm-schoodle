@@ -1,5 +1,5 @@
-const express = require('express');
-const router  = express.Router();
+const express = require("express");
+const router = express.Router();
 const database = require("../db/database");
 
 module.exports = () => {
@@ -8,42 +8,50 @@ module.exports = () => {
     console.log("success!");
   });
 
-  router.post("/new", async(req, res) => {
+  router.post("/new", async (req, res) => {
     function generateUniqueURL() {
-      let randomString = ''
-      const possibleChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let randomString = "";
+      const possibleChars =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
       for (let i = 0; i < 10; i++) {
-        randomString += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
+        randomString += possibleChars.charAt(
+          Math.floor(Math.random() * possibleChars.length)
+        );
       }
       return randomString;
-    };
+    }
     const uniqueUrl = generateUniqueURL();
 
     const owner = {
       name: req.body.name,
-      email: req.body.email
-    }
+      email: req.body.email,
+    };
 
     const event = {
       title: req.body.title,
       description: req.body.description,
       url: uniqueUrl,
-    }
+    };
 
     const times = {
       startDates: req.body.startDates,
-      endDates: req.body.endDates
-    }
+      endDates: req.body.endDates,
+    };
 
-   // console.log('start', req.body.startDates);
-   // console.log('end', req.body.endDates);
-   // console.log(times);
+    req.session.email = owner.email;
+    req.session.name = owner.name;
+
+    console.log("cookie+++", req.session.email);
+
+    // console.log('start', req.body.startDates);
+    // console.log('end', req.body.endDates);
+    // console.log(times);
 
     await database.addUsers(owner);
     await database.addEvent(event);
     await database.addTimes(times, event);
-    res.json({url: `/vote/${uniqueUrl}`})
-  })
+    res.json({ url: `/vote/${uniqueUrl}` });
+  });
   return router;
 };
