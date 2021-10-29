@@ -141,7 +141,7 @@ let queryText = `
     .query(queryText, [url])
     .then((result) => {
       if (result) {
-        console.log('I am database', result.rows)
+        // console.log('I am database', result.rows)
         return result.rows;
       } else {
         return null;
