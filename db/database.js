@@ -36,18 +36,28 @@ const addEvent = (event) => {
 exports.addEvent = addEvent;
 
 
-const addVotes = (votes) => {
-  return db
-    .query(`INSERT INTO votes (voter_id, time_id, vote)
-  VALUES ($3)
-  RETURNING *;`,
-      [vote.selection]) // Will need to match names of info taken in on votes page
+const addVotes = (votes, voter) => {
+  let currentVoter= getUserWithEmail(voter.email);
+  let voterId = 0;
+
+  currentVoter.then(function (result) {
+    let parsed = JSON.parse(JSON.stringify(result));
+    voterId = parsed[0].id;
+
+    for(let i = 0; i < votes.voteId.length; i++) {
+      db
+      .query(`INSERT INTO votes (voter_id, time_id, vote)
+      VALUES ($1, $2, $3)
+      RETURNING *;`,
+      [voterID, votes.voteId[i], votes.selection[i]]) // Will need to match names of info taken in on votes page
     .then((result) => {
-      result.rows[0];
+      result.rows;
     })
     .catch((err) => {
       console.log(err.stack);
-    });
+    })
+  }
+})
 }
 exports.addVotes = addVotes;
 
