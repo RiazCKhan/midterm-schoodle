@@ -21,33 +21,29 @@ module.exports = () => {
     // if exist give access
     // otherwise alternative render
 
-    const voter = { // Information available, click 'Get Poll Button'
+    const voterInfo = {
       voterName: req.body.voterName,
-      voterEmail: req.body.voterEmail
-    }
-
-    const votes = {
+      voterEmail: req.body.voterEmail,
       optionOne: req.body.optionOneVote,
       optionTwo: req.body.optionTwoVote,
       optionThree: req.body.optionThreeVote
     }
 
-    console.log('VOTEJS voter', voter)
-    console.log('VOTEJS votes', votes)
+    console.log('VOTEJS voter', voterInfo)
 
-    // let timeId = [];
-    // let selection = [];
+    let timeId = [];
+    let selection = [];
 
-    // timeId.push(req.body.optionOneVote.split(",")[0]);
-    // timeId.push(req.body.optionTwoVote.split(",")[0]);
-    // timeId.push(req.body.optionThreeVote.split(",")[0]);
+    timeId.push(req.body.optionOneVote.split(",")[0]);
+    timeId.push(req.body.optionTwoVote.split(",")[0]);
+    timeId.push(req.body.optionThreeVote.split(",")[0]);
 
-    // selection.push(req.body.optionOneVote.split(",")[1]);
-    // selection.push(req.body.optionOneVote.split(",")[1]);
-    // selection.push(req.body.optionOneVote.split(",")[1]);
+    selection.push(req.body.optionOneVote.split(",")[1]);
+    selection.push(req.body.optionOneVote.split(",")[1]);
+    selection.push(req.body.optionOneVote.split(",")[1]);
 
-    // console.log('timeId: ', timeId);
-    // console.log('selection: ', selection);
+    console.log('timeId: ', timeId);
+    console.log('selection: ', selection);
 
     // insert users table :: returning
     // insert into votes table
