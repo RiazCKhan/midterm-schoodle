@@ -3,64 +3,69 @@ const dbParams = require("../lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
-
 const addUsers = (user) => {
   return db
-    .query(`INSERT INTO users (name, email)
+    .query(
+      `INSERT INTO users (name, email)
     VALUES ($1, $2)
-    RETURNING *;`
-      , [user.name, user.email])
+    RETURNING *;`,
+      [user.name, user.email]
+    )
     .then((result) => {
-      result.rows[0];
+      return result.rows[0];
     })
     .catch((err) => {
       console.log(err.stack);
     });
-}
+};
 exports.addUsers = addUsers;
-
 
 const addEvent = (event) => {
   return db
-    .query(`INSERT INTO events (title, description, url)
+    .query(
+      `INSERT INTO events (title, description, url)
     VALUES ($1, $2, $3)
     RETURNING *;`,
-      [event.title, event.description, event.url])
+      [event.title, event.description, event.url]
+    )
     .then((result) => {
       result.rows[0];
     })
     .catch((err) => {
       console.log(err.stack);
     });
-}
+};
 exports.addEvent = addEvent;
 
-
 const addVotes = (votes, voter) => {
-  let currentVoter= getUserWithEmail(voter.email);
+  console.log("votes", votes);
+  console.log("voter", voter);
+  console.log("eamil", voter.voterEmail);
+  let currentVoter = getUserWithEmail(voter);
   let voterId = 0;
 
   currentVoter.then(function (result) {
+    console.log("result", result);
     let parsed = JSON.parse(JSON.stringify(result));
     voterId = parsed[0].id;
 
-    for(let i = 0; i < votes.voteId.length; i++) {
-      db
-      .query(`INSERT INTO votes (voter_id, time_id, vote)
+    for (let i = 0; i < votes.timeId.length; i++) {
+      db.query(
+        `INSERT INTO votes (voter_id, time_id, vote)
       VALUES ($1, $2, $3)
       RETURNING *;`,
-      [voterID, votes.voteId[i], votes.selection[i]]) // Will need to match names of info taken in on votes page
-    .then((result) => {
-      result.rows;
-    })
-    .catch((err) => {
-      console.log(err.stack);
-    })
-  }
-})
-}
+        [voterId, votes.timeId[i], votes.selection[i]]
+      ) // Will need to match names of info taken in on votes page
+        .then((result) => {
+          result.rows;
+        })
+        .catch((err) => {
+          console.log(err.stack);
+        });
+    }
+  });
+};
 exports.addVotes = addVotes;
-
 
 const addTimes = function (times, event) {
   let currentEvent = getEventByUrl(event.url);
@@ -75,11 +80,12 @@ const addTimes = function (times, event) {
     for (let i = 0; i < times.startDates.length; i++) {
       // console.log('length of array:', times.startDates.length);
 
-      db
-        .query(`INSERT INTO times (event_id, start_date, end_date)
+      db.query(
+        `INSERT INTO times (event_id, start_date, end_date)
       VALUES ($1, $2, $3)
       RETURNING *;`,
-          [eventId, times.startDates[i], times.endDates[i]]) // Will need to match names of info taken in on votes page
+        [eventId, times.startDates[i], times.endDates[i]]
+      ) // Will need to match names of info taken in on votes page
         .then((res) => {
           // console.log('result', res.rows)
           result.rows;
@@ -87,40 +93,65 @@ const addTimes = function (times, event) {
         .catch((err) => {
           console.log(err.stack);
         });
-
     }
-  })
-
-}
+  });
+};
 exports.addTimes = addTimes;
 
-const getUserWithEmail = function (user) {
+const checkVoterWithEmail = function (user) {
   return db
-    .query(`SELECT users.*
+    .query(
+      `SELECT users.*
     FROM users
-    WHERE email = $1`
-      , [user.email])
+    WHERE email = $1`,
+      [user.email]
+    )
     .then((result) => {
-      if (result) {
-        return result.rows[0];
-      } else {
-        addUsers(user);
-      }
+      return result.rows;
     })
     .catch((err) => {
       console.log(err.stack);
-    })
-}
-exports.getUserWithEmail = getUserWithEmail;
+    });
+};
+exports.checkVoterWithEmail = checkVoterWithEmail;
 
+const getUserWithEmail = function (user) {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `SELECT users.*
+    FROM users
+    WHERE email = $1`,
+      [user.email]
+    )
+      .then((result) => {
+        if (result.rows.length === 0) {
+          console.log("add user");
+          addUsers(user).then((user) => {
+            resolve([user]);
+          });
+        } else {
+          console.log("getuser", result.rows[0]);
+          resolve(result.rows);
+          return result.rows;
+        }
+      })
+      .catch((err) => {
+        console.log(err.stack);
+        reject(err.stack);
+      });
+  });
+};
+exports.getUserWithEmail = getUserWithEmail;
 
 const getVotesFromEmail = function (email) {
   return db
-    .query(`SELECT votes.*
+    .query(
+      `SELECT votes.*
     FROM votes
     JOIN users ON users.id = voter_id
-    WHERE email = $1`
-      , [email])
+    WHERE email = $1`,
+      [email]
+    )
     .then((result) => {
       if (result) {
         return result.rows;
@@ -131,13 +162,11 @@ const getVotesFromEmail = function (email) {
     .catch((err) => {
       console.log(err.stack);
     });
-}
+};
 exports.getVotesFromEmail = getVotesFromEmail;
 
-
 const getEventByUrl = function (url) {
-
-let queryText = `
+  let queryText = `
   SELECT users.id AS user_id, users.id AS owner_id,
     users.name AS name, users.email AS email,
     events.id AS event_id, events.title AS title, events.description AS description, events.url AS unique_url,
@@ -145,7 +174,7 @@ let queryText = `
       FROM events
         FULL OUTER JOIN times ON events.id = event_id
         JOIN users ON users.id = owner_id
-        WHERE events.url = $1`
+        WHERE events.url = $1`;
 
   return db
     .query(queryText, [url])
@@ -160,5 +189,5 @@ let queryText = `
     .catch((err) => {
       console.log(err.stack);
     });
-}
-exports.getEventByUrl = getEventByUrl
+};
+exports.getEventByUrl = getEventByUrl;
