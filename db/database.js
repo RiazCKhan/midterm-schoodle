@@ -191,3 +191,73 @@ const getEventByUrl = function (url) {
     });
 };
 exports.getEventByUrl = getEventByUrl;
+
+const updateVotes = function (votes) {
+  let currentVoter = getUserWithEmail(voter);
+  let voterId = 0;
+
+  currentVoter.then(function (result) {
+    console.log("result", result);
+    let parsed = JSON.parse(JSON.stringify(result));
+    voterId = parsed[0].id;
+
+    for (let i = 0; i < votes.timeId.length; i++) {
+      db.query(
+        `UPDATE votes
+        SET vote = $1
+        WHERE voter_id = $2
+        AND time_id = $3`,
+        [votes.selection[i], voterId, votes.timeId[i]]
+      ) // Will need to match names of info taken in on votes page
+        .then((result) => {
+          result.rows;
+        })
+        .catch((err) => {
+          console.log(err.stack);
+        });
+    }
+  });
+};
+exports.updateVotes = updateVotes;
+
+const countYesVotes = function (uniqueUrl) {
+  return db
+    .query(
+      `
+      SELECT count(votes.*)
+      FROM events
+      JOIN times ON events.id = event_id
+      JOIN votes ON times.id = time_id
+      WHERE votes.vote = 't'
+      AND events.url = $1`,
+      [uniqueUrl]
+    )
+    .then((result) => {
+      result.rows;
+    })
+    .catch((err) => {
+      console.log(err.stack);
+    });
+};
+exports.countYesVotes = countYesVotes;
+
+const countNoVotes = function (uniqueUrl) {
+  return db
+    .query(
+      `
+      SELECT count(votes.*)
+      FROM events
+      JOIN times ON events.id = event_id
+      JOIN votes ON times.id = time_id
+      WHERE votes.vote = 'f'
+      AND events.url = $1`,
+      [uniqueUrl]
+    )
+    .then((result) => {
+      result.rows;
+    })
+    .catch((err) => {
+      console.log(err.stack);
+    });
+};
+exports.countNoVotes = countNoVotes;
