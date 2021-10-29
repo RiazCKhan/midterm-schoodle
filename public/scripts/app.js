@@ -4,7 +4,6 @@ $(document).ready(function () {
   $("#copy").on("click", copy);
   $("#add-date-time-button").on("click", renderDates);
   $("#user-form").on("submit", sendTimes);
-
   $("#vote-form").on("submit", getUserAndSendVote);
 });
 
@@ -104,7 +103,7 @@ const sendTimes = function (event) {
 }
 
 const getUserAndSendVote = function (event) {
-  event.preventDefault()
+  event.preventDefault() // remove this to see table poll update
 
   let voterName = $("#vote-form #voter-name").val()
   let voterEmail = $("#vote-form #voter-email").val()
@@ -112,28 +111,29 @@ const getUserAndSendVote = function (event) {
   let optionTwoVote = $('input[name=vote-poll-2]:checked', '#vote-form').val()
   let optionThreeVote = $('input[name=vote-poll-3]:checked', '#vote-form').val()
 
-let entireUrl = $("#url-link").val()
-let splitUrl = entireUrl.split("/")
-let url = splitUrl[4]
+  let entireUrl = $("#url-link").val()
+  let splitUrl = entireUrl.split("/")
+  let url = splitUrl[4]
 
-let data = {
-  voterName,
-  voterEmail,
-  optionOneVote,
-  optionTwoVote,
-  optionThreeVote,
-  url
-};
+  let data = {
+    voterName,
+    voterEmail,
+    optionOneVote,
+    optionTwoVote,
+    optionThreeVote,
+    url
+  };
 
-$.ajax({
-  url: `/vote/${url}`,
-  type: "POST",
-  data: data,
-  success: function (res) {
-  window.location.href = res.url
-  },
-  error: function () {
-  },
-  dataType: 'json'
-});
+  $.ajax({
+    url: `/vote/${url}`,
+    type: "POST",
+    data: data,
+    success: function (res) {
+      window.location.href = res.url
+      /* update table values: jquery selector table id || invoke getVoteCount FN */
+    },
+    error: function () {
+    },
+    dataType: 'json'
+  });
 }
