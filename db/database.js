@@ -199,7 +199,7 @@ const updateVotes = function (votes, voter) {
     let parsed = JSON.parse(JSON.stringify(result));
     voterId = parsed[0].id;
 
-    for (let i = 0; i < vote.timeId.length; i++) {
+    for (let i = 0; i < votes.timeId.length; i++) {
       db.query(
         `UPDATE votes
         SET vote = $1
@@ -293,7 +293,7 @@ const getTimeIdsByUrl = function (uniqueUrl) {
   return db
     .query(
       `
-    SELECT (times.id)
+    SELECT (times.*)
     FROM times
     JOIN events ON events.id = event_id
     WHERE events.url = $1`,

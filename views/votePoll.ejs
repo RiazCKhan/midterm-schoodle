@@ -79,11 +79,11 @@
                       <% const time = formattedEvent.times[timeId]; %>
 
                       <div>
-                        <input type="radio" id="opt-<%=i%>a" name="vote-poll-<%=i%>"
+                        <input type="radio" id="opt-<%=i+1%>a" name="vote-poll-<%=i+1%>"
                           value="<%= timeId %>, true">Yes</input>
-                        <input type="radio" id="opt-<%=i%>b" name="vote-poll-<%=i%>"
+                        <input type="radio" id="opt-<%=i+1%>b" name="vote-poll-<%=i+1%>"
                           value="<%= timeId %>, false">No</input>
-                        <label for="opt-<%=i%>" ">
+                        <label for="opt-<%=i+1%>" ">
                           <%= time.startDate %> -
                             <br>
                             <%= time.endDate %>

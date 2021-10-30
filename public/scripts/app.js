@@ -1,7 +1,5 @@
 // Client facing scripts here
 
-const database = require("../db/database");
-
 $(document).ready(function () {
   $("#copy").on("click", copy);
   $("#add-date-time-button").on("click", renderDates);
@@ -133,7 +131,8 @@ const getUserAndSendVote = function (event) {
     type: "POST",
     data: data,
     success: function (res) {
-      window.location.hrel = res.url;
+      location.reload();
+      //window.location.href = res.url;
       /* update table values: jquery selector table id || invoke getVoteCount FN */
     },
     error: function () {},

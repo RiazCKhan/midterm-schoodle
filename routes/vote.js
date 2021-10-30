@@ -26,7 +26,19 @@ module.exports = () => {
 
     // console.log("vote counts", yesVotes, noVotes);
     // console.log("timeId?", timeId);
-    let timeIdsResult;
+    const formattedEvent = { times: {} };
+
+    const times = await database.getTimeIdsByUrl(uniqueUrl);
+    console.log("times from function", times);
+    times.forEach((time) => {
+      formattedEvent.times[time.id] = {
+        votes: [],
+        startDate: time.start_date,
+        endDate: time.end_date,
+      };
+    });
+
+    /* let timeIdsResult;
     const timeIdsArray = [];
     await database.getTimeIdsByUrl(uniqueUrl).then((event) => {
       console.log("time Ids inside?", event);
@@ -38,12 +50,11 @@ module.exports = () => {
       timeIdsArray.push(Object.values(data)[0]);
     });
 
-    console.log("timeIdsArray", timeIdsArray);
+    console.log("timeIdsArray", timeIdsArray); */
 
     const votes = await database.getVotesByUniqueUrl(uniqueUrl);
     console.log("our new votes function", votes);
 
-    const formattedEvent = { times: {} };
     votes.forEach((vote) => {
       if (!formattedEvent.title) {
         formattedEvent.title = vote.title;
