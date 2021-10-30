@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- External CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
     integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -28,6 +29,15 @@
 
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
 
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -36,8 +46,8 @@
 
 <body>
 
-  <nav id="nav">
-    <span id="logo">Schoodle</span>
+  <nav class="navbar navbar-dark bg-dark">
+    <span id="logo" class="navbar-brand mb-0 h1">Schoodle</span>
   </nav>
 
   <% if (event) { %>
@@ -50,11 +60,11 @@
 
               <section>
                 <article class="share-event">
-                  <h3>Invite Participants</h3>
+                  <h4>Invite Participants</h4>
                   <span>Copy the Url below to share!</span>
                   <form>
                     <input value="http://localhost:8080/vote/<%= url %>" id="url-link" />
-                    <button id="copy">Copy</button>
+                    <button id="copy" class="btn-outline-dark">Copy</button>
                   </form>
                 </article>
               </section>
@@ -63,9 +73,9 @@
                 <article class="poll-container">
                   <form id="vote-form">
                     <header class="event-info">
-                      <div>
-                        <%= title %>
-                      </div>
+                      <h3>
+                       <%= title %>
+                      </h3>
                       <div> By: <%= name %>
                       </div>
                       <div>
@@ -74,11 +84,11 @@
                     </header>
                     <% }; %>
 
-                      <div>
+                    <div id="voter-name-box">
                         <input type="text" id="voter-name" value="<%= name %>" name="name" placeholder="Name">
                       </div>
 
-                      <div>
+                      <div id="voter-email-box">
                         <input type="text" id="voter-email" value="<%= email %>" name="email"
                           placeholder="example@mail.com">
                       </div>
@@ -86,20 +96,20 @@
                       <% Object.keys(formattedEvent.times).forEach((timeId, i)=> { %>
                         <% const time=formattedEvent.times[timeId]; %>
 
-                          <div>
+                          <div class="voter-section">
+                            <label for="opt-<%=i+1%>" ">
+                              <%= time.startDate %> -
+                              <br>
+                              <%= time.endDate %>
+                            </label>
                             <input type="radio" id="opt-<%=i+1%>a" name="vote-poll-<%=i+1%>"
                               value="<%= timeId %>, true">Yes</input>
                             <input type="radio" id="opt-<%=i+1%>b" name="vote-poll-<%=i+1%>"
                               value="<%= timeId %>, false">No</input>
-                            <label for="opt-<%=i+1%>" ">
-                          <%= time.startDate %> -
-                            <br>
-                            <%= time.endDate %>
-                        </label>
                       </div>
                     <% }) %>
-                                      <div>
-                                        <button type=" submit">Vote!</button>
+                                      <div id="vote-button-style">
+                                        <button class="btn-outline-dark" type=" submit">Vote!</button>
                           </div>
                   </form>
                 </article>
