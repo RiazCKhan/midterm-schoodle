@@ -67,60 +67,29 @@
                     </header>
                     <% }; %>
 
-                      <% let startDates=[] %>
-                        <% let endDates=[] %>
-                          <% let allTimeId=[] %>
+                    <div>
+                      <input type="text" id="voter-name" value="<%= name %>" name="name" placeholder="Name">
+                    </div>
 
-                            <% event.forEach(data=> { %>
-                              <% allTimeId.push((Object.values(data)[8])) %>
-                                <% startDates.push((Object.values(data)[9])) %>
-                                  <% endDates.push((Object.values(data)[10])) %>
-                                    <% }); %>
+                    <div>
+                      <input type="text" id="voter-email" value="<%= email %>" name="email" placeholder="example@mail.com">
+                    </div>
 
-                                      <div>
-                                        <input type="text" id="voter-name" value="<%= name %>" name="name" placeholder="Name">
-                                      </div>
+                    <% Object.keys(formattedEvent.times).forEach((timeId, i) => { %>
+                      <% const time = formattedEvent.times[timeId]; %>
 
-                                      <div>
-                                        <input type="text" id="voter-email" value="<%= email %>" name="email" placeholder="example@mail.com">
-                                      </div>
-
-                                      <div>
-                                        <input type="radio" id="opt-1a" name="vote-poll-1"
-                                          value="<%= allTimeId[0] %>, true">Yes</input>
-                                        <input type="radio" id="opt-1b" name="vote-poll-1"
-                                          value="<%= allTimeId[0] %>, false">No</input>
-                                        <label for="opt-1" ">
-                                          <%= startDates[0] %> -
-                                            <br>
-                                            <%= endDates[0] %>
-                                        </label>
-                                      </div>
-
-                                      <div>
-                                        <input type="radio" id="opt-2a" name="vote-poll-2"
-                                          value="<%= allTimeId[1] %>, true">Yes</input>
-                                        <input type="radio" id="opt-2b" name="vote-poll-2"
-                                          value="<%= allTimeId[1] %>, false">No</input>
-                                        <label for="opt-2">
-                                          <%= startDates[1] %> -
-                                            <br>
-                                            <%= endDates[1] %>
-                                        </label>
-                                      </div>
-
-                                      <div>
-                                        <input type="radio" id="opt-3a" name="vote-poll-3"
-                                          value="<%= allTimeId[2] %>, true">Yes</input>
-                                        <input type="radio" id="opt-3b" name="vote-poll-3"
-                                          value="<%= allTimeId[2] %>, false">No</input>
-                                        <label for="opt-3">
-                                          <%= startDates[2] %> -
-                                            <br>
-                                            <%= endDates[2] %>
-                                        </label>
-                                      </div>
-
+                      <div>
+                        <input type="radio" id="opt-<%=i+1%>a" name="vote-poll-<%=i+1%>"
+                          value="<%= timeId %>, true">Yes</input>
+                        <input type="radio" id="opt-<%=i+1%>b" name="vote-poll-<%=i+1%>"
+                          value="<%= timeId %>, false">No</input>
+                        <label for="opt-<%=i+1%>" ">
+                          <%= time.startDate %> -
+                            <br>
+                            <%= time.endDate %>
+                        </label>
+                      </div>
+                    <% }) %>
                                       <div>
                                         <button type="submit">Vote!</button>
                                       </div>
@@ -135,24 +104,19 @@
       <th>Yes - Lets GO!</th>
       <th>Nope - Not Down</th>
     </tr>
+    <% console.log(formattedEvent) %>
+    <% Object.keys(formattedEvent.times).forEach((timeId, i) => { %>
+      <% const time = formattedEvent.times[timeId]; %>
 
-    <tr>
-      <td><%= startDates[0] %> - <%= endDates[0] %></td>
-      <td> Render Vote Count</td>
-      <td> Render Vote Count </td>
-    </tr>
+      <% const yesVotes = time.votes.filter(vote => vote.vote) %>
+      <% const noVotes = time.votes.filter(vote => !vote.vote) %>
+      <tr>
+        <td><%= time.startDate %> - <%= time.endDate %></td>
+        <td> <%= yesVotes.length %></td>
+        <td> <%= noVotes.length %> </td>
+      </tr>
 
-    <tr>
-      <td> <%= startDates[1] %> - <%= endDates[1] %> </td>
-      <td> Render Vote Count </td>
-      <td> Render Vote Count </td>
-    </tr>
-
-    <tr>
-      <td> <%= startDates[2] %> - <%= endDates[2] %> </td>
-      <td> Render Vote Count </td>
-      <td> Render Vote Count </td>
-    </tr>
+    <% }) %>
 
   </table>
 </section>

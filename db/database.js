@@ -218,44 +218,92 @@ const updateVotes = function (votes, voter) {
 };
 exports.updateVotes = updateVotes;
 
-const countYesVotes = function (uniqueUrl) {
-  return db
-    .query(
-      `
+const countYesVotes = function (uniqueUrl, timeId) {
+  console.log("count yes function", uniqueUrl, timeId);
+  for (let i = 0; i < timeId.length; i++) {
+    console.log("loop length", timeId.length);
+    console.log("timeID inside loop", timeId[i]);
+
+    return db
+      .query(
+        `
       SELECT count(votes.*)
       FROM events
       JOIN times ON events.id = event_id
       JOIN votes ON times.id = time_id
       WHERE votes.vote = 't'
-      AND events.url = $1`,
+      AND events.url = $1
+      AND time_id = $2`,
+        [uniqueUrl, timeId[i]]
+      )
+      .finally((result) => {
+        console.log("count yes result", result);
+        return result;
+      })
+      .catch((err) => {
+        console.log(err.stack);
+      });
+  }
+};
+exports.countYesVotes = countYesVotes;
+
+const getVotesByUniqueUrl = function (uniqueUrl) {
+  return db
+    .query(
+      `SELECT *
+    FROM events
+    JOIN times ON events.id = event_id
+    JOIN votes ON times.id = time_id
+    WHERE events.url = $1`,
       [uniqueUrl]
     )
     .then((result) => {
-      result.rows;
+      return result.rows;
     })
     .catch((err) => {
       console.log(err.stack);
     });
 };
-exports.countYesVotes = countYesVotes;
+exports.getVotesByUniqueUrl = getVotesByUniqueUrl;
 
-const countNoVotes = function (uniqueUrl) {
-  return db
-    .query(
+const countNoVotes = function (uniqueUrl, timeId) {
+  for (let i = 0; i < timeId.length; i++) {
+    db.query(
       `
       SELECT count(votes.*)
       FROM events
       JOIN times ON events.id = event_id
       JOIN votes ON times.id = time_id
       WHERE votes.vote = 'f'
-      AND events.url = $1`,
+      AND events.url = $1
+      AND time_id = $2`,
+      [uniqueUrl, timeId[i]]
+    )
+      .then((result) => {
+        result.rows;
+      })
+      .catch((err) => {
+        console.log(err.stack);
+      });
+  }
+};
+exports.countNoVotes = countNoVotes;
+
+const getTimeIdsByUrl = function (uniqueUrl) {
+  return db
+    .query(
+      `
+    SELECT (times.*)
+    FROM times
+    JOIN events ON events.id = event_id
+    WHERE events.url = $1`,
       [uniqueUrl]
     )
     .then((result) => {
-      result.rows;
+      return result.rows;
     })
     .catch((err) => {
       console.log(err.stack);
     });
 };
-exports.countNoVotes = countNoVotes;
+exports.getTimeIdsByUrl = getTimeIdsByUrl;
