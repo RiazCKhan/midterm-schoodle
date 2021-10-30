@@ -14,6 +14,9 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- External Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700&display=swap" rel="stylesheet">
 
   <!-- App CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -60,29 +63,35 @@
                 <article class="poll-container">
                   <form id="vote-form">
                     <header class="event-info">
-                      <div><%= title %></div>
-                      <div> By: <%= name %></div>
-                      <div><%= desc %></div>
+                      <div>
+                        <%= title %>
+                      </div>
+                      <div> By: <%= name %>
+                      </div>
+                      <div>
+                        <%= desc %>
+                      </div>
                     </header>
                     <% }; %>
 
-                    <div>
-                      <input type="text" id="voter-name" value="<%= name %>" name="name" placeholder="Name">
-                    </div>
-
-                    <div>
-                      <input type="text" id="voter-email" value="<%= email %>" name="email" placeholder="example@mail.com">
-                    </div>
-
-                    <% Object.keys(formattedEvent.times).forEach((timeId, i) => { %>
-                      <% const time = formattedEvent.times[timeId]; %>
+                      <div>
+                        <input type="text" id="voter-name" value="<%= name %>" name="name" placeholder="Name">
+                      </div>
 
                       <div>
-                        <input type="radio" id="opt-<%=i+1%>a" name="vote-poll-<%=i+1%>"
-                          value="<%= timeId %>, true">Yes</input>
-                        <input type="radio" id="opt-<%=i+1%>b" name="vote-poll-<%=i+1%>"
-                          value="<%= timeId %>, false">No</input>
-                        <label for="opt-<%=i+1%>" ">
+                        <input type="text" id="voter-email" value="<%= email %>" name="email"
+                          placeholder="example@mail.com">
+                      </div>
+
+                      <% Object.keys(formattedEvent.times).forEach((timeId, i)=> { %>
+                        <% const time=formattedEvent.times[timeId]; %>
+
+                          <div>
+                            <input type="radio" id="opt-<%=i+1%>a" name="vote-poll-<%=i+1%>"
+                              value="<%= timeId %>, true">Yes</input>
+                            <input type="radio" id="opt-<%=i+1%>b" name="vote-poll-<%=i+1%>"
+                              value="<%= timeId %>, false">No</input>
+                            <label for="opt-<%=i+1%>" ">
                           <%= time.startDate %> -
                             <br>
                             <%= time.endDate %>
@@ -90,35 +99,41 @@
                       </div>
                     <% }) %>
                                       <div>
-                                        <button type="submit">Vote!</button>
-                                      </div>
+                                        <button type=" submit">Vote!</button>
+                          </div>
                   </form>
                 </article>
               </section>
 
-<section>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Yes - Lets GO!</th>
-      <th>Nope - Not Down</th>
-    </tr>
-    <% console.log(formattedEvent) %>
-    <% Object.keys(formattedEvent.times).forEach((timeId, i) => { %>
-      <% const time = formattedEvent.times[timeId]; %>
+              <section>
+                <table>
+                  <tr>
+                    <th>Date</th>
+                    <th>Yes - Lets GO!</th>
+                    <th>Nope - Not Down</th>
+                  </tr>
+                  <% console.log(formattedEvent) %>
+                    <% Object.keys(formattedEvent.times).forEach((timeId, i)=> { %>
+                      <% const time=formattedEvent.times[timeId]; %>
 
-      <% const yesVotes = time.votes.filter(vote => vote.vote) %>
-      <% const noVotes = time.votes.filter(vote => !vote.vote) %>
-      <tr>
-        <td><%= time.startDate %> - <%= time.endDate %></td>
-        <td> <%= yesVotes.length %></td>
-        <td> <%= noVotes.length %> </td>
-      </tr>
+                        <% const yesVotes=time.votes.filter(vote=> vote.vote) %>
+                          <% const noVotes=time.votes.filter(vote=> !vote.vote) %>
+                            <tr>
+                              <td>
+                                <%= time.startDate %> - <%= time.endDate %>
+                              </td>
+                              <td>
+                                <%= yesVotes.length %>
+                              </td>
+                              <td>
+                                <%= noVotes.length %>
+                              </td>
+                            </tr>
 
-    <% }) %>
+                            <% }) %>
 
-  </table>
-</section>
+                </table>
+              </section>
 
 </body>
 
