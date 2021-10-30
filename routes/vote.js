@@ -108,12 +108,19 @@ module.exports = () => {
     console.log("selection: ", selection);
 
     let uniqueUrl = req.body.url;
-    await database.addVotes(votes, voterInfo);
-    console.log(
-      "count:",
-      database.countYesVotes(data.url),
-      database.countNoVotes(data.url)
-    );
+
+    // console.log('what am i', database.getVotesFromEmail(voterInfo))
+
+    const ifVotes = await database.getVotesFromEmail(voterInfo);
+    console.log("$$$$", ifVotes);
+
+    if (ifVotes && ifVotes.length) {
+      await database.updateVotes(votes, voterInfo);
+    } else {
+      await database.addVotes(votes, voterInfo);
+    }
+
+    // await database.addVotes(votes, voterInfo);
     res.json({ url: `/vote/${uniqueUrl}` });
   });
   return router;

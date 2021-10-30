@@ -41,11 +41,10 @@ const addVotes = (votes, voter) => {
   console.log("votes", votes);
   console.log("voter", voter);
   console.log("eamil", voter.voterEmail);
-  let currentVoter = getUserWithEmail(voter);
   let voterId = 0;
 
-  currentVoter.then(function (result) {
-    console.log("result", result);
+  getUserWithEmail(voter).then(function (result) {
+    console.log("getuserwithemail result", result);
     let parsed = JSON.parse(JSON.stringify(result));
     voterId = parsed[0].id;
 
@@ -126,7 +125,7 @@ const getUserWithEmail = function (user) {
       .then((result) => {
         if (result.rows.length === 0) {
           console.log("add user");
-          addUsers(user).then((user) => {
+          return addUsers(user).then((user) => {
             resolve([user]);
           });
         } else {
@@ -143,14 +142,14 @@ const getUserWithEmail = function (user) {
 };
 exports.getUserWithEmail = getUserWithEmail;
 
-const getVotesFromEmail = function (email) {
+const getVotesFromEmail = function (voter) {
   return db
     .query(
       `SELECT votes.*
     FROM votes
     JOIN users ON users.id = voter_id
     WHERE email = $1`,
-      [email]
+      [voter.email]
     )
     .then((result) => {
       if (result) {
@@ -192,12 +191,11 @@ const getEventByUrl = function (url) {
 };
 exports.getEventByUrl = getEventByUrl;
 
-const updateVotes = function (email, votes) {
-  let currentVoter = getUserWithEmail(email);
+const updateVotes = function (votes, voter) {
   let voterId = 0;
 
-  currentVoter.then(function (result) {
-    console.log("result", result);
+  getUserWithEmail(voter).then(function (result) {
+    console.log("result updatedates vote fn", result);
     let parsed = JSON.parse(JSON.stringify(result));
     voterId = parsed[0].id;
 
