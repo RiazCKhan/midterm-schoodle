@@ -34,11 +34,10 @@ const renderDates = function (event) {
   let $error = $("#date-form .error-msg");
 
   if (!startDateDay || !startDateMonth || !startDateYear || !startDateTime) {
-    $error
-      .text("Error: all fields required")
-      .slideDown("slow")
+    $error.text("Error: all fields required")
+      .slideDown()
       .delay(1500)
-      .slideUp("slow");
+      .slideUp();
     return false;
   }
 

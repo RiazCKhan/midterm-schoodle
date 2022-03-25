@@ -1,16 +1,17 @@
 body {
   display: flex;
   justify-content: center;
+  width: 100vw;
 }
 
 .new-event {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 6rem;
+  //margin-top: 6rem;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
-  width: 90vw
+  width: 100vw
 }
 
 .event-container {
@@ -87,4 +88,8 @@ body {
   display: flex;
   justify-content: flex-end;
   margin-top: 0.2rem;
+}
+
+.time-container {
+  padding-top: 0.5rem;
 }
