@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/temp.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
   <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css" /> -->
 
 
@@ -80,25 +81,59 @@
 
   <section class="container mt-4">
     <article class="event-container">
-      <div class="row poll-header">
-        <div class="col-8 mt-1 mb-3">Create A Group Poll</div>
-      </div>
-      <div class="row">
-        <div class="col-8 mt-3 event-input event-container-overlay">Name</div>
-        <input class="col-11 mx-auto mt-1" type="text" id="name" name="owner_name">
-      </div>
-      <div class="row">
-        <div class="col-8 mt-3 event-input event-container-overlay">Email</div>
-        <input class="col-11 mx-auto mt-1" type="text" id="email" name="owner_email">
-      </div>
-      <div class="row">
-        <div class="col-8 mt-3 event-input event-container-overlay">Event Title</div>
-        <input class="col-11 mx-auto mt-1" type="text" name="event_title" id="title">
-      </div>
-      <div class="row">
-        <div class="col-8 mt-3 event-input event-container-overlay">Event Description</div>
-        <textarea class="text-box col-11 mx-auto mt-1" type="text" id="description" name="event_description"></textarea>
-      </div>
+      <form id="user-form">
+        <div class="row poll-header">
+          <div class="col-8 mt-1 mb-3">Create A Group Poll</div>
+        </div>
+        <div class="row">
+          <div class="col-8 mt-3 event-input event-container-overlay">Name</div>
+          <input class="col-11 mx-auto mt-1" type="text" id="name" name="owner_name">
+        </div>
+        <div class="row">
+          <div class="col-8 mt-3 event-input event-container-overlay">Email</div>
+          <input class="col-11 mx-auto mt-1" type="text" id="email" name="owner_email">
+        </div>
+        <div class="row">
+          <div class="col-8 mt-3 event-input event-container-overlay">Event Title</div>
+          <input class="col-11 mx-auto mt-1" type="text" name="event_title" id="title">
+        </div>
+        <div class="row">
+          <div class="col-8 mt-3 event-input event-container-overlay">Event Description</div>
+          <textarea class="text-box col-11 mx-auto mt-1" type="text" id="description"
+            name="event_description"></textarea>
+        </div>
+        <!-- Missing Creae Event Form Submit 'TIE SUBMISSION' -->
+      </form>
+    </article>
+  </section>
+
+  <section class="container mt-4">
+    <article class="event-container">
+        <div class="row poll-header">
+          <div class="col-8 mt-1 mb-3">Add Your Times</div>
+        </div>
+
+        <div class="row">
+          <div class="col-8 mt-3 event-input event-container-overlay">Option 1</div>
+          <input class="col-11 mx-auto mt-1" type="datetime-local" id="name" name="owner_name">
+        </div>
+
+        <div class="row">
+          <div class="col-8 mt-3 event-input event-container-overlay">Email</div>
+          <input class="col-11 mx-auto mt-1" type="text" id="email" name="owner_email">
+        </div>
+
+        <div class="row">
+          <div class="col-8 mt-3 event-input event-container-overlay">Event Title</div>
+          <input class="col-11 mx-auto mt-1" type="text" name="event_title" id="title">
+        </div>
+
+        <div class="row">
+          <div class="col-8 mt-3 event-input event-container-overlay">Event Description</div>
+          <textarea class="text-box col-11 mx-auto mt-1" type="text" id="description"
+            name="event_description"></textarea>
+        </div>
+
     </article>
   </section>
 
