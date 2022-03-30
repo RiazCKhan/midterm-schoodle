@@ -45,8 +45,8 @@
 
 <body>
 
-  <header>
-    <div class="px-3 py-2 bg-dark text-white">
+  <header class="header-overlay">
+    <div class="px-3 py-2 text-white">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
@@ -77,24 +77,30 @@
   </header>
 
   <section class="container mt-4">
-    <article>
-      <div class="row">
-        <div class="col-8">Title</div>
+    <article class="event-container">
+      <div class="row poll-header">
+        <div class="col-8 mt-1 mb-3">Create A Group Poll</div>
       </div>
       <div class="row">
-        <div class="col-8">Your Name</div>
+        <div class="col-8 mt-3 event-input">Name</div>
+        <input class="col-11 mx-auto mt-1" type="text" id="name" name="owner_name">
       </div>
       <div class="row">
-        <div class="col-8">Your Email</div>
+        <div class="col-8 mt-3 event-input">Email</div>
+        <input class="col-11 mx-auto mt-1" type="text" id="email" name="owner_email">
       </div>
       <div class="row">
-        <div class="col-8">Event Title</div>
+        <div class="col-8 mt-3 event-input">Event Title</div>
+        <input class="col-11 mx-auto mt-1" type="text" name="event_title" id="title">
       </div>
       <div class="row">
-        <div class="col-8">Event Description</div>
+        <div class="col-8 mt-3 event-input">Event Description</div>
+        <textarea class="text-box col-11 mx-auto mt-1" type="text" id="description" name="event_description"
+          placeholder="What's the plan?"></textarea>
       </div>
     </article>
   </section>
+
 
 
 </body>
