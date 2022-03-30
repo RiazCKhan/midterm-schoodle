@@ -1,11 +1,38 @@
-nav {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
+// COMMENTS TO BE REMOVED
 
-  font-family: 'Playfair Display SC', serif;
+// nav {
+//   display: flex;
+//   flex-direction: column;
+//   align-content: center;
+
+//   font-family: 'Playfair Display SC', serif;
+// }
+
+// #logo {
+//   font-size: xx-large;
+// }
+
+.header-overlay {
+  background-color: ghostwhite;
+  border-bottom: solid;
+  border-width: 0.12rem;
+  border-color: #212529;
 }
 
-#logo {
-  font-size: xx-large;
+.nav-font-overlay {
+  font-family: 'font awesome 6 free';
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+}
+
+.fa-solid.fa-dog {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  font-size: 2rem;
+}
+
+.nav-color-overlay {
+  color: #212529;
 }
