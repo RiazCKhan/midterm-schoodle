@@ -11,9 +11,10 @@
   <!-- App CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css" /> -->
-  <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/temp.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css" /> -->
 
 
   <!-- App JS -->
@@ -49,25 +50,26 @@
     <div class="px-3 py-2 text-white">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-            <i class="fa-solid fa-dog"> S c h n o o d l e</i>
+          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-info text-decoration-none">
+            <h4 class="nav-color-overlay nav-font-overlay">S C H N O O D L E</h4>
+            <i class="fa-solid fa-dog"></i>
           </a>
 
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
-              <a href="/" class="nav-link text-white">
+              <a href="/" class="nav-link text-info">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                   <i class="fa-solid fa-house"></i>
                 </svg>
-                Home
+                <span class="nav-color-overlay">Home</span>
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
+              <a href="#" class="nav-link text-info">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                   <i class="fa-solid fa-calendar"></i>
                 </svg>
-                Create Event
+                <span class="nav-color-overlay">Create Event</span>
               </a>
             </li>
           </ul>
@@ -82,21 +84,20 @@
         <div class="col-8 mt-1 mb-3">Create A Group Poll</div>
       </div>
       <div class="row">
-        <div class="col-8 mt-3 event-input">Name</div>
+        <div class="col-8 mt-3 event-input event-container-overlay">Name</div>
         <input class="col-11 mx-auto mt-1" type="text" id="name" name="owner_name">
       </div>
       <div class="row">
-        <div class="col-8 mt-3 event-input">Email</div>
+        <div class="col-8 mt-3 event-input event-container-overlay">Email</div>
         <input class="col-11 mx-auto mt-1" type="text" id="email" name="owner_email">
       </div>
       <div class="row">
-        <div class="col-8 mt-3 event-input">Event Title</div>
+        <div class="col-8 mt-3 event-input event-container-overlay">Event Title</div>
         <input class="col-11 mx-auto mt-1" type="text" name="event_title" id="title">
       </div>
       <div class="row">
-        <div class="col-8 mt-3 event-input">Event Description</div>
-        <textarea class="text-box col-11 mx-auto mt-1" type="text" id="description" name="event_description"
-          placeholder="What's the plan?"></textarea>
+        <div class="col-8 mt-3 event-input event-container-overlay">Event Description</div>
+        <textarea class="text-box col-11 mx-auto mt-1" type="text" id="description" name="event_description"></textarea>
       </div>
     </article>
   </section>
@@ -104,7 +105,6 @@
   <footer class="footer-overlay">
     <span class="text-muted">Footer Information Here</span>
   </footer>
-
 
 </body>
 
