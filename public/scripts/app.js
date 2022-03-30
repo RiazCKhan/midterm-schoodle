@@ -5,7 +5,20 @@ $(document).ready(function () {
   $("#add-date-time-button").on("click", renderDates);
   $("#user-form").on("submit", sendTimes);
   $("#vote-form").on("submit", getUserAndSendVote);
+
+  $("#add-birthday").on("click", test);
 });
+
+const test = (event) => {
+  event.preventDefault();
+
+  let FormDateTime = document.getElementById("birthdaytime").value
+
+
+  console.log('test', formValue.split(''))
+
+
+}
 
 const copy = function () {
   event.preventDefault();
@@ -95,7 +108,7 @@ const sendTimes = function (event) {
     success: function (res) {
       window.location.href = res.url;
     },
-    error: function () {},
+    error: function () { },
     dataType: "json",
   });
 };
@@ -134,7 +147,7 @@ const getUserAndSendVote = function (event) {
       //window.location.href = res.url;
       /* update table values: jquery selector table id || invoke getVoteCount FN */
     },
-    error: function () {},
+    error: function () { },
     dataType: "json",
   });
 };
