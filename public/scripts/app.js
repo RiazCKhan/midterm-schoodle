@@ -6,7 +6,8 @@ $(document).ready(function () {
   $("#user-form").on("submit", sendTimes);
   $("#vote-form").on("submit", getUserAndSendVote);
 
-  $("#add-birthday").on("click", test);
+  $('#start-date-add-btn').add("click", renderStartDate)
+
 });
 
 // --- How to Parse from Datetime--local ---
@@ -16,6 +17,13 @@ $(document).ready(function () {
 // console.log(dataArr)
 // let startData = dataArr.slice(0, 4).join('')
 // console.log(startData)
+
+const renderStartDate = (event) => {
+  event.preventDefault();
+
+
+
+}
 
 const copy = function (event) {
   event.preventDefault();
@@ -28,12 +36,13 @@ const copy = function (event) {
 const renderDates = function (event) {
   event.preventDefault();
 
+  let startDateFormData = document.getElementById("start-date-form").value
+
+  console.log('start datetime', startDateFormData)
+
   const $form = $(this).closest("form");
 
   let startDateDay = $form.find("#date-form__start-day").val();
-
-  console.log('start date day', typeof(startDateDay))
-
   let startDateMonth = $form.find("#date-form__start-month").val();
   let startDateYear = $form.find("#date-form__start-year").val();
   let startDateTime = $form.find("#date-form__start-time").val();
@@ -70,14 +79,14 @@ const renderDates = function (event) {
     </div>
   `;
 
-  $(".append-date-time").prepend(pollOption);
+  $("#append-date-time").prepend(pollOption);
 
   $form.trigger("reset");
 };
 
 const sendTimes = function (event) {
   event.preventDefault();
-  let allDates = $(".append-date-time");
+  let allDates = $("#append-date-time");
 
   let name = $("#user-form #name").val(); // DO NOT DELETE - Note: Find content by referencing 'double id / class'
   let email = $("#user-form #email").val();
