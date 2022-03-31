@@ -9,11 +9,20 @@ $(document).ready(function () {
   $("#add-birthday").on("click", test);
 });
 
+// --- How to Parse from Datetime--local ---
+// let data = '2022-03-31T13:30'
+// let dataArr = data.split('')
+// console.log(dataArr)
+// let startData = dataArr.slice(0, 4).join('')
+// console.log(startData)
+
 const test = (event) => {
   event.preventDefault();
   let formDateTimeInfo = document.getElementById("birthdaytime").value
 
   // console.log(formDateTimeInfo) // Value received from datetime-local year/month/day/time 2022-03-31T13:30
+  let formDateTimeInfoArr = formDateTimeInfo.split('')
+  let startYear = formDateTimeInfoArr.splice
 
 }
 
@@ -30,11 +39,9 @@ const renderDates = function (event) {
 
   const $form = $(this).closest("form");
 
-  console.log('Entire Date Form', $form)
-
   let startDateDay = $form.find("#date-form__start-day").val();
 
-  // console.log('start date day', startDateDay)
+  console.log('start date day', typeof(startDateDay))
 
   let startDateMonth = $form.find("#date-form__start-month").val();
   let startDateYear = $form.find("#date-form__start-year").val();
