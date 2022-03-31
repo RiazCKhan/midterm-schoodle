@@ -10,21 +10,12 @@ $(document).ready(function () {
 });
 
 // --- How to Parse from Datetime--local ---
+// let formDateTimeInfo = document.getElementById("birthdaytime").value
 // let data = '2022-03-31T13:30'
 // let dataArr = data.split('')
 // console.log(dataArr)
 // let startData = dataArr.slice(0, 4).join('')
 // console.log(startData)
-
-const test = (event) => {
-  event.preventDefault();
-  let formDateTimeInfo = document.getElementById("birthdaytime").value
-
-  // console.log(formDateTimeInfo) // Value received from datetime-local year/month/day/time 2022-03-31T13:30
-  let formDateTimeInfoArr = formDateTimeInfo.split('')
-  let startYear = formDateTimeInfoArr.splice
-
-}
 
 const copy = function () {
   event.preventDefault();
