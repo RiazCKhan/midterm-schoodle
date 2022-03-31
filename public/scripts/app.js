@@ -5,7 +5,26 @@ $(document).ready(function () {
   $("#add-date-time-button").on("click", renderDates);
   $("#user-form").on("submit", sendTimes);
   $("#vote-form").on("submit", getUserAndSendVote);
+
+  $("#add-birthday").on("click", test);
 });
+
+// --- How to Parse from Datetime--local ---
+// let data = '2022-03-31T13:30'
+// let dataArr = data.split('')
+// console.log(dataArr)
+// let startData = dataArr.slice(0, 4).join('')
+// console.log(startData)
+
+const test = (event) => {
+  event.preventDefault();
+  let formDateTimeInfo = document.getElementById("birthdaytime").value
+
+  // console.log(formDateTimeInfo) // Value received from datetime-local year/month/day/time 2022-03-31T13:30
+  let formDateTimeInfoArr = formDateTimeInfo.split('')
+  let startYear = formDateTimeInfoArr.splice
+
+}
 
 const copy = function () {
   event.preventDefault();
@@ -21,6 +40,9 @@ const renderDates = function (event) {
   const $form = $(this).closest("form");
 
   let startDateDay = $form.find("#date-form__start-day").val();
+
+  console.log('start date day', typeof(startDateDay))
+
   let startDateMonth = $form.find("#date-form__start-month").val();
   let startDateYear = $form.find("#date-form__start-year").val();
   let startDateTime = $form.find("#date-form__start-time").val();
@@ -95,7 +117,7 @@ const sendTimes = function (event) {
     success: function (res) {
       window.location.href = res.url;
     },
-    error: function () {},
+    error: function () { },
     dataType: "json",
   });
 };
@@ -134,7 +156,7 @@ const getUserAndSendVote = function (event) {
       //window.location.href = res.url;
       /* update table values: jquery selector table id || invoke getVoteCount FN */
     },
-    error: function () {},
+    error: function () { },
     dataType: "json",
   });
 };
