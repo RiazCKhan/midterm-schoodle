@@ -31,11 +31,11 @@ const renderStartDate = (event) => {
   let startYear = startDateFormDataArr.slice(0, 4).join('');
   let startTime = startDateFormDataArr.slice(11, 16).join('');
 
-  let startOption = `<span class="col"> ${startDay}-${startMonth}-${startYear}-${startTime} &nbsp; -> &nbsp; </span>
+  let startOption = `<div class="col d-flex justify-content-end px-0 mt-2 mb-1"> ${startDay}-${startMonth}-${startYear}-${startTime} </div>
                      <div class="w-100 d-none d-md-block"></div>`;
 
-  $("#all-start-time").append(startOption);
-}
+  $("#start-time-container").append(startOption);
+};
 
 const renderEndDate = (event) => {
   event.preventDefault();
@@ -49,11 +49,11 @@ const renderEndDate = (event) => {
   let endYear = endDateFormDataArr.slice(0, 4).join('');
   let endTime = endDateFormDataArr.slice(11, 16).join('');
 
-  let endOption = `<span class="col"> -> &nbsp ${endDay}-${endMonth}-${endYear}-${endTime} </span>
+  let endOption = `<div class="col d-flex justify-content-start px-0 mt-2 mb-1"> ${endDay}-${endMonth}-${endYear}-${endTime} </div>
                    <div class="w-100 d-none d-md-block"></div>`;
 
-  $("#all-end-time").append(endOption);
-}
+  $("#end-time-container").append(endOption);
+};
 
 
 const copy = function (event) {
