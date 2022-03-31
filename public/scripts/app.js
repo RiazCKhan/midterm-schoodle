@@ -7,6 +7,7 @@ $(document).ready(function () {
   $("#vote-form").on("submit", getUserAndSendVote);
 
   $("#start-date-add-btn").on("click", renderStartDate)
+  $("#end-date-add-btn").on("click", renderEndDate)
 
 });
 
@@ -30,15 +31,36 @@ const renderStartDate = (event) => {
   let startYear = startDateFormDataArr.slice(0, 4).join('');
   let startTime = startDateFormDataArr.slice(11, 16).join('');
 
-
   let startOption = `
-    <div class='time-container'>
-    <span class="start-time"> ${startDay}-${startMonth}-${startYear}-${startTime} </span> ->
+    <div class='col d-flex justify-content-end px-0 start-time-container'>
+    <span class="start-time"> ${startDay}-${startMonth}-${startYear}-${startTime} </span> &nbsp; -> &nbsp;
     </div>
   `;
 
   $("#append-date-time").prepend(startOption);
 }
+
+const renderEndDate = (event) => {
+  event.preventDefault();
+
+  let endDateFormData = document.getElementById("end-date-input").value
+
+  let endDateFormDataArr = endDateFormData.split('')
+
+  let endDay = endDateFormDataArr.slice(8, 10).join('');
+  let endMonth = endDateFormDataArr.slice(5, 7).join('');
+  let endYear = endDateFormDataArr.slice(0, 4).join('');
+  let endTime = endDateFormDataArr.slice(11, 16).join('');
+
+  let endOption = `
+    <div class='col d-flex justify-content-start px-0 end-time-container'>
+    -> &nbsp <span class="start-time"> ${endDay}-${endMonth}-${endYear}-${endTime} </span>
+    </div>
+  `;
+
+  $("#append-date-time").append(endOption);
+}
+
 
 const copy = function (event) {
   event.preventDefault();
