@@ -6,7 +6,7 @@ $(document).ready(function () {
   $("#user-form").on("submit", sendTimes);
   $("#vote-form").on("submit", getUserAndSendVote);
 
-  $('#start-date-add-btn').add("click", renderStartDate)
+  $("#start-date-add-btn").on("click", renderStartDate)
 
 });
 
@@ -21,6 +21,22 @@ $(document).ready(function () {
 const renderStartDate = (event) => {
   event.preventDefault();
 
+  let startDateFormData = document.getElementById("start-date-input").value
+  console.log('start datetime', startDateFormData)
+
+  const date = new Date($("#start-date-input").val())
+
+
+  let startDateFormDataArr = startDateFormData.split('')
+
+  let day = startDateFormDataArr.slice(8, 10).join('');
+  let month = startDateFormDataArr.slice(5, 7).join('');
+  let year = startDateFormDataArr.slice(0, 4).join('');
+  let time = startDateFormDataArr.slice(11, 16).join('');
+
+
+
+  console.log('@', day, month, year, time)
 
 
 }
@@ -35,10 +51,6 @@ const copy = function (event) {
 
 const renderDates = function (event) {
   event.preventDefault();
-
-  let startDateFormData = document.getElementById("start-date-form").value
-
-  console.log('start datetime', startDateFormData)
 
   const $form = $(this).closest("form");
 
