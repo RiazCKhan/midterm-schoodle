@@ -31,13 +31,10 @@ const renderStartDate = (event) => {
   let startYear = startDateFormDataArr.slice(0, 4).join('');
   let startTime = startDateFormDataArr.slice(11, 16).join('');
 
-  let startOption = `
-    <div class='col d-flex justify-content-end px-0 start-time-container'>
-    <span class="start-time"> ${startDay}-${startMonth}-${startYear}-${startTime} </span> &nbsp; -> &nbsp;
-    </div>
-  `;
+  let startOption = `<span class="col"> ${startDay}-${startMonth}-${startYear}-${startTime} &nbsp; -> &nbsp; </span>
+                     <div class="w-100 d-none d-md-block"></div>`;
 
-  $("#append-date-time").prepend(startOption);
+  $("#all-start-time").append(startOption);
 }
 
 const renderEndDate = (event) => {
@@ -52,13 +49,10 @@ const renderEndDate = (event) => {
   let endYear = endDateFormDataArr.slice(0, 4).join('');
   let endTime = endDateFormDataArr.slice(11, 16).join('');
 
-  let endOption = `
-    <div class='col d-flex justify-content-start px-0 end-time-container'>
-    -> &nbsp <span class="start-time"> ${endDay}-${endMonth}-${endYear}-${endTime} </span>
-    </div>
-  `;
+  let endOption = `<span class="col"> -> &nbsp ${endDay}-${endMonth}-${endYear}-${endTime} </span>
+                   <div class="w-100 d-none d-md-block"></div>`;
 
-  $("#append-date-time").append(endOption);
+  $("#all-end-time").append(endOption);
 }
 
 
