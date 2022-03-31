@@ -11,12 +11,9 @@ $(document).ready(function () {
 
 const test = (event) => {
   event.preventDefault();
+  let formDateTimeInfo = document.getElementById("birthdaytime").value
 
-  let FormDateTime = document.getElementById("birthdaytime").value
-
-
-  console.log('test', formValue.split(''))
-
+  // console.log(formDateTimeInfo) // Value received from datetime-local year/month/day/time 2022-03-31T13:30
 
 }
 
@@ -33,7 +30,12 @@ const renderDates = function (event) {
 
   const $form = $(this).closest("form");
 
+  console.log('Entire Date Form', $form)
+
   let startDateDay = $form.find("#date-form__start-day").val();
+
+  // console.log('start date day', startDateDay)
+
   let startDateMonth = $form.find("#date-form__start-month").val();
   let startDateYear = $form.find("#date-form__start-year").val();
   let startDateTime = $form.find("#date-form__start-time").val();
