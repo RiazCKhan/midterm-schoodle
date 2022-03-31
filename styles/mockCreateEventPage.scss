@@ -1,0 +1,95 @@
+body {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.new-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //margin-top: 6rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  width: 100vw
+}
+
+.event-container {
+  display: flex;
+  // ADD FLEX-DIRECTION COLUMN FOR MEDIA-QUERIES
+}
+
+#user-form {
+  margin-top: 0.2rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.event-desc {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.text-box {
+  width: 25vw;
+  resize: none;
+}
+
+::placeholder {
+  line-height: 2rem;
+  text-align: center;
+}
+
+.new-event label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.new-event input {
+  width: 25vw;
+}
+
+.start-end {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.error-msg {
+  // To be styled
+}
+
+.options {
+  text-align: center;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  width: 25vw;
+}
+
+.set-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  width: 25vw;
+}
+
+// These <div>'s hold buttons
+.add-date-time, .create-event {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.2rem;
+}
+
+.time-container {
+  padding-top: 0.5rem;
+}
