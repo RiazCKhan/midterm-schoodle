@@ -34,6 +34,15 @@
   background-color: white;
 }
 
+.start-end-time-header {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.5rem;
+  font-family: 'font awesome 6 free';
+  letter-spacing: 2px;
+  font-size: 0.6rem;
+}
+
 button {
   font-family: 'font awesome 6 free';
   letter-spacing: 2px;
