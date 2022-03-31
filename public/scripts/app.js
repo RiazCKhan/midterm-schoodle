@@ -17,7 +17,7 @@ $(document).ready(function () {
 // let startData = dataArr.slice(0, 4).join('')
 // console.log(startData)
 
-const copy = function () {
+const copy = function (event) {
   event.preventDefault();
   let $button = $("#copy");
   let $form = $button.closest("form");
