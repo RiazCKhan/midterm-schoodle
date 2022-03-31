@@ -22,23 +22,22 @@ const renderStartDate = (event) => {
   event.preventDefault();
 
   let startDateFormData = document.getElementById("start-date-input").value
-  console.log('start datetime', startDateFormData)
-
-  const date = new Date($("#start-date-input").val())
-
 
   let startDateFormDataArr = startDateFormData.split('')
 
-  let day = startDateFormDataArr.slice(8, 10).join('');
-  let month = startDateFormDataArr.slice(5, 7).join('');
-  let year = startDateFormDataArr.slice(0, 4).join('');
-  let time = startDateFormDataArr.slice(11, 16).join('');
+  let startDay = startDateFormDataArr.slice(8, 10).join('');
+  let startMonth = startDateFormDataArr.slice(5, 7).join('');
+  let startYear = startDateFormDataArr.slice(0, 4).join('');
+  let startTime = startDateFormDataArr.slice(11, 16).join('');
 
 
+  let startOption = `
+    <div class='time-container'>
+    <span class="start-time"> ${startDay}-${startMonth}-${startYear}-${startTime} </span> ->
+    </div>
+  `;
 
-  console.log('@', day, month, year, time)
-
-
+  $("#append-date-time").prepend(startOption);
 }
 
 const copy = function (event) {
