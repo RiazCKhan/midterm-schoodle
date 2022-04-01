@@ -15,7 +15,8 @@ $(document).ready(function () {
 const renderStartDate = (event) => {
   event.preventDefault();
 
-  let startDateFormData = document.getElementById("start-date-input").value
+  let startDateFormData = $("#start-date-input").val();
+  // startDateFormData = document.getElementById("start-date-input").value
   let startDateFormDataArr = startDateFormData.split('')
   let startDay = startDateFormDataArr.slice(8, 10).join('');
   let startMonth = startDateFormDataArr.slice(5, 7).join('');
@@ -27,14 +28,14 @@ const renderStartDate = (event) => {
 
   $("#start-time-container").append(startOption);
 
-
   // Trigger Form Reset
+  $("#start-date-input").val("");
 };
 
 const renderEndDate = (event) => {
   event.preventDefault();
 
-  let endDateFormData = $("#end-date-input").val()
+  let endDateFormData = $("#end-date-input").val();
   // endDateFormData = document.getElementById("end-date-input").value
   let endDateFormDataArr = endDateFormData.split('')
   let endDay = endDateFormDataArr.slice(8, 10).join('');
@@ -48,7 +49,7 @@ const renderEndDate = (event) => {
   $("#end-time-container").append(endOption);
 
   // Trigger Form Reset
-  $("#end-date-input").val("")
+  $("#end-date-input").val("");
 };
 
 const removeStartDate = (event) => {
