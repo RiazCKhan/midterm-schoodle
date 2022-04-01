@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/temp.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/votePollPage.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
   <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css" /> -->
@@ -140,6 +140,85 @@
       <button class="col-3 mt-4 btn btn-info">Create Poll</button>
     </article>
   </section> -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        1 of 2
+      </div>
+      <div class="col">
+        2 of 2
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        1 of 3
+      </div>
+      <div class="col">
+        2 of 3
+      </div>
+      <div class="col">
+        3 of 3
+      </div>
+    </div>
+  </div>
+
+  <section class="container mt-4">
+    <article class="event-container">
+      <div class="row poll-header">
+        <div class="col-8 mt-1 mb-3">INSERT EJS Event / Poll Title</div>
+      </div>
+      <div class="row">
+        <div class="col-8 mt-3 event-input font-overlay">INSERT EJS Name</div>
+      </div>
+      <div class="row">
+        <div class="col-8 mt-3 event-input font-overlay">INSERT EJS Event Description</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="container mt-4">
+    <div class="event-container">
+
+      <article class="row poll-header">
+        <div class="col-8 mt-1 mb-3">Add Your Times</div>
+      </article>
+
+      <article class="row">
+        <div class="col">
+          <div class="col-8 mt-3 event-input font-overlay">Name</div>
+          <input class="col-11 mx-auto mt-1" type="text" id="name" name="owner_name">
+        </div>
+        <div class="col">
+          <div class="col-8 mt-3 event-input font-overlay">Email</div>
+          <input class="col-11 mx-auto mt-1" type="text" id="email" name="owner_email">
+        </div>
+      </article>
+
+      <section class="row">
+        <article class="col">
+          <div class="col-2 mt-3 font-overlay">Start</div>
+          <input class="col-9 mt-1" type="datetime-local" id="" name="">
+          <button class="btn btn-info btn-sm mb-1">Add</button>
+          <div class="col-2 mt-3 font-overlay">End</div>
+          <input class="col-9 mt-1" type="datetime-local" id="" name="">
+          <button class="btn btn-info btn-sm mb-1">Add</button>
+          <div class="w-100"></div>
+        </article>
+        <article class="col">
+          <div class="col-12 mt-3 text-center font-overlay">Dates and Times</div>
+          <div class="set-time-border"></div>
+        </article>
+      </section>
+
+    </div>
+  </section>
+
+  <section class="container">
+    <article class="row justify-content-center">
+      <div class="col-3 mt-4 btn btn-info">Copy</div>
+    </article>
+  </section>
 
   <footer class="footer-overlay position-absolute">
     <span class="text-muted">Footer Information Here</span>
