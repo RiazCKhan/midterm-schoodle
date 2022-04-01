@@ -27,7 +27,6 @@ const renderStartDate = (event) => {
 
   $("#start-time-container").append(startOption);
 
-
   // Error Handling
   // Trigger Form Reset
 };
@@ -46,7 +45,6 @@ const renderEndDate = (event) => {
                    <div class="w-100 d-none d-md-block"></div>`;
 
   $("#end-time-container").append(endOption);
-
 
   // Error Handling
   // Trigger Form Reset
