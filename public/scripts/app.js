@@ -6,27 +6,49 @@ $(document).ready(function () {
   $("#user-form").on("submit", sendTimes);
   $("#vote-form").on("submit", getUserAndSendVote);
 
-  $("#add-birthday").on("click", test);
+  $("#start-date-add-btn").on("click", renderStartDate)
+  $("#end-date-add-btn").on("click", renderEndDate)
+
 });
 
-// --- How to Parse from Datetime--local ---
-// let data = '2022-03-31T13:30'
-// let dataArr = data.split('')
-// console.log(dataArr)
-// let startData = dataArr.slice(0, 4).join('')
-// console.log(startData)
-
-const test = (event) => {
+const renderStartDate = (event) => {
   event.preventDefault();
-  let formDateTimeInfo = document.getElementById("birthdaytime").value
 
-  // console.log(formDateTimeInfo) // Value received from datetime-local year/month/day/time 2022-03-31T13:30
-  let formDateTimeInfoArr = formDateTimeInfo.split('')
-  let startYear = formDateTimeInfoArr.splice
+  let startDateFormData = document.getElementById("start-date-input").value
 
-}
+  let startDateFormDataArr = startDateFormData.split('')
 
-const copy = function () {
+  let startDay = startDateFormDataArr.slice(8, 10).join('');
+  let startMonth = startDateFormDataArr.slice(5, 7).join('');
+  let startYear = startDateFormDataArr.slice(0, 4).join('');
+  let startTime = startDateFormDataArr.slice(11, 16).join('');
+
+  let startOption = `<div class="col d-flex justify-content-center px-0 mt-2 mb-2 text-center"> ${startDay}-${startMonth}-${startYear}-${startTime} </div>
+                     <div class="w-100 d-none d-md-block"></div>`;
+
+  $("#start-time-container").append(startOption);
+};
+
+const renderEndDate = (event) => {
+  event.preventDefault();
+
+  let endDateFormData = document.getElementById("end-date-input").value
+
+  let endDateFormDataArr = endDateFormData.split('')
+
+  let endDay = endDateFormDataArr.slice(8, 10).join('');
+  let endMonth = endDateFormDataArr.slice(5, 7).join('');
+  let endYear = endDateFormDataArr.slice(0, 4).join('');
+  let endTime = endDateFormDataArr.slice(11, 16).join('');
+
+  let endOption = `<div class="col d-flex justify-content-center px-0 mt-2 mb-2 text-center"> ${endDay}-${endMonth}-${endYear}-${endTime} </div>
+                   <div class="w-100 d-none d-md-block"></div>`;
+
+  $("#end-time-container").append(endOption);
+};
+
+
+const copy = function (event) {
   event.preventDefault();
   let $button = $("#copy");
   let $form = $button.closest("form");
@@ -40,9 +62,6 @@ const renderDates = function (event) {
   const $form = $(this).closest("form");
 
   let startDateDay = $form.find("#date-form__start-day").val();
-
-  console.log('start date day', typeof(startDateDay))
-
   let startDateMonth = $form.find("#date-form__start-month").val();
   let startDateYear = $form.find("#date-form__start-year").val();
   let startDateTime = $form.find("#date-form__start-time").val();
@@ -79,14 +98,14 @@ const renderDates = function (event) {
     </div>
   `;
 
-  $(".append-date-time").prepend(pollOption);
+  $("#append-date-time").prepend(pollOption);
 
   $form.trigger("reset");
 };
 
 const sendTimes = function (event) {
   event.preventDefault();
-  let allDates = $(".append-date-time");
+  let allDates = $("#append-date-time");
 
   let name = $("#user-form #name").val(); // DO NOT DELETE - Note: Find content by referencing 'double id / class'
   let email = $("#user-form #email").val();
