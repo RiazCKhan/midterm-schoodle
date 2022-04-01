@@ -3,6 +3,7 @@
 $(document).ready(function () {
   $("#copy").on("click", copy);
   $("#add-date-time-button").on("click", renderDates);
+
   $("#user-form").on("submit", sendTimes);
   $("#vote-form").on("submit", getUserAndSendVote);
 
@@ -144,6 +145,8 @@ const sendTimes = function (event) {
     data.startDates.push(startTime);
     data.endDates.push(endTime);
   });
+
+  console.log('marker', data)
 
   $.ajax({
     url: "/events/new",
