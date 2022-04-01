@@ -7,7 +7,7 @@ module.exports = () => {
     let uniqueUrl = req.params.uniqueUrl;
     const email = req.session.email;
     const name = req.session.name;
-    console.log("cookies 123", email, name);
+    // console.log("cookies 123", email, name);
 
     // let timeId = [];
     // let yesVotes;
