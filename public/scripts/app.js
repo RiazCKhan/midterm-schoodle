@@ -8,16 +8,14 @@ $(document).ready(function () {
 
   $("#start-date-add-btn").on("click", renderStartDate)
   $("#end-date-add-btn").on("click", renderEndDate)
-
+  $("#remove-start-date-btn").on("click", removeStartDate)
 });
 
 const renderStartDate = (event) => {
   event.preventDefault();
 
   let startDateFormData = document.getElementById("start-date-input").value
-
   let startDateFormDataArr = startDateFormData.split('')
-
   let startDay = startDateFormDataArr.slice(8, 10).join('');
   let startMonth = startDateFormDataArr.slice(5, 7).join('');
   let startYear = startDateFormDataArr.slice(0, 4).join('');
@@ -27,15 +25,17 @@ const renderStartDate = (event) => {
                      <div class="w-100 d-none d-md-block"></div>`;
 
   $("#start-time-container").append(startOption);
+
+
+  // Error Handling
+  // Trigger Form Reset
 };
 
 const renderEndDate = (event) => {
   event.preventDefault();
 
   let endDateFormData = document.getElementById("end-date-input").value
-
   let endDateFormDataArr = endDateFormData.split('')
-
   let endDay = endDateFormDataArr.slice(8, 10).join('');
   let endMonth = endDateFormDataArr.slice(5, 7).join('');
   let endYear = endDateFormDataArr.slice(0, 4).join('');
@@ -45,8 +45,17 @@ const renderEndDate = (event) => {
                    <div class="w-100 d-none d-md-block"></div>`;
 
   $("#end-time-container").append(endOption);
+
+
+  // Error Handling
+  // Trigger Form Reset
 };
 
+const removeStartDate = (event) => {
+  event.preventDefault();
+  $("#start-time-container.col div.col").last().remove()
+  $("#start-time-container.col div.w-100").last().remove()
+}
 
 const copy = function (event) {
   event.preventDefault();
