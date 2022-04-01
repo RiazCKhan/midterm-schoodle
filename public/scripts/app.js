@@ -24,7 +24,7 @@ const renderStartDate = (event) => {
   let startYear = startDateFormDataArr.slice(0, 4).join('');
   let startTime = startDateFormDataArr.slice(11, 16).join('');
 
-  let startOption = `<div class="col d-flex justify-content-center px-0 mt-2 mb-2 text-center"> ${startDay}-${startMonth}-${startYear}-${startTime} </div>
+  let startOption = `<div id="start-time" class="col d-flex justify-content-center px-0 mt-2 mb-2 text-center"> ${startDay}-${startMonth}-${startYear}-${startTime} </div>
                      <div class="w-100 d-none d-md-block"></div>`;
 
   $("#start-time-container").append(startOption);
@@ -122,7 +122,9 @@ const renderDates = function (event) {
 
 const sendTimes = function (event) {
   event.preventDefault();
-  let allDates = $("#append-date-time");
+  // let allDates = $("#append-date-time");
+
+  let allStartDates = $("#start-time-container")
 
   let name = $("#user-form #name").val(); // DO NOT DELETE - Note: Find content by referencing 'double id / class'
   let email = $("#user-form #email").val();
@@ -138,15 +140,25 @@ const sendTimes = function (event) {
     endDates: [],
   };
 
-  allDates.children(".time-container").each(function () {
-    let startTime = $(this).find(".start-time").text();
-    let endTime = $(this).find(".end-time").text();
 
-    data.startDates.push(startTime);
-    data.endDates.push(endTime);
-  });
+  console.log('start-time-container', allStartDates.children("#start-time").text())
 
-  console.log('marker', data)
+
+
+  // allStartDates.children().each(function () {
+  //   let startTime = $(this).find("#start-time").val()
+  //   data.startDates.push(startTime);
+  // })
+
+  // allDates.children(".time-container").each(function () {
+  //   let startTime = $(this).find(".start-time").text();
+  //   let endTime = $(this).find(".end-time").text();
+
+  //   data.startDates.push(startTime);
+  //   data.endDates.push(endTime);
+  // });
+
+  console.log('Constructed Data OBJ', data)
 
   $.ajax({
     url: "/events/new",
