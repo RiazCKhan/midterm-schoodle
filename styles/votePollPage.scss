@@ -9,21 +9,37 @@
 .font-overlay {
   font-family: 'font awesome 6 free';
   letter-spacing: 2px;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
 }
 
 .poll-header {
   font-family: 'font awesome 6 free';
   letter-spacing: 2px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   border-bottom: solid;
   border-width: 0.12rem;
   border-color: #212529;
 }
 
-.event-input {
-  margin-top: 1rem;
-  margin-left: 1.8rem;
+.vote-poll-header {
+  font-family: 'font awesome 6 free';
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  // border-bottom: solid;
+  // border-width: 0.12rem;
+  // border-color: #212529;
+}
+
+.sectional-border {
+  border-bottom: solid;
+  border-width: 0.12rem;
+  border-color: #212529;
+  z-index: 1;
+}
+
+.poll-voter-info {
+  margin-top: 0.5rem;
+  // margin-left: 1.8rem;
 }
 
 .text-box {
