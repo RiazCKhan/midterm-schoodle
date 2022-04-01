@@ -122,9 +122,8 @@ const renderDates = function (event) {
 
 const sendTimes = function (event) {
   event.preventDefault();
-  // let allDates = $("#append-date-time");
 
-  let rawStartDateData = $("#start-time-container").children("#start-time").text().split(' ')
+  let rawStartData = $("#start-time-container").children("#start-time").text().split(' ')
 
   let name = $("#user-form #name").val(); // DO NOT DELETE - Note: Find content by referencing 'double id / class'
   let email = $("#user-form #email").val();
@@ -140,17 +139,16 @@ const sendTimes = function (event) {
     endDates: [],
   };
 
+  rawStartData.forEach((time) => {
+    if (time !== "") {
+      data.startDates.push(time)
+    }
+  })
 
-  // console.log('start-time-container', allStartDates.children("#start-time").text())
 
-  // console.log(typeof(allStartDates.children("#start-time").text()))
+  console.log('Constructed Data OBJ', data)
 
-  console.log(rawStartDateData)
 
-  // allStartDates.children("#start-time").each(function (time) {
-  //   let startTime = time.text()
-  //   data.startDates.push(startTime);
-  // })
 
   // allDates.children(".time-container").each(function () {
   //   let startTime = $(this).find(".start-time").text();
@@ -160,7 +158,6 @@ const sendTimes = function (event) {
   //   data.endDates.push(endTime);
   // });
 
-  console.log('Constructed Data OBJ', data)
 
   $.ajax({
     url: "/events/new",
