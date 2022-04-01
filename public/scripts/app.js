@@ -3,6 +3,7 @@
 $(document).ready(function () {
   $("#copy").on("click", copy);
   $("#add-date-time-button").on("click", renderDates);
+
   $("#user-form").on("submit", sendTimes);
   $("#vote-form").on("submit", getUserAndSendVote);
 
@@ -23,7 +24,7 @@ const renderStartDate = (event) => {
   let startYear = startDateFormDataArr.slice(0, 4).join('');
   let startTime = startDateFormDataArr.slice(11, 16).join('');
 
-  let startOption = `<div class="col d-flex justify-content-center px-0 mt-2 mb-2 text-center"> ${startDay}-${startMonth}-${startYear}-${startTime} </div>
+  let startOption = `<div id="start-time" class="col d-flex justify-content-center px-0 mt-2 mb-2 text-center"> ${startDay}-${startMonth}-${startYear}-${startTime} </div>
                      <div class="w-100 d-none d-md-block"></div>`;
 
   $("#start-time-container").append(startOption);
@@ -43,7 +44,7 @@ const renderEndDate = (event) => {
   let endYear = endDateFormDataArr.slice(0, 4).join('');
   let endTime = endDateFormDataArr.slice(11, 16).join('');
 
-  let endOption = `<div class="col d-flex justify-content-center px-0 mt-2 mb-2 text-center"> ${endDay}-${endMonth}-${endYear}-${endTime} </div>
+  let endOption = `<div id="end-time" class="col d-flex justify-content-center px-0 mt-2 mb-2 text-center"> ${endDay}-${endMonth}-${endYear}-${endTime} </div>
                    <div class="w-100 d-none d-md-block"></div>`;
 
   $("#end-time-container").append(endOption);
@@ -121,7 +122,9 @@ const renderDates = function (event) {
 
 const sendTimes = function (event) {
   event.preventDefault();
-  let allDates = $("#append-date-time");
+
+  let rawStartData = $("#start-time-container").children("#start-time").text().split(' ')
+  let rawEndData = $("#end-time-container").children("#end-time").text().split(' ')
 
   let name = $("#user-form #name").val(); // DO NOT DELETE - Note: Find content by referencing 'double id / class'
   let email = $("#user-form #email").val();
@@ -137,13 +140,17 @@ const sendTimes = function (event) {
     endDates: [],
   };
 
-  allDates.children(".time-container").each(function () {
-    let startTime = $(this).find(".start-time").text();
-    let endTime = $(this).find(".end-time").text();
+  rawStartData.forEach((time) => {
+    if (time !== "") {
+      data.startDates.push(time)
+    }
+  })
 
-    data.startDates.push(startTime);
-    data.endDates.push(endTime);
-  });
+  rawEndData.forEach((time) => {
+    if (time !== "") {
+      data.endDates.push(time)
+    }
+  })
 
   $.ajax({
     url: "/events/new",
