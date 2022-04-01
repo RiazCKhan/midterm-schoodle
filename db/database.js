@@ -66,36 +66,36 @@ const addVotes = (votes, voter) => {
 };
 exports.addVotes = addVotes;
 
-// const addTimes = function (times, event) {
-//   let currentEvent = getEventByUrl(event.url);
-//   let eventId = 0;
+const addTimes = function (times, event) {
+  let currentEvent = getEventByUrl(event.url);
+  let eventId = 0;
 
-//   currentEvent.then(function (result) {
-//     let parsed = JSON.parse(JSON.stringify(result));
-//     eventId = parsed[0].event_id;
-//     // console.log('id is ', eventId);
+  currentEvent.then(function (result) {
+    let parsed = JSON.parse(JSON.stringify(result));
+    eventId = parsed[0].event_id;
+    // console.log('id is ', eventId);
 
-//     // console.log('current event', currentEvent);
-//     for (let i = 0; i < times.startDates.length; i++) {
-//       // console.log('length of array:', times.startDates.length);
+    // console.log('current event', currentEvent);
+    for (let i = 0; i < times.startDates.length; i++) {
+      // console.log('length of array:', times.startDates.length);
 
-//       db.query(
-//         `INSERT INTO times (event_id, start_date, end_date)
-//       VALUES ($1, $2, $3)
-//       RETURNING *;`,
-//         [eventId, times.startDates[i], times.endDates[i]]
-//       ) // Will need to match names of info taken in on votes page
-//         .then((res) => {
-//           // console.log('result', res.rows)
-//           result.rows;
-//         })
-//         .catch((err) => {
-//           console.log(err.stack);
-//         });
-//     }
-//   });
-// };
-// exports.addTimes = addTimes;
+      db.query(
+        `INSERT INTO times (event_id, start_date, end_date)
+      VALUES ($1, $2, $3)
+      RETURNING *;`,
+        [eventId, times.startDates[i], times.endDates[i]]
+      ) // Will need to match names of info taken in on votes page
+        .then((res) => {
+          // console.log('result', res.rows)
+          result.rows;
+        })
+        .catch((err) => {
+          console.log(err.stack);
+        });
+    }
+  });
+};
+exports.addTimes = addTimes;
 
 const checkVoterWithEmail = function (user) {
   return db
@@ -300,6 +300,7 @@ const getTimeIdsByUrl = function (uniqueUrl) {
       [uniqueUrl]
     )
     .then((result) => {
+      console.log('result of get time id by url', result.rows)
       return result.rows;
     })
     .catch((err) => {
