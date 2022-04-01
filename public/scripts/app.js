@@ -124,7 +124,7 @@ const sendTimes = function (event) {
   event.preventDefault();
   // let allDates = $("#append-date-time");
 
-  let allStartDates = $("#start-time-container")
+  let rawStartDateData = $("#start-time-container").children("#start-time").text().split(' ')
 
   let name = $("#user-form #name").val(); // DO NOT DELETE - Note: Find content by referencing 'double id / class'
   let email = $("#user-form #email").val();
@@ -141,12 +141,14 @@ const sendTimes = function (event) {
   };
 
 
-  console.log('start-time-container', allStartDates.children("#start-time").text())
+  // console.log('start-time-container', allStartDates.children("#start-time").text())
 
+  // console.log(typeof(allStartDates.children("#start-time").text()))
 
+  console.log(rawStartDateData)
 
-  // allStartDates.children().each(function () {
-  //   let startTime = $(this).find("#start-time").val()
+  // allStartDates.children("#start-time").each(function (time) {
+  //   let startTime = time.text()
   //   data.startDates.push(startTime);
   // })
 
