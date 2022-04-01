@@ -31,7 +31,7 @@
 }
 
 .set-time-border {
-  height: 8rem;
+  height: 10rem;
   overflow-y: scroll;
   border-style: solid;
   border-width: 0.12rem;
@@ -52,3 +52,15 @@ button {
   font-family: 'font awesome 6 free';
   letter-spacing: 2px;
 }
+
+#start-date-form, #end-date-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  #start-date-add-btn, #remove-start-date-btn, #end-date-add-btn, #remove-end-date-btn {
+    width: 5rem;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    }
+  }
