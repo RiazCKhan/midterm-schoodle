@@ -9,6 +9,7 @@ $(document).ready(function () {
   $("#start-date-add-btn").on("click", renderStartDate)
   $("#end-date-add-btn").on("click", renderEndDate)
   $("#remove-start-date-btn").on("click", removeStartDate)
+  $("#remove-end-date-btn").on("click", removeEndDate)
 });
 
 const renderStartDate = (event) => {
@@ -25,7 +26,6 @@ const renderStartDate = (event) => {
                      <div class="w-100 d-none d-md-block"></div>`;
 
   $("#start-time-container").append(startOption);
-
 
   // Error Handling
   // Trigger Form Reset
@@ -46,7 +46,6 @@ const renderEndDate = (event) => {
 
   $("#end-time-container").append(endOption);
 
-
   // Error Handling
   // Trigger Form Reset
 };
@@ -55,6 +54,12 @@ const removeStartDate = (event) => {
   event.preventDefault();
   $("#start-time-container.col div.col").last().remove()
   $("#start-time-container.col div.w-100").last().remove()
+}
+
+const removeEndDate = (event) => {
+  event.preventDefault();
+  $("#end-time-container.col div.col").last().remove()
+  $("#end-time-container.col div.w-100").last().remove()
 }
 
 const copy = function (event) {
