@@ -1,78 +1,74 @@
-section {
-  display: flex;
-  justify-content: center;
+.event-container {
+  background-color: ghostwhite;
+  padding: 1rem;
+  border-style: solid;
+  border-width: 0.12rem;
+  border-color: #212529;
 }
 
-.share-event {
+.font-overlay {
+  font-family: 'font awesome 6 free';
+  letter-spacing: 2px;
+  font-size: 0.6rem;
+}
+
+.poll-header {
+  font-family: 'font awesome 6 free';
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  border-bottom: solid;
+  border-width: 0.12rem;
+  border-color: #212529;
+}
+
+.vote-poll-header {
+  font-family: 'font awesome 6 free';
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  // border-bottom: solid;
+  // border-width: 0.12rem;
+  // border-color: #212529;
+}
+
+.poll-voter-info {
+  margin-top: 0.5rem;
+}
+
+.text-box {
+  resize: none;
+}
+
+.set-time-border {
+  height: 10rem;
+  overflow-y: scroll;
+  border-style: solid;
+  border-width: 0.12rem;
+  border-color: #212529;
+  background-color: white;
+}
+
+.start-end-time-header {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.5rem;
+  font-family: 'font awesome 6 free';
+  letter-spacing: 2px;
+  font-size: 0.6rem;
+}
+
+button {
+  font-family: 'font awesome 6 free';
+  letter-spacing: 2px;
+}
+
+#start-date-form, #end-date-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
-  border: 2px solid black;
-  width: 90%
-}
-
-.event-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 0.5rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-
-#url-link {
-  width: 18rem;
-}
-
-#voter-name-box {
-  display: flex;
   justify-content: center;
-}
 
-#voter-email-box {
-  display: flex;
-  justify-content: center;
-}
-
-#voter-name {
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-#voter-email {
-  margin-bottom: 2rem;
-}
-
-.voter-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 0.5rem;
-}
-
-#vote-button-style {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 80%
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 0.5rem;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+  #start-date-add-btn, #remove-start-date-btn, #end-date-add-btn, #remove-end-date-btn {
+    width: 5rem;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    }
+  }
