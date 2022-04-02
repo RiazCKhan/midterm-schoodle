@@ -141,40 +141,27 @@
     </article>
   </section> -->
 
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        1 of 2
-      </div>
-      <div class="col">
-        2 of 2
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        1 of 3
-      </div>
-      <div class="col">
-        2 of 3
-      </div>
-      <div class="col">
-        3 of 3
-      </div>
-    </div>
-  </div>
 
   <section class="container mt-4">
     <article class="event-container">
-      <div class="row poll-header">
-        <div class="col-8 mt-1 mb-3">INSERT EJS Event / Poll Title</div>
-      </div>
-      <div class="row">
-        <div class="col-8 mt-3 event-input font-overlay">INSERT EJS Name</div>
-      </div>
-      <div class="row">
-        <div class="col-8 mt-3 event-input font-overlay">INSERT EJS Event Description</div>
-      </div>
+      <% if (event) { %>
+        <% const detailsArr=Object.values(event[0]) %>
+          <% let title=detailsArr[5] %>
+            <% let name=detailsArr[2] %>
+              <% let desc=detailsArr[6] %>
+                <div class="row poll-header">
+                  <div class="col-8 mt-1 mb-3">Poll Title: <%= title %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8 mt-3 event-input font-overlay">Poll Created By: <%= name %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8 mt-3 event-input font-overlay">Event Description: <%= desc %>
+                  </div>
+                </div>
+                <% }; %>
     </article>
   </section>
 
@@ -183,23 +170,22 @@
       <div class="row vote-poll-header">
         <div class="col-8 mt-1 mb-3">Voter Information</div>
       </div>
-
       <div class="row align-items-center">
         <div class="col-2 text-center mt-1 poll-voter-info font-overlay">Name</div>
         <input class="col-8 mt-1" type="text" id="name" name="owner_name">
       </div>
-
       <div class="row align-items-center">
         <div class="col-2 text-center mt-1 poll-voter-info font-overlay">Email</div>
         <input class="col-8 mt-1" type="text" id="email" name="owner_email">
       </div>
-
     </article>
   </section>
 
   <section class="container mt-4">
     <div class="event-container">
+
       <section class="row">
+
         <article class="col">
           <div class="col-2 mt-3 font-overlay">Start</div>
           <input class="col-9 mt-1" type="datetime-local" id="" name="">
@@ -209,11 +195,14 @@
           <button class="btn btn-info btn-sm mb-1">Add</button>
           <div class="w-100"></div>
         </article>
+
         <article class="col">
           <div class="col-12 mt-3 text-center font-overlay">Dates and Times</div>
           <div class="set-time-border"></div>
         </article>
+
       </section>
+
     </div>
   </section>
 
