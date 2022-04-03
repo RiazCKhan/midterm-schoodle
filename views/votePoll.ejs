@@ -105,9 +105,11 @@
                     </div>
                   </div>
                   <div class="row justify-content-center">
-                    <div class="col mt-3 text-center font-overlay">
-                        Copy the URL to share!
-                      <input class="col text-center" value="http://localhost:8080/vote/<%= url %>" id="url-link" />
+                    <div class="col mt-3 text-center">
+                        <div class="font-overlay">
+                          Copy the URL to share!
+                        </div>
+                      <input class="col text-center font-overlay" value="http://localhost:8080/vote/<%= url %>" id="url-link" />
                       <button id="copy" class="btn btn-info btn-sm">Copy</button>
                     </div>
                   </div>
@@ -170,6 +172,12 @@
       </div>
     </section>
   </form>
+
+  <section class="container">
+    <article class="row justify-content-center">
+      <button class="col-3 mt-4 btn btn-info">Vote</button>
+    </article>
+  </section>
 
 
   <!-- The Section Below is responsible for showing the LIVE RESULTS -->
