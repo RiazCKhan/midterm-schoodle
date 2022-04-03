@@ -93,14 +93,6 @@
     </article>
   </section>
 
-  <div id="voter-name-box">
-    <input type="text" id="voter-name" value="<%= name %>" name="name" placeholder="Name">
-  </div>
-
-  <div id="voter-email-box">
-    <input type="text" id="voter-email" value="<%= email %>" name="email" placeholder="example@mail.com">
-  </div>
-
   <% Object.keys(formattedEvent.times).forEach((timeId, i)=> { %>
     <% const time=formattedEvent.times[timeId]; %>
 
