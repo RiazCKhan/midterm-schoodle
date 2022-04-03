@@ -60,6 +60,7 @@
           <% let title=detailsArr[5] %>
             <% let name=detailsArr[2] %>
               <% let desc=detailsArr[6] %>
+              <% let url=detailsArr[7] %>
                 <div class="row poll-header">
                   <div class="col-8 mt-1 mb-3">Poll Title: <%= title %>
                   </div>
@@ -72,11 +73,18 @@
                   <div class="col-8 mt-3 event-input font-overlay">Event Description: <%= desc %>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-8 mt-3 font-overlay">
+                    Copy the URL to share!
+                    <input value="http://localhost:8080/vote/<%= url %>" id="url-link" />
+                    <button id="copy" class="btn-outline-dark">Copy</button>
+                  </div>
+                </div>
                 <% }; %>
     </article>
   </section>
 
-  <form>
+  <form id="voter-form">
     <section class="container mt-4">
       <article class="event-container">
         <div class="row vote-poll-header">
@@ -133,36 +141,40 @@
   </form>
 
 
-        <!-- The Section Below is responsible for showing the LIVE RESULTS -->
-        <section>
-          <table>
-            <tr>
-              <th>Date</th>
-              <th>Yes - Lets GO!</th>
-              <th>Nope - Not Down</th>
-            </tr>
-            <% console.log(formattedEvent) %>
-              <% Object.keys(formattedEvent.times).forEach((timeId, i)=> { %>
-                <% const time=formattedEvent.times[timeId]; %>
+  <!-- The Section Below is responsible for showing the LIVE RESULTS -->
+  <section>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Yes - Lets GO!</th>
+        <th>Nope - Not Down</th>
+      </tr>
+      <% console.log(formattedEvent) %>
+        <% Object.keys(formattedEvent.times).forEach((timeId, i)=> { %>
+          <% const time=formattedEvent.times[timeId]; %>
 
-                  <% const yesVotes=time.votes.filter(vote=> vote.vote) %>
-                    <% const noVotes=time.votes.filter(vote=> !vote.vote) %>
-                      <tr>
-                        <td>
-                          <%= time.startDate %> - <%= time.endDate %>
-                        </td>
-                        <td>
-                          <%= yesVotes.length %>
-                        </td>
-                        <td>
-                          <%= noVotes.length %>
-                        </td>
-                      </tr>
+            <% const yesVotes=time.votes.filter(vote=> vote.vote) %>
+              <% const noVotes=time.votes.filter(vote=> !vote.vote) %>
+                <tr>
+                  <td>
+                    <%= time.startDate %> - <%= time.endDate %>
+                  </td>
+                  <td>
+                    <%= yesVotes.length %>
+                  </td>
+                  <td>
+                    <%= noVotes.length %>
+                  </td>
+                </tr>
 
-                      <% }) %>
+                <% }) %>
 
-          </table>
-        </section>
+    </table>
+  </section>
+
+  <footer class="footer-overlay position-sticky">
+    <span class="text-muted">Footer Information Here</span>
+  </footer>
 
 </body>
 
