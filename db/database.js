@@ -78,6 +78,7 @@ const addTimes = function (times, event) {
     eventId = parsed[0].event_id;
     // console.log('id is ', eventId);
 
+
     // console.log('current event', currentEvent);
     for (let i = 0; i < times.startDates.length; i++) {
       // console.log('length of array:', times.startDates.length);
