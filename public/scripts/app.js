@@ -171,10 +171,7 @@ const getUserAndSendVote = function (event) {
   let voterEmail = $("#vote-form #voter-email").val();
   let optionOneVote = $("input[name=vote-poll-1]:checked", "#vote-form").val();
   let optionTwoVote = $("input[name=vote-poll-2]:checked", "#vote-form").val();
-  let optionThreeVote = $(
-    "input[name=vote-poll-3]:checked",
-    "#vote-form"
-  ).val();
+  let optionThreeVote = $("input[name=vote-poll-3]:checked", "#vote-form").val();
 
   let entireUrl = $("#url-link").val();
   let splitUrl = entireUrl.split("/");
