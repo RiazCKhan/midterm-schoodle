@@ -70,10 +70,14 @@ const addTimes = function (times, event) {
   let currentEvent = getEventByUrl(event.url);
   let eventId = 0;
 
+  console.log('addTimes time', times)
+  console.log('addTimes event', event)
+
   currentEvent.then(function (result) {
     let parsed = JSON.parse(JSON.stringify(result));
     eventId = parsed[0].event_id;
     // console.log('id is ', eventId);
+
 
     // console.log('current event', currentEvent);
     for (let i = 0; i < times.startDates.length; i++) {
@@ -300,6 +304,7 @@ const getTimeIdsByUrl = function (uniqueUrl) {
       [uniqueUrl]
     )
     .then((result) => {
+      console.log('result of get time id by url', result.rows)
       return result.rows;
     })
     .catch((err) => {

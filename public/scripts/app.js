@@ -195,7 +195,7 @@ const getUserAndSendVote = function (event) {
     data: data,
     success: function (res) {
       location.reload();
-      //window.location.href = res.url;
+      // window.location.href = res.url;
       /* update table values: jquery selector table id || invoke getVoteCount FN */
     },
     error: function () { },
