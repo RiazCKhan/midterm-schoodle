@@ -60,27 +60,29 @@
           <% let title=detailsArr[5] %>
             <% let name=detailsArr[2] %>
               <% let desc=detailsArr[6] %>
-              <% let url=detailsArr[7] %>
-                <div class="row poll-header">
-                  <div class="col-8 mt-1 mb-3">Poll Title: <%= title %>
+                <% let url=detailsArr[7] %>
+                  <div class="row poll-header">
+                    <div class="col-8 mt-1 mb-3">Poll Title: <%= title %>
+                    </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-8 mt-3 event-input font-overlay">Poll Created By: <%= name %>
+                  <div class="row">
+                    <div class="col-8 mt-3 event-input font-overlay">Poll Created By: <%= name %>
+                    </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-8 mt-3 event-input font-overlay">Event Description: <%= desc %>
+                  <div class="row">
+                    <div class="col-8 mt-3 event-input font-overlay">Event Description: <%= desc %>
+                    </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-8 mt-3 font-overlay">
-                    Copy the URL to share!
-                    <input value="http://localhost:8080/vote/<%= url %>" id="url-link" />
-                    <button id="copy" class="btn-outline-dark">Copy</button>
+                  <div class="row justify-content-center">
+                    <div class="col-8 mt-3 text-center font-overlay">
+                      <div>
+                        Copy the URL to share!
+                      </div>
+                      <input class="col mt-2 text-center" value="http://localhost:8080/vote/<%= url %>" id="url-link" />
+                      <button id="copy" class="btn btn-info btn-sm mt-2">Copy</button>
+                    </div>
                   </div>
-                </div>
-                <% }; %>
+                  <% }; %>
     </article>
   </section>
 
