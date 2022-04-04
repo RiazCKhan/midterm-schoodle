@@ -153,7 +153,6 @@ const sendTimes = function (event) {
   })
 
   // Error Handling
-
   let $nameErrorMessage = $("#name-error-message");
   if (!data.name) {
     $nameErrorMessage
