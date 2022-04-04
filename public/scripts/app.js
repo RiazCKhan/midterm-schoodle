@@ -159,7 +159,7 @@ const sendTimes = function (event) {
     $nameErrorMessage
       .text("Error: name required")
       .delay(2000)
-      .slideUp();
+      .slideUp()
     return false;
   }
 
@@ -168,7 +168,7 @@ const sendTimes = function (event) {
     $emailErrorMessage
       .text("Error: email required")
       .delay(2000)
-      .slideUp();
+      .slideUp()
     return false;
   }
 
@@ -177,7 +177,7 @@ const sendTimes = function (event) {
     $titleErrorMessage
       .text("Error: title required")
       .delay(2000)
-      .slideUp();
+      .slideUp()
     return false;
   }
 
@@ -186,7 +186,7 @@ const sendTimes = function (event) {
     $descErrorMessage
       .text("Error: description required")
       .delay(2000)
-      .slideUp();
+      .slideUp()
     return false;
   }
 
@@ -195,7 +195,7 @@ const sendTimes = function (event) {
     $dateErrorMessage
       .text("Error: three 'Start' and 'End' dates required")
       .delay(2000)
-      .slideUp();
+      .slideUp()
     return false;
   }
 
