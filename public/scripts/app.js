@@ -153,15 +153,38 @@ const sendTimes = function (event) {
   })
 
   // Error Handling
-  let $userFormErrorMessage = $("#name-error-message");
+  let $nameErrorMessage = $("#name-error-message");
+  let $emailErrorMessage = $("#email-error-message");
+  let $titleErrorMessage = $("#title-error-message");
+  let $descErrorMessage = $("#desc-error-message");
 
-  for (const formItems of Object.keys(data)) {
-    if (!name || !email) {
-      $userFormErrorMessage
-        .text("Error: name required")
-      return false;
-    }
+  if (!data.name) {
+    $nameErrorMessage
+      .text("Error: name required")
+    return false;
+  }
 
+  if (!data.email) {
+    $emailErrorMessage
+      .text("Error: email required")
+    return false;
+  }
+
+  if (!data.title) {
+    $titleErrorMessage
+      .text("Error: title required")
+    return false;
+  }
+
+  if (!data.description) {
+    $descErrorMessage
+      .text("Error: description required")
+    return false;
+  }
+
+  // !data.endDates.length < 2
+  if (!data.startDates < 2) {
+return false
   }
 
 
