@@ -182,8 +182,10 @@ const sendTimes = function (event) {
     return false;
   }
 
+  let $dateErrorMessage = $("#date-error-message");
   // !data.endDates.length < 2
   if (!data.startDates < 2) {
+    $dateErrorMessage.text('hello')
 return false
   }
 
