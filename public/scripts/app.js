@@ -153,29 +153,29 @@ const sendTimes = function (event) {
   })
 
   // Error Handling
-  let $nameErrorMessage = $("#name-error-message");
-  let $emailErrorMessage = $("#email-error-message");
-  let $titleErrorMessage = $("#title-error-message");
-  let $descErrorMessage = $("#desc-error-message");
 
+  let $nameErrorMessage = $("#name-error-message");
   if (!data.name) {
     $nameErrorMessage
-      .text("Error: name required")
+    .text("Error: name required")
     return false;
   }
 
+  let $emailErrorMessage = $("#email-error-message");
   if (!data.email) {
     $emailErrorMessage
-      .text("Error: email required")
+    .text("Error: email required")
     return false;
   }
 
+  let $titleErrorMessage = $("#title-error-message");
   if (!data.title) {
     $titleErrorMessage
-      .text("Error: title required")
+    .text("Error: title required")
     return false;
   }
 
+  let $descErrorMessage = $("#desc-error-message");
   if (!data.description) {
     $descErrorMessage
       .text("Error: description required")
@@ -183,10 +183,9 @@ const sendTimes = function (event) {
   }
 
   let $dateErrorMessage = $("#date-error-message");
-  // !data.endDates.length < 2
-  if (!data.startDates < 2) {
+  if (!data.startDates < 3 || !data.endDates.length < 3) {
     $dateErrorMessage.text('hello')
-return false
+    return false
   }
 
 
