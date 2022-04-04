@@ -152,6 +152,16 @@ const sendTimes = function (event) {
     }
   })
 
+
+  let $userFormErrorMessage = $("#user-form #user-form-error-message");
+
+  if (!data.name) {
+    $userFormErrorMessage
+      .text("Error: name required")
+    return false;
+  }
+
+
   $.ajax({
     url: "/events/new",
     type: "POST",
