@@ -152,13 +152,16 @@ const sendTimes = function (event) {
     }
   })
 
+  // Error Handling
+  let $userFormErrorMessage = $("#name-error-message");
 
-  let $userFormErrorMessage = $("#user-form #user-form-error-message");
+  for (const formItems of Object.keys(data)) {
+    if (!name || !email) {
+      $userFormErrorMessage
+        .text("Error: name required")
+      return false;
+    }
 
-  if (!data.name) {
-    $userFormErrorMessage
-      .text("Error: name required")
-    return false;
   }
 
 
