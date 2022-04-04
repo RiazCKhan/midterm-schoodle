@@ -158,6 +158,8 @@ const sendTimes = function (event) {
   if (!data.name) {
     $nameErrorMessage
     .text("Error: name required")
+    .delay(2000)
+    .slideUp();
     return false;
   }
 
@@ -165,6 +167,8 @@ const sendTimes = function (event) {
   if (!data.email) {
     $emailErrorMessage
     .text("Error: email required")
+    .delay(2000)
+    .slideUp();
     return false;
   }
 
@@ -172,6 +176,8 @@ const sendTimes = function (event) {
   if (!data.title) {
     $titleErrorMessage
     .text("Error: title required")
+    .delay(2000)
+    .slideUp();
     return false;
   }
 
@@ -179,12 +185,17 @@ const sendTimes = function (event) {
   if (!data.description) {
     $descErrorMessage
       .text("Error: description required")
+      .delay(2000)
+      .slideUp();
     return false;
   }
 
   let $dateErrorMessage = $("#date-error-message");
   if (!data.startDates < 3 || !data.endDates.length < 3) {
-    $dateErrorMessage.text("Error: three 'Start' and 'End' dates required" )
+    $dateErrorMessage
+    .text("Error: three 'Start' and 'End' dates required" )
+    .delay(2000)
+    .slideUp();
     return false;
   }
 
