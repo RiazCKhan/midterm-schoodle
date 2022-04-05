@@ -93,19 +93,23 @@
         <div class="row">
           <div class="col-8 mt-3 event-input font-overlay">Name</div>
           <input class="col-11 mx-auto mt-1" type="text" id="name" name="owner_name">
+          <div id="name-error-message"></div>
         </div>
         <div class="row">
           <div class="col-8 mt-3 event-input font-overlay">Email</div>
           <input class="col-11 mx-auto mt-1" type="text" id="email" name="owner_email">
+          <div id="email-error-message"></div>
         </div>
         <div class="row">
           <div class="col-8 mt-3 event-input font-overlay">Event Title</div>
           <input class="col-11 mx-auto mt-1" type="text" id="title" name="event_title">
+          <div id="title-error-message"></div>
         </div>
         <div class="row">
           <div class="col-8 mt-3 event-input font-overlay">Event Description</div>
           <textarea class="text-box col-11 mx-auto mt-1" type="text" id="description"
             name="event_description"></textarea>
+          <div id="desc-error-message"></div>
         </div>
       </form>
     </article>
@@ -134,7 +138,6 @@
             <div>
               <button id="end-date-add-btn" class="btn btn-info btn-sm mb-1">Add</button>
               <button id="remove-end-date-btn" class="btn btn-warning btn-sm mb-1">Remove</button>
-
             </div>
           </form>
 
@@ -153,6 +156,7 @@
               <div id="end-time-container" class="col"></div>
             </div>
           </div>
+          <div id="date-error-message"></div>
         </div>
       </div>
     </article>

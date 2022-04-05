@@ -24,6 +24,16 @@ const renderStartDate = (event) => {
   let startYear = startDateFormDataArr.slice(0, 4).join('');
   let startTime = startDateFormDataArr.slice(11, 16).join('');
 
+  // Error Handling
+  let $dateErrorMessage = $("#date-error-message");
+  if (startDateFormData === "") {
+    $dateErrorMessage
+      .text("Error: date cannot be blank")
+      .delay(2000)
+      .slideUp()
+    return false;
+  }
+
   let startOption = `<div id="start-time" class="col d-flex justify-content-center px-0 mt-2 mb-2 text-center"> ${startDay}-${startMonth}-${startYear}-${startTime} </div>
                      <div class="w-100 d-none d-md-block"></div>`;
 
@@ -43,6 +53,16 @@ const renderEndDate = (event) => {
   let endMonth = endDateFormDataArr.slice(5, 7).join('');
   let endYear = endDateFormDataArr.slice(0, 4).join('');
   let endTime = endDateFormDataArr.slice(11, 16).join('');
+
+  // Error Handling
+  let $dateErrorMessage = $("#date-error-message");
+  if (endDateFormData === "") {
+    $dateErrorMessage
+      .text("Error: date cannot be blank")
+      .delay(2000)
+      .slideUp()
+    return false;
+  }
 
   let endOption = `<div id="end-time" class="col d-flex justify-content-center px-0 mt-2 mb-2 text-center"> ${endDay}-${endMonth}-${endYear}-${endTime} </div>
                    <div class="w-100 d-none d-md-block"></div>`;
@@ -151,6 +171,53 @@ const sendTimes = function (event) {
       data.endDates.push(time)
     }
   })
+
+  // Error Handling
+  let $nameErrorMessage = $("#name-error-message");
+  if (!data.name) {
+    $nameErrorMessage
+      .text("Error: name required")
+      .delay(2000)
+      .slideUp()
+    return false;
+  }
+
+  let $emailErrorMessage = $("#email-error-message");
+  if (!data.email) {
+    $emailErrorMessage
+      .text("Error: email required")
+      .delay(2000)
+      .slideUp()
+    return false;
+  }
+
+  let $titleErrorMessage = $("#title-error-message");
+  if (!data.title) {
+    $titleErrorMessage
+      .text("Error: title required")
+      .delay(2000)
+      .slideUp()
+    return false;
+  }
+
+  let $descErrorMessage = $("#desc-error-message");
+  if (!data.description) {
+    $descErrorMessage
+      .text("Error: description required")
+      .delay(2000)
+      .slideUp()
+    return false;
+  }
+
+  let $dateErrorMessage = $("#date-error-message");
+  if (!data.startDates < 3 || !data.endDates.length < 3) {
+    $dateErrorMessage
+      .text("Error: three 'Start' and 'End' dates required")
+      .delay(2000)
+      .slideUp()
+    return false;
+  }
+
 
   $.ajax({
     url: "/events/new",
