@@ -265,4 +265,9 @@ const getUserAndSendVote = function (event) {
     error: function () { },
     dataType: "json",
   });
+
+  let $resultSection = $("#result-section")
+
+  $resultSection.slideDown();
+
 };
