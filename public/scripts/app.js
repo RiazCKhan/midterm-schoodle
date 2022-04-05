@@ -210,7 +210,7 @@ const sendTimes = function (event) {
   }
 
   let $dateErrorMessage = $("#date-error-message");
-  if (!data.startDates < 3 || !data.endDates.length < 3) {
+  if (data.startDates.length < 3 || data.endDates.length < 3) {
     $dateErrorMessage
       .text("Error: three 'Start' and 'End' dates required")
       .delay(2000)
