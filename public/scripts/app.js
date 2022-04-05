@@ -93,53 +93,6 @@ const copy = function (event) {
   navigator.clipboard.writeText(text);
 };
 
-const renderDates = function (event) {
-  event.preventDefault();
-
-  const $form = $(this).closest("form");
-
-  let startDateDay = $form.find("#date-form__start-day").val();
-  let startDateMonth = $form.find("#date-form__start-month").val();
-  let startDateYear = $form.find("#date-form__start-year").val();
-  let startDateTime = $form.find("#date-form__start-time").val();
-
-  let endDateDay = $form.find("#date-form__end-day").val();
-  let endDateMonth = $form.find("#date-form__end-month").val();
-  let endDateYear = $form.find("#date-form__end-year").val();
-  let endDateTime = $form.find("#date-form__end-time").val();
-
-  // let $error = $form.find(".error-msg")
-  let $error = $("#date-form .error-msg");
-
-  if (!startDateDay || !startDateMonth || !startDateYear || !startDateTime) {
-    $error.text("Error: all fields required")
-      .slideDown()
-      .delay(1500)
-      .slideUp();
-    return false;
-  }
-
-  if (!endDateDay || !endDateMonth || !endDateYear || !endDateTime) {
-    $error
-      .text("Error: all fields required")
-      .slideDown("slow")
-      .delay(1500)
-      .slideUp("slow");
-    return false;
-  }
-
-  let pollOption = `
-    <div class='time-container'>
-    <span class="start-time"> ${startDateYear} / ${startDateMonth} / ${startDateDay} ${startDateTime} </span> -
-    <span class="end-time"> ${endDateYear} / ${endDateMonth} / ${endDateDay} ${endDateTime} </span>
-    </div>
-  `;
-
-  $("#append-date-time").prepend(pollOption);
-
-  $form.trigger("reset");
-};
-
 const sendTimes = function (event) {
   event.preventDefault();
 
