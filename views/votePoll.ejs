@@ -140,37 +140,57 @@
 
         <div class="row">
           <div class="col">
-            Polling Option [Title]
+            Polling Options
           </div>
 
           <div class="col">
-            Graph Title
+            Results
+          </div>
+
+          <div class="row">
+            <article class="col">
+              <% Object.keys(formattedEvent.times).forEach((timeId, i)=> { %>
+                <% const time=formattedEvent.times[timeId] %>
+                  <div>
+                    <div class="col">
+                      Option <%= i + 1 %>
+                    </div>
+                    <label for="opt-<%=i+1%>"><%= time.startDate %> -> <%= time.endDate %></label>
+                    <input type="radio" id="opt-<%=i+1%>a" name="vote-poll-<%=i+1%>" value="<%= timeId %>, true">Yes</input>
+                    <input type="radio" id="opt-<%=i+1%>b" name="vote-poll-<%=i+1%>" value="<%= timeId %>, false">No</input>
+                  </div>
+                  <% }) %>
+            </article>
+
+            <article class="col">
+              <table>
+                <tr>
+                  <th>Options</th>
+                  <th>Yes</th>
+                  <th>No</th>
+                </tr>
+                <% console.log(formattedEvent) %>
+                  <% Object.keys(formattedEvent.times).forEach((timeId, i)=> { %>
+                    <% const time=formattedEvent.times[timeId]; %>
+
+                      <% const yesVotes=time.votes.filter(vote=> vote.vote) %>
+                        <% const noVotes=time.votes.filter(vote=> !vote.vote) %>
+                          <tr>
+                            <td>
+                              Option <%= i + 1 %>
+                            </td>
+                            <td>
+                              <%= yesVotes.length %>
+                            </td>
+                            <td>
+                              <%= noVotes.length %>
+                            </td>
+                          </tr>
+                          <% }) %>
+              </table>
+            </article>
           </div>
         </div>
-
-        <div class="row">
-          <article class="col">
-            <% Object.keys(formattedEvent.times).forEach((timeId, i)=> { %>
-              <% const time=formattedEvent.times[timeId]; %>
-                <div>
-                  <label for="opt-<%=i+1%>">
-                    <%= time.startDate %> - <%= time.endDate %>
-                  </label>
-                  <input type="radio" id="opt-<%=i+1%>a" name="vote-poll-<%=i+1%>"
-                    value="<%= timeId %>, true">Yes</input>
-                  <input type="radio" id="opt-<%=i+1%>b" name="vote-poll-<%=i+1%>"
-                    value="<%= timeId %>, false">No</input>
-                </div>
-
-                <% }) %>
-          </article>
-
-          <article class="col">
-            Graph
-          </article>
-        </div>
-
-      </div>
     </section>
 
     <section class="container">
@@ -181,7 +201,7 @@
   </form>
 
   <!-- The Section Below is responsible for showing the LIVE RESULTS -->
-  <section>
+  <!-- <section>
     <table>
       <tr>
         <th>Date</th>
@@ -191,7 +211,6 @@
       <% console.log(formattedEvent) %>
         <% Object.keys(formattedEvent.times).forEach((timeId, i)=> { %>
           <% const time=formattedEvent.times[timeId]; %>
-
             <% const yesVotes=time.votes.filter(vote=> vote.vote) %>
               <% const noVotes=time.votes.filter(vote=> !vote.vote) %>
                 <tr>
@@ -205,11 +224,9 @@
                     <%= noVotes.length %>
                   </td>
                 </tr>
-
                 <% }) %>
-
     </table>
-  </section>
+  </section> -->
 
   <footer class="footer-overlay position-sticky">
     <span class="text-muted">Footer Information Here</span>
