@@ -174,10 +174,11 @@
         </div>
     </section>
 
-  <section class="container mt-4">
+  <section id="result-section" class="container mt-4">
     <article class="event-container">
-      <table>
-        <div class="poll-header">Live Results</div>
+      <div class="poll-header">Live Results</div>
+      <table class="col-10 mx-auto mt-2 poll-overlay">
+        <tbody class="text-center mt-2">
         <tr>
           <th></th>
           <th>Yes - Lets GO!</th>
@@ -199,6 +200,7 @@
             </td>
           </tr>
           <% }) %>
+        </tbody>
         </table>
       </article>
   </section>
