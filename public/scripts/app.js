@@ -219,6 +219,15 @@ const getUserAndSendVote = function (event) {
     return false;
   }
 
+  let $dateErrorMessage = $("#date-error-message");
+  if (!data.optionOneVote || !data.optionTwoVote || !data.optionThreeVote) {
+    $dateErrorMessage
+      .text("Error: three votes required")
+      .delay(2000)
+      .slideUp()
+    return false;
+  }
+
   $.ajax({
     url: `/vote/${url}`,
     type: "POST",
