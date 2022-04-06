@@ -198,7 +198,7 @@ const getUserAndSendVote = function (event) {
     optionOneVote,
     optionTwoVote,
     optionThreeVote,
-    url,
+    url
   };
 
   $.ajax({
