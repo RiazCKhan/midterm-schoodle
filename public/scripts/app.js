@@ -2,7 +2,6 @@
 
 $(document).ready(function () {
   $("#copy").on("click", copy);
-  $("#add-date-time-button").on("click", renderDates);
 
   $("#user-form").on("submit", sendTimes);
   $("#vote-form").on("submit", getUserAndSendVote);
@@ -88,8 +87,9 @@ const removeEndDate = (event) => {
 const copy = function (event) {
   event.preventDefault();
   let $button = $("#copy");
-  let $form = $button.closest("form");
-  let text = $form.find("#url-link").val();
+  // let $form = $button.closest("form");
+  let text = $("#url-link").val();
+  console.log(text)
   navigator.clipboard.writeText(text);
 };
 
