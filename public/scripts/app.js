@@ -86,10 +86,7 @@ const removeEndDate = (event) => {
 
 const copy = function (event) {
   event.preventDefault();
-  let $button = $("#copy");
-  // let $form = $button.closest("form");
   let text = $("#url-link").val();
-  console.log(text)
   navigator.clipboard.writeText(text);
 };
 
