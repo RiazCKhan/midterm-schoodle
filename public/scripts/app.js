@@ -201,6 +201,25 @@ const getUserAndSendVote = function (event) {
     url
   };
 
+  let $nameErrorMessage = $("#name-error-message");
+  if (!data.name) {
+    $nameErrorMessage
+      .text("Error: name required")
+      .delay(2000)
+      .slideUp()
+    return false;
+  }
+
+  let $emailErrorMessage = $("#email-error-message");
+  if (!data.email) {
+    $emailErrorMessage
+      .text("Error: email required")
+      .delay(2000)
+      .slideUp()
+    return false;
+  }
+
+
   $.ajax({
     url: `/vote/${url}`,
     type: "POST",
