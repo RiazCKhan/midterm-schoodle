@@ -12,10 +12,9 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/votePollPage.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css" /> -->
+  <link rel="stylesheet" href="/styles/index.css" type="text/css" />
 
 
   <!-- App JS -->
@@ -71,14 +70,14 @@
                 <span class="nav-color-overlay">Create Event</span>
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a href="/#" class="nav-link text-info">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                   <i class="fa-solid fa-flag"></i>
                 </svg>
                 <span class="nav-color-overlay">Poll</span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -86,34 +85,24 @@
   </header>
 
   <!-- DEAD CODE --- ONLY FOR REFERENCE -->
-  <section class="container mt-4">
-    <article class="event-container">
-      <form id="user-form">
+  <section class="container welcome-container">
+    <article class="welcome-event-container">
         <div class="row poll-header">
-          <div class="col-8 mt-1 mb-3">Create A Group Poll ;D</div>
+          <div class="col-8 mt-1 mb-3">Welcome</div>
         </div>
+
         <div class="row">
-          <div class="col-8 mt-3 event-input font-overlay">Name</div>
-          <input class="col-11 mx-auto mt-1" type="text" id="name" name="owner_name">
+          <div class="col mt-3 event-input font-overlay">To find a specific poll enter the unique character string below</div>
+          <input class="col-11 mx-auto mt-1" type="text" id="" name="" value="">
+          <div class="d-flex mt-2 justify-content-end">
+            <button class="welcome-btn btn btn-info btn-sm">Find Poll</button>
+            <button class="welcome-btn btn btn-warning btn-sm">New?</button>
+          </div>
         </div>
-        <div class="row">
-          <div class="col-8 mt-3 event-input font-overlay">Email</div>
-          <input class="col-11 mx-auto mt-1" type="text" id="email" name="owner_email">
-        </div>
-        <div class="row">
-          <div class="col-8 mt-3 event-input font-overlay">Event Title</div>
-          <input class="col-11 mx-auto mt-1" type="text" name="event_title" id="title">
-        </div>
-        <div class="row">
-          <div class="col-8 mt-3 event-input font-overlay">Event Description</div>
-          <textarea class="text-box col-11 mx-auto mt-1" type="text" id="description"
-            name="event_description"></textarea>
-        </div>
-      </form>
     </article>
   </section>
 
-  <section class="container mt-4">
+  <!-- <section class="container mt-4">
     <article class="event-container">
       <div class="row poll-header">
         <div class="col-8 mt-1 mb-3">Add Your Times</div>
@@ -134,15 +123,15 @@
         </div>
       </div>
     </article>
-  </section>
+  </section> -->
 
-  <section class="container">
+  <!-- <section class="container">
     <article class="row justify-content-center">
       <button class="col-3 mt-4 btn btn-info">Create Poll</button>
     </article>
-  </section>
+  </section> -->
 
-  <footer class="footer-overlay position-sticky">
+  <footer class="footer-overlay position-absolute">
     <span class="text-muted">Footer Information Here</span>
   </footer>
 
