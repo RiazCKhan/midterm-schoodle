@@ -202,7 +202,7 @@ const getUserAndSendVote = function (event) {
   };
 
   let $nameErrorMessage = $("#name-error-message");
-  if (!data.name) {
+  if (!data.voterName) {
     $nameErrorMessage
       .text("Error: name required")
       .delay(2000)
@@ -211,14 +211,13 @@ const getUserAndSendVote = function (event) {
   }
 
   let $emailErrorMessage = $("#email-error-message");
-  if (!data.email) {
+  if (!data.voterEmail) {
     $emailErrorMessage
       .text("Error: email required")
       .delay(2000)
       .slideUp()
     return false;
   }
-
 
   $.ajax({
     url: `/vote/${url}`,
