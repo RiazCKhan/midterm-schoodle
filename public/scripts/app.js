@@ -1,15 +1,13 @@
 // Client facing scripts here
 
 $(document).ready(function () {
-  $("#copy").on("click", copy);
-
-  $("#user-form").on("submit", sendTimes);
-  $("#vote-form").on("submit", getUserAndSendVote);
-
   $("#start-date-add-btn").on("click", renderStartDate)
   $("#end-date-add-btn").on("click", renderEndDate)
   $("#remove-start-date-btn").on("click", removeStartDate)
   $("#remove-end-date-btn").on("click", removeEndDate)
+  $("#copy").on("click", copy);
+  $("#user-form").on("submit", sendTimes);
+  $("#vote-form").on("submit", getUserAndSendVote);
 });
 
 const renderStartDate = (event) => {
