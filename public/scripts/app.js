@@ -26,7 +26,7 @@ const renderStartDate = (event) => {
   if (startDateFormData === "") {
     $dateErrorMessage
       .text("Error: date cannot be blank")
-      .delay(2000)
+      .delay(2500)
       .slideUp()
     return false;
   }
@@ -56,7 +56,7 @@ const renderEndDate = (event) => {
   if (endDateFormData === "") {
     $dateErrorMessage
       .text("Error: date cannot be blank")
-      .delay(2000)
+      .delay(2500)
       .slideUp()
     return false;
   }
@@ -125,7 +125,7 @@ const sendTimes = function (event) {
   if (!data.name) {
     $nameErrorMessage
       .text("Error: name required")
-      .delay(2000)
+      .delay(2500)
       .slideUp()
     return false;
   }
@@ -134,7 +134,7 @@ const sendTimes = function (event) {
   if (!data.email) {
     $emailErrorMessage
       .text("Error: email required")
-      .delay(2000)
+      .delay(2500)
       .slideUp()
     return false;
   }
@@ -143,7 +143,7 @@ const sendTimes = function (event) {
   if (!data.title) {
     $titleErrorMessage
       .text("Error: title required")
-      .delay(2000)
+      .delay(2500)
       .slideUp()
     return false;
   }
@@ -152,7 +152,7 @@ const sendTimes = function (event) {
   if (!data.description) {
     $descErrorMessage
       .text("Error: description required")
-      .delay(2000)
+      .delay(2500)
       .slideUp()
     return false;
   }
@@ -161,7 +161,7 @@ const sendTimes = function (event) {
   if (data.startDates.length < 3 || data.endDates.length < 3) {
     $dateErrorMessage
       .text("Error: three 'Start' and 'End' dates required")
-      .delay(2000)
+      .delay(2500)
       .slideUp()
     return false;
   }
@@ -198,8 +198,35 @@ const getUserAndSendVote = function (event) {
     optionOneVote,
     optionTwoVote,
     optionThreeVote,
-    url,
+    url
   };
+
+  let $nameErrorMessage = $("#name-error-message");
+  if (!data.voterName) {
+    $nameErrorMessage
+      .text("Error: name required")
+      .delay(2500)
+      .slideUp()
+    return false;
+  }
+
+  let $emailErrorMessage = $("#email-error-message");
+  if (!data.voterEmail) {
+    $emailErrorMessage
+      .text("Error: email required")
+      .delay(2500)
+      .slideUp()
+    return false;
+  }
+
+  let $dateErrorMessage = $("#date-error-message");
+  if (!data.optionOneVote || !data.optionTwoVote || !data.optionThreeVote) {
+    $dateErrorMessage
+      .text("Error: three votes required")
+      .delay(2500)
+      .slideUp()
+    return false;
+  }
 
   $.ajax({
     url: `/vote/${url}`,

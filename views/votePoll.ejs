@@ -137,10 +137,12 @@
         <div class="row align-items-center mt-2">
           <div class="col-2 text-center mt-1 poll-voter-info font-overlay">Name</div>
           <input class="col-8 mt-1" type="text" id="voter-name" value="<%= name %>" name="name">
+          <div id="name-error-message"></div>
         </div>
         <div class="row align-items-center mt-2">
           <div class="col-2 text-center mt-1 poll-voter-info font-overlay">Email</div>
           <input class="col-8 mt-1" type="text" id="voter-email" value="<%= email %>" name="owner_email">
+          <div id="email-error-message"></div>
         </div>
       </article>
     </section>
@@ -169,6 +171,7 @@
                   </div>
                   <% }) %>
             </article>
+            <div id="date-error-message" class="mt-2"></div>
           </div>
         </div>
     </section>
