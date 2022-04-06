@@ -12,6 +12,12 @@
   font-size: 0.6rem;
 }
 
+.poll-overlay {
+  font-family: 'font awesome 6 free';
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+}
+
 .poll-header {
   font-family: 'font awesome 6 free';
   letter-spacing: 2px;
@@ -59,6 +65,12 @@
 button {
   font-family: 'font awesome 6 free';
   letter-spacing: 2px;
+}
+
+[type="checkbox"], [type="radio"] {
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 #start-date-form, #end-date-form {
