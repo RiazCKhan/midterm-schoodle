@@ -1,4 +1,11 @@
 .welcome-container {
+  display: flex;
+  height: 66vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-container {
   background-color: ghostwhite;
   padding: 1rem;
   border-style: solid;
