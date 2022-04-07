@@ -1,6 +1,8 @@
 // Client facing scripts here
 
 $(document).ready(function () {
+  $("#find-poll-btn").on("click", findPoll)
+
   $("#start-date-add-btn").on("click", renderStartDate)
   $("#end-date-add-btn").on("click", renderEndDate)
   $("#remove-start-date-btn").on("click", removeStartDate)
@@ -9,6 +11,16 @@ $(document).ready(function () {
   $("#user-form").on("submit", sendTimes);
   $("#vote-form").on("submit", getUserAndSendVote);
 });
+
+const findPoll = (event) => {
+  event.preventDefault()
+
+  let uniqueURL = $("#find-poll-input").val()
+  location.href=`/vote/${uniqueURL}`
+
+  console.log('db call on url', database.getEventByUrl(uniqueURL))
+
+}
 
 const renderStartDate = (event) => {
   event.preventDefault();
