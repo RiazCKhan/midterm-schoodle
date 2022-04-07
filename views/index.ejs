@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
   <link rel="stylesheet" href="/styles/index.css" type="text/css" />
 
-
   <!-- App JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -91,14 +90,17 @@
           <div class="col-8 mt-1 mb-3">Welcome</div>
         </div>
 
-        <div class="row">
-          <div class="col mt-3 font-overlay">To find a specific poll enter the unique character string below</div>
-          <input class="col-11 mx-auto mt-1" type="text" id="" name="" value="">
-          <div class="d-flex mt-2 justify-content-end">
-            <button class="welcome-btn btn btn-info btn-sm">Find Poll</button>
-            <button class="welcome-btn btn btn-warning btn-sm" onclick="location.href='/events/new';">New?</button>
+        <form id="find-poll-form">
+          <div class="row">
+            <div class="col mt-3 font-overlay">To find a specific poll enter the unique character string below</div>
+            <input class="col-11 mx-auto mt-1" type="text" id="" name="" value="">
+            <div class="d-flex mt-2 justify-content-end">
+              <button class="welcome-btn btn btn-info btn-sm">Find Poll</button>
+              <button class="welcome-btn btn btn-warning btn-sm" onclick="location.href='/events/new';">New?</button>
+            </div>
           </div>
-        </div>
+        </form>
+
     </article>
   </section>
 
