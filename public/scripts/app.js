@@ -14,6 +14,11 @@ $(document).ready(function () {
 
 const findPoll = (event) => {
   event.preventDefault()
+
+  let uniqueURL = $("find-poll-form #user-find-poll-input").val()
+
+  console.log(uniqueURL)
+
 }
 
 const renderStartDate = (event) => {
