@@ -1,6 +1,8 @@
 // Client facing scripts here
 
 $(document).ready(function () {
+  $("#find-poll-form").on("click", findPoll)
+
   $("#start-date-add-btn").on("click", renderStartDate)
   $("#end-date-add-btn").on("click", renderEndDate)
   $("#remove-start-date-btn").on("click", removeStartDate)
@@ -9,6 +11,10 @@ $(document).ready(function () {
   $("#user-form").on("submit", sendTimes);
   $("#vote-form").on("submit", getUserAndSendVote);
 });
+
+const findPoll = (event) => {
+  event.preventDefault()
+}
 
 const renderStartDate = (event) => {
   event.preventDefault();
