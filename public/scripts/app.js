@@ -15,7 +15,7 @@ $(document).ready(function () {
 const findPoll = (event) => {
   event.preventDefault()
 
-  let uniqueURL = $("#find-poll-form #find-poll-input").val()
+  let uniqueURL = $("#find-poll-input").val()
   location.href=`/vote/${uniqueURL}`
 }
 
