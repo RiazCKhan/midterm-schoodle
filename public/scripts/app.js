@@ -17,6 +17,9 @@ const findPoll = (event) => {
 
   let uniqueURL = $("#find-poll-input").val()
   location.href=`/vote/${uniqueURL}`
+
+  console.log('db call on url', database.getEventByUrl(uniqueURL))
+
 }
 
 const renderStartDate = (event) => {
