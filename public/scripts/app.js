@@ -1,7 +1,7 @@
 // Client facing scripts here
 
 $(document).ready(function () {
-  $("#find-poll-form").on("click", findPoll)
+  $("#find-poll-btn").on("click", findPoll)
 
   $("#start-date-add-btn").on("click", renderStartDate)
   $("#end-date-add-btn").on("click", renderEndDate)
@@ -15,30 +15,8 @@ $(document).ready(function () {
 const findPoll = (event) => {
   event.preventDefault()
 
-  let uniqueURL = $("#find-poll-form #user-find-poll-input").val()
-
+  let uniqueURL = $("#find-poll-form #find-poll-input").val()
   location.href=`/vote/${uniqueURL}`
-
-  // $.ajax({
-  //   url: `/vote/${uniqueURL}`,
-  //   type: "GET",
-  //   success: function (res) {
-  //     window.location.href = res.url;
-  //   },
-  //   error: function () { },
-  //   dataType: "json",
-  // });
-
-  // $.ajax({
-  //   url: `/vote/${url}`,
-  //   type: "POST",
-  //   data: data,
-  //   success: function (res) {
-  //     location.reload();
-  //   },
-  //   error: function () { },
-  //   dataType: "json",
-  // });
 }
 
 const renderStartDate = (event) => {
