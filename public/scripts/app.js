@@ -17,7 +17,28 @@ const findPoll = (event) => {
 
   let uniqueURL = $("#find-poll-form #user-find-poll-input").val()
 
+  location.href=`/vote/${uniqueURL}`
 
+  // $.ajax({
+  //   url: `/vote/${uniqueURL}`,
+  //   type: "GET",
+  //   success: function (res) {
+  //     window.location.href = res.url;
+  //   },
+  //   error: function () { },
+  //   dataType: "json",
+  // });
+
+  // $.ajax({
+  //   url: `/vote/${url}`,
+  //   type: "POST",
+  //   data: data,
+  //   success: function (res) {
+  //     location.reload();
+  //   },
+  //   error: function () { },
+  //   dataType: "json",
+  // });
 }
 
 const renderStartDate = (event) => {
