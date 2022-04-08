@@ -16,7 +16,36 @@ const findPoll = (event) => {
   event.preventDefault()
 
   let uniqueURL = $("#find-poll-input").val()
+
   // location.href=`/vote/${uniqueURL}`
+
+  // $.get(`http://localhost:8080/vote/${uniqueURL}`, function(data) {
+  //   window.location.href=`/vote/${uniqueURL}`
+  // })
+
+  $.ajax({
+    url: `http://localhost:8080/vote/${uniqueURL}`,
+    type: "GET",
+    success: function (res) {
+      window.location.href = res.url
+    },
+    error: function (error) {
+      alert("message")
+    },
+    dataType: null
+  });
+
+  // $.ajax({
+  //   url: "/events/new",
+  //   type: "POST",
+  //   data: data,
+  //   success: function (res) {
+  //     window.location.href = res.url;
+  //   },
+  //   error: function () { },
+  //   dataType: "json",
+  // });
+
 }
 
 const renderStartDate = (event) => {
