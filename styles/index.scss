@@ -78,7 +78,7 @@ button {
   }
 
   #title-error-message, #desc-error-message,
-  #name-error-message, #email-error-message, #find-poll-error {
+  #name-error-message, #email-error-message {
     margin-left: 1.8rem;
     font-family: 'font awesome 6 free';
     letter-spacing: 3px;
@@ -86,7 +86,7 @@ button {
     color: red;
   }
 
-  #date-error-message {
+  #date-error-message, #find-poll-error {
     font-family: 'font awesome 6 free';
     letter-spacing: 3px;
     font-size: 0.6rem;
