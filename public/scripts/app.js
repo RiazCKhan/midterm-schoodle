@@ -16,6 +16,7 @@ const findPoll = (event) => {
   event.preventDefault()
 
   let uniqueURL = $("#find-poll-input").val()
+  let $findPollErrorMessage = $("#find-poll-error");
 
   // location.href=`/vote/${uniqueURL}`
 
@@ -30,7 +31,10 @@ const findPoll = (event) => {
       window.location.href = res.url
     },
     error: function (error) {
-      alert("")
+      $findPollErrorMessage
+      .text("Error: no poll found - invalid unique character string")
+      .delay(2500)
+      .slideUp()
     },
     dataType: null
   });
