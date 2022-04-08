@@ -18,12 +18,6 @@ const findPoll = (event) => {
   let uniqueURL = $("#find-poll-input").val()
   let $findPollErrorMessage = $("#find-poll-error");
 
-  // location.href=`/vote/${uniqueURL}`
-
-  // $.get(`http://localhost:8080/vote/${uniqueURL}`, function(data) {
-  //   window.location.href=`/vote/${uniqueURL}`
-  // })
-
   $.ajax({
     url: `http://localhost:8080/vote/${uniqueURL}`,
     success: function () {
@@ -37,18 +31,6 @@ const findPoll = (event) => {
     },
     dataType: null
   });
-
-  // $.ajax({
-  //   url: "/events/new",
-  //   type: "POST",
-  //   data: data,
-  //   success: function (res) {
-  //     window.location.href = res.url;
-  //   },
-  //   error: function () { },
-  //   dataType: "json",
-  // });
-
 }
 
 const renderStartDate = (event) => {
