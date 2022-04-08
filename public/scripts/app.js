@@ -1,30 +1,44 @@
 // Client facing scripts here
 
-$(document).ready(function () {
-  $("#find-poll-btn").on("click", findPoll)
+$(document).ready(function() {
+  $("#find-poll-btn").on("click", findPoll);
 
-  $("#start-date-add-btn").on("click", renderStartDate)
-  $("#end-date-add-btn").on("click", renderEndDate)
-  $("#remove-start-date-btn").on("click", removeStartDate)
-  $("#remove-end-date-btn").on("click", removeEndDate)
+  $("#start-date-add-btn").on("click", renderStartDate);
+  $("#end-date-add-btn").on("click", renderEndDate);
+  $("#remove-start-date-btn").on("click", removeStartDate);
+  $("#remove-end-date-btn").on("click", removeEndDate);
   $("#copy").on("click", copy);
   $("#user-form").on("submit", sendTimes);
   $("#vote-form").on("submit", getUserAndSendVote);
 });
 
 const findPoll = (event) => {
-  event.preventDefault()
+  event.preventDefault();
 
-  let uniqueURL = $("#find-poll-input").val()
-  // location.href=`/vote/${uniqueURL}`
-}
+  let uniqueURL = $("#find-poll-input").val();
+  let $findPollErrorMessage = $("#find-poll-error");
+
+  $.ajax({
+    url: `http://localhost:8080/vote/${uniqueURL}`,
+    success: function() {
+      window.location.href = `/vote/${uniqueURL}`;
+    },
+    error: function() {
+      $findPollErrorMessage
+        .text("Error: no poll found - invalid unique character string")
+        .delay(2500)
+        .slideUp();
+    },
+    dataType: null
+  });
+};
 
 const renderStartDate = (event) => {
   event.preventDefault();
 
   let startDateFormData = $("#start-date-input").val();
   // startDateFormData = document.getElementById("start-date-input").value
-  let startDateFormDataArr = startDateFormData.split('')
+  let startDateFormDataArr = startDateFormData.split('');
   let startDay = startDateFormDataArr.slice(8, 10).join('');
   let startMonth = startDateFormDataArr.slice(5, 7).join('');
   let startYear = startDateFormDataArr.slice(0, 4).join('');
@@ -36,7 +50,7 @@ const renderStartDate = (event) => {
     $dateErrorMessage
       .text("Error: date cannot be blank")
       .delay(2500)
-      .slideUp()
+      .slideUp();
     return false;
   }
 
@@ -54,7 +68,7 @@ const renderEndDate = (event) => {
 
   let endDateFormData = $("#end-date-input").val();
   // endDateFormData = document.getElementById("end-date-input").value
-  let endDateFormDataArr = endDateFormData.split('')
+  let endDateFormDataArr = endDateFormData.split('');
   let endDay = endDateFormDataArr.slice(8, 10).join('');
   let endMonth = endDateFormDataArr.slice(5, 7).join('');
   let endYear = endDateFormDataArr.slice(0, 4).join('');
@@ -66,7 +80,7 @@ const renderEndDate = (event) => {
     $dateErrorMessage
       .text("Error: date cannot be blank")
       .delay(2500)
-      .slideUp()
+      .slideUp();
     return false;
   }
 
@@ -81,27 +95,27 @@ const renderEndDate = (event) => {
 
 const removeStartDate = (event) => {
   event.preventDefault();
-  $("#start-time-container.col div.col").last().remove()
-  $("#start-time-container.col div.w-100").last().remove()
-}
+  $("#start-time-container.col div.col").last().remove();
+  $("#start-time-container.col div.w-100").last().remove();
+};
 
 const removeEndDate = (event) => {
   event.preventDefault();
-  $("#end-time-container.col div.col").last().remove()
-  $("#end-time-container.col div.w-100").last().remove()
-}
+  $("#end-time-container.col div.col").last().remove();
+  $("#end-time-container.col div.w-100").last().remove();
+};
 
-const copy = function (event) {
+const copy = function(event) {
   event.preventDefault();
   let text = $("#url-link").val();
   navigator.clipboard.writeText(text);
 };
 
-const sendTimes = function (event) {
+const sendTimes = function(event) {
   event.preventDefault();
 
-  let rawStartData = $("#start-time-container").children("#start-time").text().split(' ')
-  let rawEndData = $("#end-time-container").children("#end-time").text().split(' ')
+  let rawStartData = $("#start-time-container").children("#start-time").text().split(' ');
+  let rawEndData = $("#end-time-container").children("#end-time").text().split(' ');
 
   let name = $("#user-form #name").val(); // DO NOT DELETE - Note: Find content by referencing 'double id / class'
   let email = $("#user-form #email").val();
@@ -119,15 +133,15 @@ const sendTimes = function (event) {
 
   rawStartData.forEach((time) => {
     if (time !== "") {
-      data.startDates.push(time)
+      data.startDates.push(time);
     }
-  })
+  });
 
   rawEndData.forEach((time) => {
     if (time !== "") {
-      data.endDates.push(time)
+      data.endDates.push(time);
     }
-  })
+  });
 
   // Error Handling
   let $nameErrorMessage = $("#name-error-message");
@@ -135,7 +149,7 @@ const sendTimes = function (event) {
     $nameErrorMessage
       .text("Error: name required")
       .delay(2500)
-      .slideUp()
+      .slideUp();
     return false;
   }
 
@@ -144,7 +158,7 @@ const sendTimes = function (event) {
     $emailErrorMessage
       .text("Error: email required")
       .delay(2500)
-      .slideUp()
+      .slideUp();
     return false;
   }
 
@@ -153,7 +167,7 @@ const sendTimes = function (event) {
     $titleErrorMessage
       .text("Error: title required")
       .delay(2500)
-      .slideUp()
+      .slideUp();
     return false;
   }
 
@@ -162,7 +176,7 @@ const sendTimes = function (event) {
     $descErrorMessage
       .text("Error: description required")
       .delay(2500)
-      .slideUp()
+      .slideUp();
     return false;
   }
 
@@ -171,7 +185,7 @@ const sendTimes = function (event) {
     $dateErrorMessage
       .text("Error: three 'Start' and 'End' dates required")
       .delay(2500)
-      .slideUp()
+      .slideUp();
     return false;
   }
 
@@ -180,15 +194,15 @@ const sendTimes = function (event) {
     url: "/events/new",
     type: "POST",
     data: data,
-    success: function (res) {
+    success: function(res) {
       window.location.href = res.url;
     },
-    error: function () { },
+    error: function() { },
     dataType: "json",
   });
 };
 
-const getUserAndSendVote = function (event) {
+const getUserAndSendVote = function(event) {
   event.preventDefault(); // remove this to see table poll update
 
   let voterName = $("#vote-form #voter-name").val();
@@ -215,7 +229,7 @@ const getUserAndSendVote = function (event) {
     $nameErrorMessage
       .text("Error: name required")
       .delay(2500)
-      .slideUp()
+      .slideUp();
     return false;
   }
 
@@ -224,7 +238,7 @@ const getUserAndSendVote = function (event) {
     $emailErrorMessage
       .text("Error: email required")
       .delay(2500)
-      .slideUp()
+      .slideUp();
     return false;
   }
 
@@ -233,7 +247,7 @@ const getUserAndSendVote = function (event) {
     $dateErrorMessage
       .text("Error: three votes required")
       .delay(2500)
-      .slideUp()
+      .slideUp();
     return false;
   }
 
@@ -241,12 +255,12 @@ const getUserAndSendVote = function (event) {
     url: `/vote/${url}`,
     type: "POST",
     data: data,
-    success: function (res) {
+    success: function(res) {
       location.reload();
       // window.location.href = res.url;
       /* update table values: jquery selector table id || invoke getVoteCount FN */
     },
-    error: function () { },
+    error: function() { },
     dataType: "json",
   });
 };
