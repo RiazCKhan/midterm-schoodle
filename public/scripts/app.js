@@ -26,11 +26,10 @@ const findPoll = (event) => {
 
   $.ajax({
     url: `http://localhost:8080/vote/${uniqueURL}`,
-    type: "GET",
-    success: function (res) {
-      window.location.href = res.url
+    success: function () {
+      window.location.href=`/vote/${uniqueURL}`
     },
-    error: function (error) {
+    error: function () {
       $findPollErrorMessage
       .text("Error: no poll found - invalid unique character string")
       .delay(2500)
