@@ -42,8 +42,7 @@ module.exports = () => {
     req.session.email = owner.email;
     req.session.name = owner.name;
 
-    console.log("cookie+++", req.session.email);
-
+    // console.log("cookie+++", req.session.email);
     // console.log('start', req.body.startDates);
     // console.log('end', req.body.endDates);
     // console.log(times);
