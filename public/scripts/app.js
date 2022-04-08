@@ -30,7 +30,7 @@ const findPoll = (event) => {
       window.location.href = res.url
     },
     error: function (error) {
-      alert("message")
+      alert("")
     },
     dataType: null
   });
