@@ -100,7 +100,7 @@ const checkVoterWithEmail = function (user) {
       return result.rows;
     })
     .catch((err) => {
-      console.log(err.stack);
+      console.log('DB checkVoterWithEmail error', err.stack);
     });
 };
 exports.checkVoterWithEmail = checkVoterWithEmail;
@@ -126,7 +126,7 @@ const getUserWithEmail = function (user) {
         }
       })
       .catch((err) => {
-        console.log(err.stack);
+        console.log('DB getUserWithEmail error', err.stack);
         reject(err.stack);
       });
   });
