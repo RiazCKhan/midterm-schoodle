@@ -15,7 +15,7 @@ const addUsers = (user) => {
       return result.rows[0];
     })
     .catch((err) => {
-      console.log(err.stack);
+      console.log('DB addUsers FN', err.stack);
     });
 };
 exports.addUsers = addUsers;
