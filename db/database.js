@@ -115,12 +115,10 @@ const getUserWithEmail = function (user) {
     )
       .then((result) => {
         if (result.rows.length === 0) {
-          console.log("add user");
           return addUsers(user).then((user) => {
             resolve([user]);
           });
         } else {
-          console.log("getuser", result.rows[0]);
           resolve(result.rows);
           return result.rows;
         }
@@ -150,7 +148,7 @@ const getVotesFromEmail = function (voter) {
       }
     })
     .catch((err) => {
-      console.log(err.stack);
+      console.log('DB getVotesFromEmail error', err.stack);
     });
 };
 exports.getVotesFromEmail = getVotesFromEmail;
@@ -170,14 +168,13 @@ const getEventByUrl = function (url) {
     .query(queryText, [url])
     .then((result) => {
       if (result) {
-        // console.log('I am database', result.rows)
         return result.rows;
       } else {
         return null;
       }
     })
     .catch((err) => {
-      console.log(err.stack);
+      console.log('DB getEventByURL error', err.stack);
     });
 };
 exports.getEventByUrl = getEventByUrl;
@@ -186,7 +183,6 @@ const updateVotes = function (votes, voter) {
   let voterId = 0;
 
   getUserWithEmail(voter).then(function (result) {
-    console.log("result updatedates vote fn", result);
     let parsed = JSON.parse(JSON.stringify(result));
     voterId = parsed[0].id;
 
@@ -197,12 +193,12 @@ const updateVotes = function (votes, voter) {
         WHERE voter_id = $2
         AND time_id = $3`,
         [votes.selection[i], voterId, votes.timeId[i]]
-      ) // Will need to match names of info taken in on votes page
+      )
         .then((result) => {
           result.rows;
         })
         .catch((err) => {
-          console.log(err.stack);
+          console.log('DB updateVotes error', err.stack);
         });
     }
   });
@@ -210,10 +206,7 @@ const updateVotes = function (votes, voter) {
 exports.updateVotes = updateVotes;
 
 const countYesVotes = function (uniqueUrl, timeId) {
-  console.log("count yes function", uniqueUrl, timeId);
   for (let i = 0; i < timeId.length; i++) {
-    console.log("loop length", timeId.length);
-    console.log("timeID inside loop", timeId[i]);
 
     return db
       .query(
@@ -228,11 +221,10 @@ const countYesVotes = function (uniqueUrl, timeId) {
         [uniqueUrl, timeId[i]]
       )
       .finally((result) => {
-        console.log("count yes result", result);
         return result;
       })
       .catch((err) => {
-        console.log(err.stack);
+        console.log('DB countYesVotes error', err.stack);
       });
   }
 };
@@ -252,7 +244,7 @@ const getVotesByUniqueUrl = function (uniqueUrl) {
       return result.rows;
     })
     .catch((err) => {
-      console.log(err.stack);
+      console.log('DB getVotesByUnique URL error', err.stack);
     });
 };
 exports.getVotesByUniqueUrl = getVotesByUniqueUrl;
@@ -274,7 +266,7 @@ const countNoVotes = function (uniqueUrl, timeId) {
         result.rows;
       })
       .catch((err) => {
-        console.log(err.stack);
+        console.log('DB countNoVotes error', err.stack);
       });
   }
 };
@@ -291,11 +283,10 @@ const getTimeIdsByUrl = function (uniqueUrl) {
       [uniqueUrl]
     )
     .then((result) => {
-      console.log('result of get time id by url', result.rows)
       return result.rows;
     })
     .catch((err) => {
-      console.log(err.stack);
+      console.log('DB getTimeIDByURL error', err.stack);
     });
 };
 exports.getTimeIdsByUrl = getTimeIdsByUrl;
