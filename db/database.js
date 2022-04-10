@@ -38,9 +38,6 @@ const addEvent = (event) => {
 exports.addEvent = addEvent;
 
 const addVotes = (votes, voter) => {
-  console.log("votes", votes);
-  console.log("voter", voter);
-  console.log("eamil", voter.voterEmail);
   let voterId = 0;
 
   getUserWithEmail(voter).then(function (result) {
