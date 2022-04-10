@@ -55,8 +55,6 @@ module.exports = () => {
     let timeId = [];
     let selection = [];
 
-    console.log('option1', req.body.optionOneVote)
-
     timeId.push(req.body.optionOneVote.split(",")[0]);
     timeId.push(req.body.optionTwoVote.split(",")[0]);
     timeId.push(req.body.optionThreeVote.split(",")[0]);
