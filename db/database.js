@@ -41,7 +41,6 @@ const addVotes = (votes, voter) => {
   let voterId = 0;
 
   getUserWithEmail(voter).then(function (result) {
-    console.log("getuserwithemail result", result);
     let parsed = JSON.parse(JSON.stringify(result));
     voterId = parsed[0].id;
 
@@ -51,12 +50,12 @@ const addVotes = (votes, voter) => {
       VALUES ($1, $2, $3)
       RETURNING *;`,
         [voterId, votes.timeId[i], votes.selection[i]]
-      ) // Will need to match names of info taken in on votes page
+      )
         .then((result) => {
           result.rows;
         })
         .catch((err) => {
-          console.log(err.stack);
+          console.log('DB addVotes error', err.stack);
         });
     }
   });
