@@ -11,7 +11,6 @@ module.exports = () => {
     const formattedEvent = { times: {} };
 
     const times = await database.getTimeIdsByUrl(uniqueUrl);
-    // console.log("times from function", times);
     times.forEach((time) => {
       formattedEvent.times[time.id] = {
         votes: [],
@@ -39,7 +38,6 @@ module.exports = () => {
 
     database.getEventByUrl(uniqueUrl).then((event) => {
       // Take JS from votePoll.ejs AND set EJS variables HERE - THEN pass all across like event, name, email
-      // console.log("vote.js", event);
       res.render("votePoll", { event, name, email, formattedEvent });
       console.log("success!");
     });
@@ -53,12 +51,9 @@ module.exports = () => {
 
     req.session.email = voterInfo.email;
     req.session.name = voterInfo.name;
-    // console.log("VOTEJS voter", voterInfo);
 
     let timeId = [];
     let selection = [];
-
-    console.log('option1', req.body.optionOneVote)
 
     timeId.push(req.body.optionOneVote.split(",")[0]);
     timeId.push(req.body.optionTwoVote.split(",")[0]);
@@ -73,13 +68,9 @@ module.exports = () => {
       selection,
     };
 
-    // console.log("timeId: ", timeId);
-    // console.log("selection: ", selection);
-
     let uniqueUrl = req.body.url;
 
     const ifVotes = await database.getVotesFromEmail(voterInfo);
-    // console.log("$$$$", ifVotes);
 
     if (ifVotes && ifVotes.length) {
       await database.updateVotes(votes, voterInfo);
