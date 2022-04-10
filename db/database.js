@@ -15,7 +15,7 @@ const addUsers = (user) => {
       return result.rows[0];
     })
     .catch((err) => {
-      console.log('DB addUsers FN', err.stack);
+      console.log('DB addUsers error', err.stack);
     });
 };
 exports.addUsers = addUsers;
@@ -32,7 +32,7 @@ const addEvent = (event) => {
       result.rows[0];
     })
     .catch((err) => {
-      console.log(err.stack);
+      console.log('DB addEvent error', err.stack);
     });
 };
 exports.addEvent = addEvent;
