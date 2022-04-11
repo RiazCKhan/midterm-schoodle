@@ -24,22 +24,11 @@ Schnoodle is a multi-page 100% responsive web application. <br>
 ## Vote!
 ![vote-page](docs/vote-page.png)
 
-## Votes Update on Refresh
-![update-vote](docs/vote-share.png)
-
-
-This Project was built by [Gar Carey](https://github.com/GarCarey) and [Riaz](https://github.com/RiazCKhan)
-
 <br>
 <br>
-<br>
-========= Below are Node Skeleton Template Instructions my Partner and I used to get up and running. =========
 
-<br>
+# Project Setup
 
-### Project Setup
-
-<br>
 The following steps are only for _one_ of the group members to perform.
 
 1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public
