@@ -13,7 +13,7 @@ Schnoodle is a multi-page application. <br>
 
 # Jump In !
   1. Run the server: `npm run local`
-  2. Visit `http://localhost:8080/events/new`
+  2. Visit `http://localhost:8080/`
 
 ## Create an Event with 3 available options for voting
 ![create-event](docs/create-event.png)
