@@ -1,10 +1,14 @@
-# Schoodle !
+# Schnoodle !
 
-## Welcome to my Midterm Project
+### Plan your next event with Schnoodle!
+<br>
+Schnoodle removes the hassle of contacting each member of your party to sort which date and time aligns with everyones schedule. Simply create a poll and send it off!
+<br>
+Schnoodle allows the User Create, Edit, Share and Event with friends and family. This makes Schoodle an excepptionally useful Application for planning group gatherings, like a BBQ !
 
-Schoodle is a multi-page application built with JS, Node, JQuery, Ajax, SQL, Postgres, Express, HTML, and CSS !
+Schnoodle is a multi-page application built with JS, Node, JQuery, Ajax, SQL, Postgres, Express, HTML, and CSS !
 
-Schoodle allows the User Create, Edit, Share and Event with friends and family. This makes Schoodle an excepptionally useful Application for planning group gatherings, like a BBQ !
+
 
 # Jump In !
   1. Run the server: `npm run local`
