@@ -7,7 +7,7 @@ Schnoodle removes the hassle of contacting each member of your party to sort whi
 Users can <b>Create, Edit, and Share</b> events with family, friends, and colleagues. This makes Schnoodle an excepptionally useful Application for planning group gatherings, like a family reunion, BBQ, or work retreat!
 <br>
 
-Schnoodle is a multi-page application. <br>
+Schnoodle is a multi-page 100% responsive web application. <br>
 <b>Tech Stack:</b> Javascript, HTML, CSS, JQuery, NodeJS, ExpressJS, Ajax, SQL, and PostgresSQL
 <br>
 
@@ -15,8 +15,8 @@ Schnoodle is a multi-page application. <br>
   1. Run the server: `npm run local`
   2. Visit `http://localhost:8080/`
 
-## Create an Event with 3 available options for voting
-![create-event](docs/create-event.png)
+## Landing Page
+![landing-page.png](docs/landing-page.png)
 
 ## Vote and Share an event with everyone
 ![vote-share](docs/vote-share.png)
