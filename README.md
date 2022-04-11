@@ -18,10 +18,13 @@ Schnoodle is a multi-page 100% responsive web application. <br>
 ## Landing Page
 ![landing-page.png](docs/landing-page.png)
 
-## Vote and Share an event with everyone
-![vote-share](docs/vote-share.png)
+## Create a Poll
+![create-poll](docs/create-poll.png)
 
-## Votes Update on Refresh. Each voter opening the shared link will have a visual of previous votes
+## Vote!
+![vote-page](docs/vote-page.png)
+
+## Votes Update on Refresh
 ![update-vote](docs/vote-share.png)
 
 
