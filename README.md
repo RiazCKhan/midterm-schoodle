@@ -24,7 +24,7 @@ Schnoodle is a multi-page 100% responsive web application. <br>
 ## Vote!
 ![vote-page](docs/vote-page.png)
 
-## Use the Unique URL to share the event
+## Use the unique 10 character alphanumeric string to share and find events
 ![share](docs/share.png)
 
 <br>
